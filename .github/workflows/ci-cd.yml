@@ -1,0 +1,66 @@
+name: CI/CD Pipeline
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build:
+    if: (github.event_name == 'pull_request') || (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]'))
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build with Vite
+        id: build
+        run: yarn build
+        continue-on-error: true
+
+      - name: Set build status
+        id: status
+        run: |
+          if [ "${{ steps.build.outcome }}" == "success" ]; then
+            echo "result=success" >> $GITHUB_OUTPUT
+            echo "message=빌드 성공 🎉" >> $GITHUB_OUTPUT
+          else
+            echo "result=failed" >> $GITHUB_OUTPUT
+            echo "message=빌드 실패 ❌" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Add comment to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const buildStatusMessage = '${{ steps.status.outputs.message }}';
+            await github.rest.issues.createComment({
+              issue_number: prNumber,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### 빌드 결과\n${buildStatusMessage}`
+            });
+
+      - name: Check build status
+        if: steps.build.outcome == 'failure'
+        run: exit 1
