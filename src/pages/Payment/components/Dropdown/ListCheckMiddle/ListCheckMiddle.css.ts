@@ -1,4 +1,3 @@
-// ListCheckMiddle.css.ts
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
 
