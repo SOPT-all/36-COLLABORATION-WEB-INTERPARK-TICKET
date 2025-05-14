@@ -1,4 +1,5 @@
-import HomeAddButton from "@/shared/components/HomeAddButton/HomeAddButton";
+import SeatBottomSheet from "@/shared/components/SeatBottomSheet/SeatBottomSheet";
+
 
 const ComponentTest = () => {
 
@@ -10,7 +11,12 @@ const ComponentTest = () => {
           gap: '0.6rem',
         }}
       >
-        <HomeAddButton keyword="할인티켓" />
+        <SeatBottomSheet
+          placeInfo="예스24아트원 2관"
+          dateTime="2025.04.29 / 19:30"
+          seatInfo=""
+          price={66000}
+      />
 
       </div>
   );
