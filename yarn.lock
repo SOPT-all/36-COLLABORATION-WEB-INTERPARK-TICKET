@@ -933,6 +933,24 @@
     modern-ahocorasick "^1.0.0"
     picocolors "^1.0.0"
 
+"@vanilla-extract/css@^1.17.2":
+  version "1.17.2"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/css/-/css-1.17.2.tgz#e92c41cf67095924cba676b73a9de9370346fccb"
+  integrity sha512-gowpfR1zJSplDO7NkGf2Vnw9v9eG1P3aUlQpxa1pOjcknbgWw7UPzIboB6vGJZmoUvDZRFmipss3/Q+RRfhloQ==
+  dependencies:
+    "@emotion/hash" "^0.9.0"
+    "@vanilla-extract/private" "^1.0.7"
+    css-what "^6.1.0"
+    cssesc "^3.0.0"
+    csstype "^3.0.7"
+    dedent "^1.5.3"
+    deep-object-diff "^1.1.9"
+    deepmerge "^4.2.2"
+    lru-cache "^10.4.3"
+    media-query-parser "^2.0.2"
+    modern-ahocorasick "^1.0.0"
+    picocolors "^1.0.0"
+
 "@vanilla-extract/integration@^8.0.1":
   version "8.0.1"
   resolved "https://registry.npmjs.org/@vanilla-extract/integration/-/integration-8.0.1.tgz"
@@ -953,6 +971,11 @@
   version "1.0.6"
   resolved "https://registry.npmjs.org/@vanilla-extract/private/-/private-1.0.6.tgz"
   integrity sha512-ytsG/JLweEjw7DBuZ/0JCN4WAQgM9erfSTdS1NQY778hFQSZ6cfCDEZZ0sgVm4k54uNz6ImKB33AYvSR//fjxw==
+
+"@vanilla-extract/private@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@vanilla-extract/private/-/private-1.0.7.tgz#491fb106f9d4a5a96e3e5be29f52ecc228c0952b"
+  integrity sha512-v9Yb0bZ5H5Kr8ciwPXyEToOFD7J/fKKH93BYP7NCSZg02VYsA/pNFrLeVDJM2OO/vsygduPKuiEI6ORGQ4IcBw==
 
 "@vanilla-extract/recipes@^0.5.5":
   version "0.5.5"
