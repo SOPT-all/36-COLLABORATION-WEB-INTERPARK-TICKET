@@ -117,10 +117,10 @@ export const vars = createGlobalTheme(':root', {
       letterSpacing: '0px',
     },
     b4_m_16: {
-      size: '16px',
+      size: '12px',
       weight: '400',
       lineHeight: '14px',
-      letterSpacing: '0.24px',
+      letterSpacing: '-0.24px',
     },
     b5_b_14_4: {
       size: '14px',
