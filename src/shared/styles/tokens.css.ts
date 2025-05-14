@@ -132,7 +132,7 @@ export const vars = createGlobalTheme(':root', {
       size: '14px',
       weight: '700',
       lineHeight: '16px',
-      letterSpacing: '0.16px',
+      letterSpacing: '16.8px',
     },
     b7_b_14_1: {
       size: '14px',
@@ -148,65 +148,53 @@ export const vars = createGlobalTheme(':root', {
     },
     b9_sb_14: {
       size: '14px',
-      weight: '600',
-      lineHeight: '14px',
-      letterSpacing: '0.52px',
-    },
-    b10_sb_14: {
-      size: '14px',
       weight: '500',
       lineHeight: '14px',
       letterSpacing: '0.28px',
     },
-    b11_m_14: {
-      size: '14px',
-      weight: '500',
-      lineHeight: '14px',
-      letterSpacing: '0.78px',
-    },
-    b12_re_14: {
+    b10_re_14: {
       size: '14px',
       weight: '400',
       lineHeight: '14px',
       letterSpacing: '-0.28px',
     },
-    b13_b_12: {
+    b11_b_12: {
       size: '12px',
       weight: '700',
       lineHeight: '12px',
       letterSpacing: '0.24px',
     },
-    b14_sb_12: {
+    b12_sb_12: {
       size: '12px',
       weight: '600',
       lineHeight: '19.2px',
       letterSpacing: '-0.24px',
     },
-    b15_me_12_narrow: {
+    b13_me_12_narrow: {
       size: '12px',
       weight: '500',
       lineHeight: '19px',
       letterSpacing: '-0.24px',
     },
-    b16_me_12: {
+    b14_me_12: {
       size: '12px',
       weight: '500',
       lineHeight: '14px',
       letterSpacing: '-0.24px',
     },
-    b17_re_12: {
+    b15_re_12: {
       size: '12px',
       weight: '400',
       lineHeight: '12px',
       letterSpacing: '0.38px',
     },
-    b18_re_12: {
+    b16_re_12: {
       size: '12px',
       weight: '400',
       lineHeight: '12px',
-      letterSpacing: '0.16px',
+      letterSpacing: '16.8px',
     },
-    b19_b_10: {
+    b17_b_10: {
       size: '10px',
       weight: '700',
       lineHeight: '11px',
@@ -214,25 +202,25 @@ export const vars = createGlobalTheme(':root', {
     },
 
     // Caption
-    caption1_b_10: {
+    c1_b_10: {
       size: '10px',
       weight: '700',
       lineHeight: '11px',
       letterSpacing: '0px',
     },
-    caption2_me_10: {
+    c2_me_10: {
       size: '10px',
       weight: '500',
       lineHeight: '11px',
       letterSpacing: '0px',
     },
-    caption3_re_8: {
+    c3_re_8: {
       size: '8px',
       weight: '400',
       lineHeight: '9px',
       letterSpacing: '0px',
     },
-    caption4_re_6: {
+    c4_re_6: {
       size: '6px',
       weight: '400',
       lineHeight: '7px',
