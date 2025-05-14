@@ -28,4 +28,3 @@ export const listInfoIcon = style({
   flexShrink: 0,
   aspectRatio: "1 / 1",
 });
-
