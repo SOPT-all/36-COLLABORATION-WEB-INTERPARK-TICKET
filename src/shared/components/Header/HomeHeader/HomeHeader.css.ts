@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css';
-import { fontStyle } from '@/shared/styles/fontStyle';
 import { recipe } from '@vanilla-extract/recipes';
 export const HeaderWrapper = style({
   display: 'flex',
