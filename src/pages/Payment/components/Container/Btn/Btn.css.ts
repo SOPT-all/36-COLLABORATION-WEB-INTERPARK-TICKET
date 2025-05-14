@@ -25,9 +25,9 @@ export const btnSelected = style({
 
 export const btnLabel = style({
   fontFamily: vars.font.family.pretendard,
-  fontSize: "1.4rem",
-  fontWeight: 600,
-  color: vars.color.gray80, 
-  lineHeight: "normal",
-  letterSpacing: "0.056rem",
+  fontSize: vars.font.b9_sb_14.size,
+  fontWeight: vars.font.b9_sb_14.weight as any,
+  lineHeight: vars.font.b9_sb_14.lineHeight,
+  letterSpacing: vars.font.b9_sb_14.letterSpacing,
+  color: vars.color.gray80,
 });
