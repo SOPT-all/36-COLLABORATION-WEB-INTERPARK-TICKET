@@ -1,9 +1,9 @@
 import { h1 } from './MainPage.css';
-import PayHeader from '@/shared/components/PayHeader/PayHeader';
+import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 function MainPage() {
   return (
     <div>
-      <PayHeader step={1} />
+      <HomeHeader />
       <h1 className={h1}>인터파크 티켓</h1>
     </div>
   );
