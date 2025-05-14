@@ -33,6 +33,6 @@ export const seatSelectChip = recipe({
 });
 
 export const seatText = style({
-  ...fontStyle('b_re_14'),
+  ...fontStyle('b10_re_14'),
   color: vars.color.gray20,
 });
