@@ -1,3 +1,4 @@
+// ListPoint.css.ts
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
 
@@ -13,10 +14,10 @@ export const listPoint = style({
 
 export const listPointLeft = style({
   fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b_sb_14_mid.size,
-  fontWeight: vars.font.b_sb_14_mid.weight as any,
-  lineHeight: vars.font.b_sb_14_mid.lineHeight,
-  letterSpacing: vars.font.b_sb_14_mid.letterSpacing,
+  fontSize: vars.font.b8_sb_14.size,
+  fontWeight: vars.font.b8_sb_14.weight as any,
+  lineHeight: vars.font.b8_sb_14.lineHeight,
+  letterSpacing: vars.font.b8_sb_14.letterSpacing,
   color: vars.color.gray60,
 });
 
@@ -28,10 +29,10 @@ export const listPointRight = style({
 
 export const listPointRightText = style({
   fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b_sb_14_mid.size,
-  fontWeight: vars.font.b_sb_14_mid.weight as any,
-  lineHeight: vars.font.b_sb_14_mid.lineHeight,
-  letterSpacing: vars.font.b_sb_14_mid.letterSpacing,
+  fontSize: vars.font.b8_sb_14.size,
+  fontWeight: vars.font.b8_sb_14.weight as any,
+  lineHeight: vars.font.b8_sb_14.lineHeight,
+  letterSpacing: vars.font.b8_sb_14.letterSpacing,
   color: vars.color.blue60,
 });
 
