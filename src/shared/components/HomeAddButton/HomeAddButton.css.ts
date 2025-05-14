@@ -2,7 +2,7 @@ import { vars } from '@styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
 import { style } from '@vanilla-extract/css';
 
-export const buttonContainer = style({
+export const button = style({
   display: 'flex',
   width: '33.8rem',
   height: '4.4rem',

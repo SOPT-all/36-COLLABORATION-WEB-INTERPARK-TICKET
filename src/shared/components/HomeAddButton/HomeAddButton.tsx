@@ -9,9 +9,11 @@ type ViewMoreProps = {
 const HomeAddButton = ({ keyword }: ViewMoreProps) => {
 
   return (
-    <div className={styles.buttonContainer}>
-      <p className={styles.text}>{keyword} 전체보기</p>
-      <img src={ArrowRight} alt='ARIcon' className={styles.ARIcon} />
+    <div>
+      <button className={styles.button}>
+          <p className={styles.text}>{keyword} 전체보기</p>
+          <img src={ArrowRight} alt='ARIcon' className={styles.ARIcon} />
+      </button>
     </div>
   )
 };
