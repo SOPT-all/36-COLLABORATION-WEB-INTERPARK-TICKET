@@ -12,4 +12,6 @@ export const bookingButton = style({
   borderRadius: '0.4rem',
   color: vars.color.white,
   ...fontStyle('b8_sb_14'),
+
+  cursor: 'pointer',
 });

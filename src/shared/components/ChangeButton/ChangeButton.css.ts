@@ -13,4 +13,6 @@ export const changeButton = style({
   borderRadius: '0.6rem',
   color: vars.color.gray10,
   ...fontStyle('c3_re_8'),
+
+  cursor: 'pointer',
 });

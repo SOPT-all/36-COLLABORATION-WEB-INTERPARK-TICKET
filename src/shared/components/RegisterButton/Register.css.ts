@@ -11,4 +11,6 @@ export const registerButton = style({
   borderRadius: '0.4rem',
   color: vars.color.white,
   ...fontStyle('b12_sb_12'),
+
+  cursor: 'pointer',
 });
