@@ -1,3 +1,4 @@
+// ListCheck.css.ts
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
 
@@ -29,10 +30,10 @@ export const listCheckCheckIcon = style({
 
 export const listCheckLabel = style({
   fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b_b_16.size,
-  fontWeight: vars.font.b_b_16.weight as any,
-  lineHeight: vars.font.b_b_16.lineHeight,
-  letterSpacing: vars.font.b_b_16.letterSpacing,
+  fontSize: vars.font.b2_b_16.size,
+  fontWeight: vars.font.b2_b_16.weight as any,
+  lineHeight: vars.font.b2_b_16.lineHeight,
+  letterSpacing: vars.font.b2_b_16.letterSpacing,
   color: vars.color.gray80,
 });
 
