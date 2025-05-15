@@ -6,11 +6,11 @@ export const button = style({
   display: 'flex',
   width: '33.8rem',
   height: '4.4rem',
-  padding: '1.2rem 11.05re',
+  padding: '1.2rem 10.3rem',
   justifyContent: 'center',
   alignItems: 'center',
   gap: '0.3rem',
-  borderRadius: '.4rem',
+  borderRadius: '0.4rem',
   border: '1px solid',
   borderColor: vars.color.gray20,
 });
