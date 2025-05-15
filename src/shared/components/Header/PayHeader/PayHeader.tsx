@@ -29,7 +29,7 @@ const PayHeader = ({ step, onBackClick, onCloseClick }: Props) => {
       <div onClick={onBackClick}>
         <img src={BackIcon} alt="뒤로가기" />
       </div>
-      <div className={styles.HeaderStep}>
+      <div>
         <img src={stepIcon} alt="결제 헤더 step" />
       </div>
       <div onClick={onCloseClick}>
