@@ -1,15 +1,20 @@
-import SeatBottomSheet from "@/shared/components/SeatBottomSheet/SeatBottomSheet";
+import DateReservationCard from "@/shared/components/DateReservationCard/DateReservationCard";
 import { h1 } from "./MainPage.css";
 
+const seatData = [
+  { grade: 'R석', seatCount: 48, price: 66000 },
+  { grade: 'S석', seatCount: 32, price: 55000 },
+];
+
 function MainPage() {
+
   return (
     <div>
       <h1 className={h1}>인터파크 티켓</h1>
-      <SeatBottomSheet
-        placeInfo="예스24아트원 2관"
-        dateTime="2025.04.29 / 19:30"
-        seatInfo="R석 1층 F열 17"
-        price={66000}
+      <DateReservationCard
+        performanceTime="오후 7:30"
+        authors="이형훈, 김이준, 홍금비, 박성현"
+        seatTypes={seatData}
       />
     </div>
   );
