@@ -15,16 +15,20 @@ export default function ListCheckMiddle({ label }: ListCheckMiddleProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCheckClick = () => {
-    setChecked((prev) => !prev); 
+    setChecked((prev) => !prev);
   };
 
   const handleArrowClick = () => {
-    setIsOpen((prev) => !prev); 
+    setIsOpen((prev) => !prev);
   };
 
   return (
     <div className={styles.listCheckMiddle}>
-      <div className={styles.listCheckMiddleLeft} onClick={handleCheckClick}>
+      <button
+        type="button"
+        className={styles.listCheckMiddleLeft}
+        onClick={handleCheckClick}
+      >
         <div className={styles.listCheckMiddleIcon}>
           {checked ? (
             <CheckBlueIcon width={17} height={12} />
@@ -33,11 +37,16 @@ export default function ListCheckMiddle({ label }: ListCheckMiddleProps) {
           )}
         </div>
         <span className={styles.listCheckMiddleLabel}>{label}</span>
-      </div>
+      </button>
 
-      <div className={styles.listCheckMiddleArrow} onClick={handleArrowClick}>
+      <button
+        type="button"
+        className={styles.listCheckMiddleArrow}
+        onClick={handleArrowClick}
+      >
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
-      </div>
+      </button>
     </div>
   );
 }
+
