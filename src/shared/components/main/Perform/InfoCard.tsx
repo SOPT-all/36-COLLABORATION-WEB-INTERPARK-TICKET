@@ -1,7 +1,6 @@
 import * as styles from './InfoCard.css';
 
 interface Props {
-  id: number;
   isrank: boolean;
   rank: number;
   image: string;
@@ -10,29 +9,21 @@ interface Props {
   date: string;
 }
 
-const InfoCard = ({
-  id,
-  isrank,
-  rank,
-  image,
-  title,
-  location,
-  date,
-}: Props) => {
+const InfoCard = ({ isrank, rank, image, title, location, date }: Props) => {
   const rankLayer = isrank ? ` ${styles.rank}` : ``;
 
   return (
-    <div className={styles.InfoCardBox} key={id}>
-      <div style={{ position: 'relative' }}>
+    <div className={styles.InfoCardBox}>
+      <div className={styles.relative}>
         <div className={rankLayer}>
           <div className={styles.rankTxt}>{rank}</div>
         </div>
         <img className={styles.InfoCardImg} src={image} alt="공연_포스터" />
       </div>
-      <div style={{ padding: '0 0.45rem' }}>
-        <div className={styles.InfoCardTitle}>{title}</div>
-        <div className={styles.InfoCardTxt}> {location}</div>
-        <div className={styles.InfoCardDate}> {date}</div>
+      <div className={styles.pad_45}>
+        <h2 className={styles.InfoCardTitle}>{title}</h2>
+        <address className={styles.InfoCardTxt}> {location}</address>
+        <time className={styles.InfoCardDate}> {date}</time>
       </div>
     </div>
   );

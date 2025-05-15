@@ -60,4 +60,12 @@ export const rankTxt = style({
   width: '100%',
   alignContent: 'flex-end',
   zIndex: 1,
+  position: 'absolute',
+});
+
+export const relative = style({
+  position: 'relative',
+});
+export const pad_45 = style({
+  padding: '0 0.45rem',
 });
