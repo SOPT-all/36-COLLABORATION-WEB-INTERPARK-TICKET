@@ -15,11 +15,11 @@ export default function ListInfo({ label }: ListInfoProps) {
   };
 
   return (
-    <div className={styles.listInfo} onClick={handleToggle}>
+    <button type="button" className={styles.listInfo} onClick={handleToggle}>
       <span className={styles.listInfoText}>{label}</span>
-      <div className={styles.listInfoIcon}>
+      <span className={styles.listInfoIcon}>
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
-      </div>
-    </div>
+      </span>
+    </button>
   );
 }
