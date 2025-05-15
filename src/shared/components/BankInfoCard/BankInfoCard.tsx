@@ -10,7 +10,7 @@ const BankInfoCard = () => {
       </div>
 
       <div className={styles.hrWrapper}>
-        <hr className={styles.line} />
+        <div className={styles.line} />
       </div>
 
       <div className={styles.bankCardContainer}>
