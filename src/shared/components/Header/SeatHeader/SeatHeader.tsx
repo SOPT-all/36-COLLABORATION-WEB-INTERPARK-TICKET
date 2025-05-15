@@ -9,15 +9,15 @@ interface Props {
 
 const SeatHeader = ({ title, onBackClick, onCloseClick }: Props) => {
   return (
-    <div className={styles.HeaderWrapper}>
-      <div onClick={onBackClick}>
+    <header className={styles.HeaderWrapper}>
+      <button onClick={onBackClick}>
         <img src={BackIcon} alt="뒤로가기" />
-      </div>
+      </button>
       <div className={styles.HeaderTxt}>{title}</div>
-      <div onClick={onCloseClick}>
+      <button onClick={onCloseClick}>
         <img src={CloseIcon} alt="닫기" />
-      </div>
-    </div>
+      </button>
+    </header>
   );
 };
 

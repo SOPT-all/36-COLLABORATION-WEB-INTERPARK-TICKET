@@ -11,31 +11,25 @@ interface Props extends React.HTMLProps<HTMLDivElement> {
 }
 
 const PayHeader = ({ step, onBackClick, onCloseClick }: Props) => {
-  let stepIcon;
-  switch (step) {
-    case 1:
-      stepIcon = Step1Icon;
-      break;
-    case 2:
-      stepIcon = Step2Icon;
-      break;
-    case 3:
-      stepIcon = Step3Icon;
-      break;
-  }
+  const stepIcons = {
+    1: Step1Icon,
+    2: Step2Icon,
+    3: Step3Icon,
+  } as const;
+  const stepIcon = stepIcons[step];
 
   return (
-    <div className={styles.HeaderWrapper}>
-      <div onClick={onBackClick}>
+    <header className={styles.HeaderWrapper}>
+      <button onClick={onBackClick}>
         <img src={BackIcon} alt="뒤로가기" />
-      </div>
+      </button>
       <div>
         <img src={stepIcon} alt="결제 헤더 step" />
       </div>
       <div onClick={onCloseClick}>
         <img src={CloseIcon} alt="닫기" />
       </div>
-    </div>
+    </header>
   );
 };
 
