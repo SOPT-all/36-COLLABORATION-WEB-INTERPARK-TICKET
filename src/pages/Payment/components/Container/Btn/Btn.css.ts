@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
+import { fontStyle } from "@/shared/styles/fontStyle";
 
 export const btnBase = style({
   display: "flex",
@@ -24,10 +25,11 @@ export const btnSelected = style({
 });
 
 export const btnLabel = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b9_sb_14.size,
-  fontWeight: vars.font.b9_sb_14.weight as any,
-  lineHeight: vars.font.b9_sb_14.lineHeight,
-  letterSpacing: vars.font.b9_sb_14.letterSpacing,
+  ...fontStyle("b9_sb_14"),
   color: vars.color.gray80,
+});
+
+export const btnIcon = style({
+  width: "2.8rem",
+  height: "2.8rem",
 });

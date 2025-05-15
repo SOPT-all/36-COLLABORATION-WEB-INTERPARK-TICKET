@@ -1,25 +1,21 @@
-import { btnBase, btnSelected, btnLabel } from "./Btn.css";
 import clsx from "clsx";
+import { btnBase, btnSelected, btnLabel, btnIcon } from "./Btn.css";
 
 interface BtnProps {
   label: string;
   icon: React.ReactNode;
   isSelected: boolean;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
-export default function BtnBank({
-  label,
-  icon,
-  isSelected,
-  onClick,
-}: BtnProps) {
+export default function Btn({ label, icon, isSelected, onClick }: BtnProps) {
   return (
     <button
+      type="button"
       className={clsx(btnBase, isSelected && btnSelected)}
       onClick={onClick}
     >
-      <div style={{ width: "2.8rem", height: "2.8rem" }}>{icon}</div>
+      <div className={btnIcon}>{icon}</div>
       <span className={btnLabel}>{label}</span>
     </button>
   );
