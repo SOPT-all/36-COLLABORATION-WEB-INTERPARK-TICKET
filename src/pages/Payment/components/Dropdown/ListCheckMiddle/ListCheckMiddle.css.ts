@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
+import { fontStyle } from "@/shared/styles/fontStyle";
 
 export const listCheckMiddle = style({
   display: "flex",
@@ -28,11 +29,7 @@ export const listCheckMiddleIcon = style({
 });
 
 export const listCheckMiddleLabel = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b8_sb_14.size,
-  fontWeight: vars.font.b8_sb_14.weight as any,
-  lineHeight: vars.font.b8_sb_14.lineHeight,
-  letterSpacing: vars.font.b8_sb_14.letterSpacing,
+  ...fontStyle("b8_sb_14"),
   color: vars.color.gray80,
 });
 

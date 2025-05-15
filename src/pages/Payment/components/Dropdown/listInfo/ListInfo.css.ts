@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
+import { fontStyle } from "@/shared/styles/fontStyle";
 
 export const listInfo = style({
   display: "flex",
@@ -13,11 +14,7 @@ export const listInfo = style({
 });
 
 export const listInfoText = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b2_b_16.size,
-  fontWeight: vars.font.b2_b_16.weight as any,
-  lineHeight: vars.font.b2_b_16.lineHeight,
-  letterSpacing: vars.font.b2_b_16.letterSpacing,
+  ...fontStyle("b2_b_16"),
   color: vars.color.gray80,
 });
 

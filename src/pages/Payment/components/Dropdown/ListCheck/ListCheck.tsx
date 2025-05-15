@@ -15,16 +15,20 @@ export default function ListCheck({ label }: ListCheckProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCheckClick = () => {
-    setChecked((prev) => !prev); 
+    setChecked((prev) => !prev);
   };
 
   const handleArrowClick = () => {
-    setIsOpen((prev) => !prev); 
+    setIsOpen((prev) => !prev);
   };
 
   return (
     <div className={styles.listCheck}>
-      <div className={styles.listCheckLeft} onClick={handleCheckClick}>
+      <button
+        type="button"
+        className={styles.listCheckLeft}
+        onClick={handleCheckClick}
+      >
         <div className={styles.listCheckCheckIcon}>
           {checked ? (
             <CheckBlueIcon width={17} height={12} />
@@ -33,11 +37,15 @@ export default function ListCheck({ label }: ListCheckProps) {
           )}
         </div>
         <span className={styles.listCheckLabel}>{label}</span>
-      </div>
+      </button>
 
-      <div className={styles.listCheckArrow} onClick={handleArrowClick}>
+      <button
+        type="button"
+        className={styles.listCheckArrow}
+        onClick={handleArrowClick}
+      >
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
-      </div>
+      </button>
     </div>
   );
 }

@@ -2,18 +2,18 @@ import ArrowDownIcon from "@/shared/assets/icon/ic_arrow_down_gray50_18.svg?reac
 import * as styles from "./ListPoint.css";
 
 interface ListPointProps {
-  leftLabel: string;
-  rightLabel: string;
+  pointTitle: string;
+  pointValue: string;
 }
 
-export default function ListPoint({ leftLabel, rightLabel }: ListPointProps) {
+export default function ListPoint({ pointTitle, pointValue }: ListPointProps) {
   return (
     <div className={styles.listPoint}>
-      <span className={styles.listPointLeft}>{leftLabel}</span>
-      <div className={styles.listPointRight}>
-        <span className={styles.listPointRightText}>{rightLabel}</span>
+      <span className={styles.listPointTitle}>{pointTitle}</span>
+      <button type="button" className={styles.listPointAction}>
+        <span className={styles.listPointActionLabel}>{pointValue}</span>
         <ArrowDownIcon className={styles.listPointIcon} />
-      </div>
+      </button>
     </div>
   );
 }
