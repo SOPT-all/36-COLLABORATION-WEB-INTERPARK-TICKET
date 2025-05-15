@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
-          
+
       - name: Add remote URL
         run: |
           git remote add forked_repo https://soyyyyy:${{ secrets.DEPLOY_TOKEN }}@github.com/soyyyyy/36-COLLABORATION-WEB-INTERPARK-TICKET

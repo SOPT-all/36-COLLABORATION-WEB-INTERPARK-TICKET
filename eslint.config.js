@@ -59,7 +59,7 @@ export default [
       '@tanstack/query/exhaustive-deps': 'error', // 의존성 배열이 완전한지 검사
       '@tanstack/query/no-rest-destructuring': 'warn', // REST 매개변수 해체 사용 경고
       '@tanstack/query/stable-query-client': 'error', // 안정적인 쿼리 클라이언트 사용 강제
-      // 'prettier/prettier': 'error', // Prettier 규칙 적용 
+      // 'prettier/prettier': 'error', // Prettier 규칙 적용
       // import 순서 규칙
       'import/order': [
         'error',

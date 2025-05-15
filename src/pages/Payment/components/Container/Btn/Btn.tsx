@@ -1,5 +1,5 @@
-import clsx from "clsx";
-import { btnBase, btnSelected, btnLabel, btnIcon } from "./Btn.css";
+import clsx from 'clsx';
+import { btnBase, btnSelected, btnLabel, btnIcon } from './Btn.css';
 
 interface BtnProps {
   label: string;

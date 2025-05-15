@@ -52,9 +52,7 @@ export const dateContainer = style({
 });
 
 export const infoText = recipe({
-  base: {
-    
-  },
+  base: {},
   variants: {
     state: {
       default: {
@@ -106,4 +104,3 @@ export const buttonGroup = style({
   display: 'flex',
   gap: '1.5rem',
 });
-

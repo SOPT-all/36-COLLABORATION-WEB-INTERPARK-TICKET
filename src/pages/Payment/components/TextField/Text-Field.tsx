@@ -1,6 +1,6 @@
-import type { ChangeEvent } from "react";
-import clsx from "clsx";
-import * as styles from "./Text-Field.css";
+import type { ChangeEvent } from 'react';
+import clsx from 'clsx';
+import * as styles from './Text-Field.css';
 
 interface TextFieldProps {
   placeholder: string;
@@ -8,7 +8,11 @@ interface TextFieldProps {
   onChange: (value: string) => void;
 }
 
-export default function TextField({ placeholder, value, onChange }: TextFieldProps) {
+export default function TextField({
+  placeholder,
+  value,
+  onChange,
+}: TextFieldProps) {
   return (
     <div className={styles.textField}>
       <input
@@ -16,7 +20,9 @@ export default function TextField({ placeholder, value, onChange }: TextFieldPro
         type="text"
         placeholder={placeholder}
         value={value}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          onChange(e.target.value)
+        }
       />
     </div>
   );
