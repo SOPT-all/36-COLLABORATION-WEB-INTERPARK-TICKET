@@ -1,6 +1,6 @@
 import { vars } from '@styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
-import { globalStyle, style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
 export const sheetWrapper = style({
@@ -18,7 +18,6 @@ export const line = style({
   height: '.1rem',
   width: '37.4rem',
   backgroundColor: vars.color.gray20,
-  border: 'none',
 });
 
 export const locationtWrapper = style({
@@ -30,13 +29,12 @@ export const locationtWrapper = style({
 
 export const locationText = style({
   color: vars.color.gray90,
-  ...fontStyle('b8_sb_14'),
+  ...fontStyle('b9_sb_14'),
 });
 
 export const infoWrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  height: '9rem',
   padding: '1.6rem 2.6rem',
   gap: '2rem',
 });
@@ -93,19 +91,19 @@ export const priceContainer = style({
   justifyContent: 'space-between',
 });
 
-export const priceText = style({
-  color: vars.color.gray70,
-  ...fontStyle('b15_re_12'),
-});
-
-globalStyle(`${priceText} strong`, {
-  color: vars.color.gray90,
-  ...fontStyle('b8_sb_14'),
+export const priceText = styleVariants({
+  normal: {
+    color: vars.color.gray70,
+    ...fontStyle('b15_re_12'),
+  },
+  strong: {
+    color: vars.color.gray90,
+    ...fontStyle('b8_sb_14'),
+  },
 });
 
 export const buttonGroup = style({
   display: 'flex',
-  border: 'none',
   gap: '1.5rem',
 });
 
