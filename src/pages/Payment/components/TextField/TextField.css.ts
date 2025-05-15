@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
+import { fontStyle } from "@/shared/styles/fontStyle";
 
 export const textField = style({
   display: "flex",
@@ -24,12 +25,8 @@ export const input = style({
   background: "transparent",
   border: "none",
   outline: "none",
-  fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b8_sb_14.size,
-  fontWeight: vars.font.b8_sb_14.weight as any,
-  lineHeight: vars.font.b8_sb_14.lineHeight,
-  letterSpacing: vars.font.b8_sb_14.letterSpacing,
   color: vars.color.gray30,
+  ...fontStyle("b8_sb_14"),
   selectors: {
     "&::placeholder": {
       color: vars.color.gray30,

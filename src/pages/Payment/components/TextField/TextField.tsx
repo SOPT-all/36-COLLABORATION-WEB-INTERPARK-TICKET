@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 import clsx from "clsx";
-import * as styles from "./Text-Field.css";
+import * as styles from "./TextField.css";
 
 interface TextFieldProps {
   placeholder: string;
