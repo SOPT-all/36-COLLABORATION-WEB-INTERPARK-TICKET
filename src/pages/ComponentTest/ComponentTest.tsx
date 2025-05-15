@@ -1,4 +1,4 @@
-import HomeAddButton from "@/shared/components/HomeAddButton/HomeAddButton";
+import BankInfoCard from '@/shared/components/BankInfoCard/BankInfoCard';
 
 const ComponentTest = () => {
 
@@ -10,7 +10,7 @@ const ComponentTest = () => {
           gap: '0.6rem',
         }}
       >
-        <HomeAddButton keyword="할인티켓" />
+        <BankInfoCard />
 
       </div>
   );
