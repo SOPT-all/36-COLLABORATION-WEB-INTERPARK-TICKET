@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "@/shared/styles/tokens.css.ts";
+import { fontStyle } from "@/shared/styles/fontStyle";
 
 export const listPoint = style({
   display: "flex",
@@ -11,27 +12,19 @@ export const listPoint = style({
   flexShrink: 0,
 });
 
-export const listPointLeft = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b8_sb_14.size,
-  fontWeight: vars.font.b8_sb_14.weight as any,
-  lineHeight: vars.font.b8_sb_14.lineHeight,
-  letterSpacing: vars.font.b8_sb_14.letterSpacing,
+export const listPointTitle = style({
+  ...fontStyle("b8_sb_14"),
   color: vars.color.gray60,
 });
 
-export const listPointRight = style({
+export const listPointAction = style({
   display: "flex",
   alignItems: "center",
   gap: "0.4rem",
 });
 
-export const listPointRightText = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: vars.font.b8_sb_14.size,
-  fontWeight: vars.font.b8_sb_14.weight as any,
-  lineHeight: vars.font.b8_sb_14.lineHeight,
-  letterSpacing: vars.font.b8_sb_14.letterSpacing,
+export const listPointActionLabel = style({
+  ...fontStyle("b8_sb_14"),
   color: vars.color.blue60,
 });
 
