@@ -3,11 +3,11 @@ name: CI/CD Pipeline
 on:
   pull_request:
     branches:
-      - develop
+      - dev
       - main
   push:
     branches:
-      - develop
+      - dev
 
 permissions:
   contents: read
@@ -30,6 +30,12 @@ jobs:
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Run Prettier Check
+        run: prettier --check .
 
       - name: Build with Vite
         id: build
