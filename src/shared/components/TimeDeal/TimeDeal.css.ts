@@ -21,6 +21,6 @@ export const TimeDealCount = style({
   ...fontStyle('b12_sb_12'),
   color: vars.color.red30,
   borderRadius: ' 0 0.6rem 0.6rem 0',
-  border: ` 1px solid  ${vars.color.red20}`,
+  border: `1px solid  ${vars.color.red20}`,
   borderLeft: 'none',
 });
