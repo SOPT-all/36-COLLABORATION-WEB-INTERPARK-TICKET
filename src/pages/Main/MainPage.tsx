@@ -1,5 +1,4 @@
-import { h1 } from "./MainPage.css";
-
+import { h1 } from './MainPage.css';
 function MainPage() {
   return (
     <div>
