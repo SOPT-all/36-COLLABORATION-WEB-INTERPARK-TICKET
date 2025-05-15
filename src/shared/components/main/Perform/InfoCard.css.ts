@@ -41,10 +41,23 @@ export const InfoCardDate = style({
 
 export const rank = style({
   width: '100%',
-  backgroundColor: 'lightgray',
+  backgroundColor: 'black',
   opacity: '0.5',
   borderRadius: '0.8rem',
   position: 'absolute',
   height: '19rem',
   top: '0',
+});
+export const rankTxt = style({
+  color: '#FFF',
+  fontSize: '3.8rem',
+  fontWeight: 600,
+  lineHeight: '4.5rem',
+  letterSpacing: '-0.152rem',
+  paddingLeft: '1.1rem',
+  marginTop: 'auto',
+  height: '100%',
+  width: '100%',
+  alignContent: 'flex-end',
+  zIndex: 1,
 });
