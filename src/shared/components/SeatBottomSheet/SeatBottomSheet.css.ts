@@ -20,7 +20,7 @@ export const line = style({
   backgroundColor: vars.color.gray20,
 });
 
-export const locationtWrapper = style({
+export const locationWrapper = style({
   display: 'flex',
   alignItems: 'center',
   height: '5.7rem',

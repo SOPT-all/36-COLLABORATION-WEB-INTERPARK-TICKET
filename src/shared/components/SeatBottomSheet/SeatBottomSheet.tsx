@@ -19,7 +19,7 @@ const SeatBottomSheet = ({
 
   return (
     <div className={styles.sheetWrapper}>
-      <div className={styles.locationtWrapper}>
+      <div className={styles.locationWrapper}>
         <p className={styles.locationText}>{placeInfo}</p>
       </div>
 
