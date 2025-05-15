@@ -1,7 +1,7 @@
 import { vars } from '@styles/tokens.css';
-import { fontStyle } from '@/shared/styles/fontStyle';
 import { style, styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const sheetWrapper = style({
   display: 'flex',
