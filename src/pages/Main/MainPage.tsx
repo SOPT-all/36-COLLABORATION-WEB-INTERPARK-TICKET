@@ -4,6 +4,9 @@ function MainPage() {
   return (
     <div>
       <InfoCard
+        id={1}
+        isrank={true}
+        rank={1}
         image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO4sdWbbZKwVXt__VVrxg57ZxOXM_aVpKnsg&s"
         title="2023 K-POP WORLD FESTIVAL IN BUSAN"
         location="Busan Asiad Main Stadium"
