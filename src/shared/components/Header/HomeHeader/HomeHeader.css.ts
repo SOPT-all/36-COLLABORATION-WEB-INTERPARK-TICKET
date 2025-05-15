@@ -1,14 +1,17 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 export const HeaderWrapper = style({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '1.1rem 2.4rem',
-  width: '375px',
+  maxWidth: '37.5rem',
+  width: '100%',
   boxSizing: 'border-box',
-  backgroundColor: ' #FFF',
+  backgroundColor: vars.color.white,
   flexShrink: 0,
   position: 'fixed',
   top: 0,
@@ -23,22 +26,18 @@ export const HeaderTap = style({
 });
 export const HeaderTxt = recipe({
   base: {
-    color: '#0E0E0E',
-    fontSize: '2rem',
-    fontWeight: 400,
-    lineHeight: '2.3rem',
-    letterSpacing: '-0.04rem',
+    color: vars.color.black,
 
     paddingBottom: '0.3rem',
   },
   variants: {
     active: {
       true: {
-        fontWeight: 600,
+        ...fontStyle('h5_sb_20'),
         borderBottom: '0.2rem solid #0E0E0E',
       },
       false: {
-        fontWeight: 400,
+        ...fontStyle('h6_re_20'),
       },
     },
   },
