@@ -8,8 +8,8 @@ interface SeatType {
 }
 
 interface DateReservationCardProps {
-  performanceTime: string,
-  authors: string,
+  performanceTime: string;
+  authors: string;
   seatTypes: SeatType[];
 }
 
@@ -17,8 +17,7 @@ const DateReservationCard = ({
   performanceTime,
   authors,
   seatTypes,
-}:DateReservationCardProps) => {
-
+}: DateReservationCardProps) => {
   return (
     <div className={styles.reservationCardWrapper}>
       <div className={styles.contentContainer}>
@@ -39,7 +38,9 @@ const DateReservationCard = ({
             <span className={styles.gradeText}>{grade}</span>
             <div className={styles.seatContentContainer}>
               <span className={styles.seatCountText}>{seatCount}석</span>
-              <span className={styles.priceText}>{price.toLocaleString()}원</span>
+              <span className={styles.priceText}>
+                {price.toLocaleString()}원
+              </span>
             </div>
           </div>
         ))}

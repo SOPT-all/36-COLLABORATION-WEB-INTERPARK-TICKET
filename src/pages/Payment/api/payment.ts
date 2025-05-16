@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export interface PaymentMethod {
   name: string;
@@ -6,8 +6,8 @@ export interface PaymentMethod {
 }
 
 export const fetchPaymentList = async (): Promise<PaymentMethod[]> => {
-  const response = await axios.get("/api/v1/tickets/payment", {
-    headers: { "Content-Type": "multipart/form-data" },
+  const response = await axios.get('/api/v1/tickets/payment', {
+    headers: { 'Content-Type': 'multipart/form-data' },
   });
 
   return response.data.data.paymentList;

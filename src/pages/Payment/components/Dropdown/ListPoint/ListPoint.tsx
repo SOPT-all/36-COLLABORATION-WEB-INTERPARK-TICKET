@@ -1,5 +1,5 @@
-import ArrowDownIcon from "@/shared/assets/icon/ic_arrow_down_gray50_18.svg?react";
-import * as styles from "./ListPoint.css";
+import * as styles from './ListPoint.css';
+import ArrowDownIcon from '@/shared/assets/icon/ic_arrow_down_gray50_18.svg?react';
 
 interface ListPointProps {
   pointTitle: string;
@@ -17,4 +17,3 @@ export default function ListPoint({ pointTitle, pointValue }: ListPointProps) {
     </div>
   );
 }
-
