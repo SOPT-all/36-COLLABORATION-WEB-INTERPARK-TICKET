@@ -226,7 +226,6 @@ export const vars = createGlobalTheme(':root', {
       lineHeight: '7px',
       letterSpacing: '0px',
     },
-
     //달력
     cale_12: {
       size: '12px',
