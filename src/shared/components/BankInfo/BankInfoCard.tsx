@@ -1,4 +1,4 @@
-import * as styles from './BanckInfoCard.css';
+import * as styles from './BankInfoCard.css';
 
 const BankInfoCard = () => {
 
