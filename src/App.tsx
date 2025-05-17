@@ -1,6 +1,6 @@
-import "./shared/styles/global.css";
-import { RouterProvider } from "react-router";
-import router from "./router/router";
+import './shared/styles/global.css';
+import { RouterProvider } from 'react-router';
+import router from './router/router';
 
 function App() {
   return <RouterProvider router={router} />;

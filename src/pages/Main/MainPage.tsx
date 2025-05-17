@@ -1,5 +1,5 @@
-import DateReservationCard from "@/shared/components/DateReservationCard/DateReservationCard";
-import { h1 } from "./MainPage.css";
+import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
+import { h1 } from './MainPage.css';
 
 const seatData = [
   { grade: 'R석', seatCount: 48, price: 66000 },
@@ -7,7 +7,6 @@ const seatData = [
 ];
 
 function MainPage() {
-
   return (
     <div>
       <h1 className={h1}>인터파크 티켓</h1>

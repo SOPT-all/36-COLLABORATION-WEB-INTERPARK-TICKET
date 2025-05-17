@@ -1,20 +1,20 @@
-import { useState } from "react";
-import { Container } from "./Container.css";
-import Btn from "./Btn/Btn";
+import { useState } from 'react';
+import { Container } from './Container.css';
+import Btn from './Btn/Btn';
 
-import IconBank from "@/shared/assets/icon/ic_payment_28.svg?react"; 
-import IconCard from "@/shared/assets/icon/ic_payment_28(1).svg?react"; 
-import IconMobile from "@/shared/assets/icon/ic_payment_28(2).svg?react"; 
-import IconEasy from "@/shared/assets/icon/ic_payment_28(3).svg?react"; 
+import IconBank from '@/shared/assets/icon/ic_payment_28.svg?react';
+import IconCard from '@/shared/assets/icon/ic_payment_28(1).svg?react';
+import IconMobile from '@/shared/assets/icon/ic_payment_28(2).svg?react';
+import IconEasy from '@/shared/assets/icon/ic_payment_28(3).svg?react';
 
 export default function PaymentMethodContainer() {
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<string>('');
 
   const methodList = [
-    { name: "무통장", icon: <IconBank width={28} height={28} /> },
-    { name: "신용카드", icon: <IconCard width={28} height={28} /> },
-    { name: "휴대폰", icon: <IconMobile width={28} height={28} /> },
-    { name: "간편결제", icon: <IconEasy width={28} height={28} /> },
+    { name: '무통장', icon: <IconBank width={28} height={28} /> },
+    { name: '신용카드', icon: <IconCard width={28} height={28} /> },
+    { name: '휴대폰', icon: <IconMobile width={28} height={28} /> },
+    { name: '간편결제', icon: <IconEasy width={28} height={28} /> },
   ];
 
   return (
@@ -23,7 +23,7 @@ export default function PaymentMethodContainer() {
         <Btn
           key={method.name}
           label={method.name}
-          icon={method.icon} 
+          icon={method.icon}
           isSelected={selected === method.name}
           onClick={() => setSelected(method.name)}
         />
