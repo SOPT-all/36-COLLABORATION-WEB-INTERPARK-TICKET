@@ -3,9 +3,9 @@ import CheckedIcon from '@/shared/assets/icon/checkbox_fill.svg?react';
 import UncheckedIcon from '@/shared/assets/icon/checkbox_unfill.svg?react';
 
 interface CustomCheckboxProps {
-  checked?: boolean; // 외부에서 제어할 경우
-  defaultChecked?: boolean; // 초기값 (언컨트롤러블)
-  onChange?: (checked: boolean) => void; // 클릭 시 콜백
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onChange?: (checked: boolean) => void;
 }
 
 export default function CustomCheckbox({
