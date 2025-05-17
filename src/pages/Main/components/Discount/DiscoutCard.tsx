@@ -1,5 +1,4 @@
 import * as styles from './DiscountCard.css';
-import TimeDeal from '@/shared/components/TimeDeal/TimeDeal';
 interface Props {
   id: number;
   title: string;
@@ -26,7 +25,6 @@ const DiscountCard = ({
     <div className={styles.discountCard}>
       <img src={imageUrl} className={styles.cardImg} alt={title} />
       <div className={styles.cardContent}>
-        <TimeDeal text="타임딜" time="17:26:38" />
         <h3 className={styles.discoutTitle}>{title}</h3>
         <p className={styles.locationtxt}>{location}</p>
         <p className={styles.dateTxt}>
