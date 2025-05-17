@@ -5,7 +5,6 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 import typescriptParser from '@typescript-eslint/parser';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
 import importPlugin from 'eslint-plugin-import';
 import tanstackQueryPlugin from '@tanstack/eslint-plugin-query';
 
@@ -20,11 +19,20 @@ export default [
       sourceType: 'module',
       parser: typescriptParser,
       globals: globals.browser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
     },
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
-      prettier: prettierPlugin,
       import: importPlugin,
       '@tanstack/query': tanstackQueryPlugin,
       '@typescript-eslint': typescriptPlugin,
@@ -32,6 +40,7 @@ export default [
     rules: {
       // 기본 ESLint 규칙
       ...js.configs.recommended.rules,
+      'no-undef': 'off',
       'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       ...reactHooks.configs.recommended.rules, // React Hooks 규칙
@@ -50,7 +59,7 @@ export default [
       '@tanstack/query/exhaustive-deps': 'error', // 의존성 배열이 완전한지 검사
       '@tanstack/query/no-rest-destructuring': 'warn', // REST 매개변수 해체 사용 경고
       '@tanstack/query/stable-query-client': 'error', // 안정적인 쿼리 클라이언트 사용 강제
-      'prettier/prettier': 'error', // Prettier 규칙 적용
+      // 'prettier/prettier': 'error', // Prettier 규칙 적용
       // import 순서 규칙
       'import/order': [
         'error',
