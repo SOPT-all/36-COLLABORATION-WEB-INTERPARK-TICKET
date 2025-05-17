@@ -26,15 +26,23 @@ const Calendar = () => {
   const daysInMonth = getDaysInMonth(month + 1, year);
   const firstDay = getFirstDayOfMonth(month, year);
 
+  const today = 29;
+  const soldOutDates = [30];
+
   const days = [];
   for (let i = 1; i <= daysInMonth; i++) {
     const isCurrentMonth = true;
+    const isToday = i === today;
+    const isSoldOut = soldOutDates.includes(i);
+
     days.push(
       <Day
         key={i}
         date={i}
         isCurrentMonth={isCurrentMonth}
         onClick={handleDayClick}
+        isToday={isToday}
+        isSoldOut={isSoldOut}
       />
     );
   }

@@ -36,6 +36,7 @@ export const blankDay = style({
 
 export const day = style({
   display: 'flex',
+  flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
   width: '4.2rem',
@@ -50,11 +51,40 @@ export const day = style({
 export const dayInMonth = style({
   backgroundColor: vars.color.white,
   ':hover': {
-    backgroundColor: vars.color.gray10,
+    backgroundColor: vars.color.gray20,
+    borderRadius: '99px',
   },
 });
 
 export const dayOutMonth = style({
   backgroundColor: vars.color.gray20,
   color: vars.color.gray50,
+});
+
+export const today = style({
+  ...fontStyle('h6_re_20'),
+  color: vars.color.black,
+  // ':hover': {
+  //   backgroundColor: vars.color.blue90,
+  //   color: vars.color.white,
+  //   borderRadius: '999px',
+  // },
+});
+
+export const sunday = style({
+  ...fontStyle('h6_re_20'),
+  color: vars.color.red10,
+  ':hover': {
+    backgroundColor: vars.color.gray20,
+    borderRadius: '99px',
+  },
+});
+
+export const todayText = style({
+  ...fontStyle('c3_re_8'),
+  color: vars.color.blue90,
+});
+export const soldOutText = style({
+  ...fontStyle('c3_re_8'),
+  color: vars.color.blue120,
 });
