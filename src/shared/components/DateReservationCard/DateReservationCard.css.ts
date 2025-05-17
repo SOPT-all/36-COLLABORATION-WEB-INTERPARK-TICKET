@@ -43,7 +43,7 @@ export const line = style({
   border: 'none',
 });
 
-// 좌석 정보 
+// 좌석 정보
 export const seatInfoWrapper = style({
   display: 'flex',
   flexDirection: 'column',
@@ -71,7 +71,7 @@ export const gradeText = style({
 export const seatContentContainer = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '0.8rem'
+  gap: '0.8rem',
 });
 
 export const seatCountText = style({

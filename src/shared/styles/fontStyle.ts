@@ -1,6 +1,6 @@
-import { vars } from "./tokens.css";
+import { vars } from './tokens.css';
 
-type FontKeys = Exclude<keyof typeof vars.font, "family">;
+type FontKeys = Exclude<keyof typeof vars.font, 'family'>;
 
 export const fontStyle = (key: FontKeys) => {
   const style = vars.font[key];

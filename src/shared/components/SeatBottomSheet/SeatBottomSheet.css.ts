@@ -1,7 +1,7 @@
 import { vars } from '@styles/tokens.css';
-import { fontStyle } from '@/shared/styles/fontStyle';
 import { style, styleVariants } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const sheetWrapper = style({
   display: 'flex',
@@ -52,9 +52,7 @@ export const dateContainer = style({
 });
 
 export const infoText = recipe({
-  base: {
-    
-  },
+  base: {},
   variants: {
     state: {
       default: {
@@ -106,4 +104,3 @@ export const buttonGroup = style({
   display: 'flex',
   gap: '1.5rem',
 });
-

@@ -1,9 +1,6 @@
-// styles/global.css.ts
 import { globalStyle } from '@vanilla-extract/css';
 import * as layers from './layer.css';
-import { vars } from './tokens.css';
 
-// 1. Reset
 globalStyle(
   '*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))',
   {
@@ -52,28 +49,6 @@ globalStyle(':where([contenteditable]:not([contenteditable="false"]))', {
       overflowWrap: 'break-word',
       WebkitLineBreak: 'after-white-space',
       WebkitUserSelect: 'auto',
-    },
-  },
-});
-
-globalStyle('body', {
-  '@layer': {
-    [layers.reset]: {
-      margin: 0,
-      backgroundColor: vars.color.white,
-      fontFamily: vars.font.family.pretendard,
-    },
-  },
-});
-
-globalStyle('#root', {
-  '@layer': {
-    [layers.components]: {
-      maxWidth: '375px',
-      margin: '0 auto',
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: vars.color.white,
     },
   },
 });
