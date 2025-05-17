@@ -227,5 +227,13 @@ export const vars = createGlobalTheme(':root', {
       lineHeight: '7px',
       letterSpacing: '0px',
     },
+
+    // 메인쪽 추가
+    main_dis_1: {
+      size: '14px',
+      weight: '700',
+      lineHeight: '2rem',
+      letterSpacing: '-0.28px',
+    },
   },
 });
