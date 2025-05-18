@@ -2,18 +2,20 @@ import * as styles from './TicketReceiveSelectCard.css';
 import SelectOptionButton from '../SelectOptionButton/SelectOptionButton';
 import InfoRowLabel from '@/pages/Payment/components/InfoRowTitle/InfoRowTitle';
 
-interface Props {
+interface TicketReceiveSelectCardProps {
   selected: '현장수령' | '배송';
   onSelect: (method: '현장수령' | '배송') => void;
 }
 
-export default function TicketReceiveSelectCard({ selected, onSelect }: Props) {
+export default function TicketReceiveSelectCard({
+  selected,
+  onSelect,
+}: TicketReceiveSelectCardProps) {
   return (
     <div className={styles.wrapper}>
       <InfoRowLabel text="티켓 수령 방법 선택" />
 
-      {/* ✅ 이 부분을 감싸는 Wrapper 추가 */}
-      <div className={styles.TicketReceiveCardWrapper}>
+      <div className={styles.ticketReceiveCardWrapper}>
         <div className={styles.optionRow}>
           <SelectOptionButton
             label="현장수령"

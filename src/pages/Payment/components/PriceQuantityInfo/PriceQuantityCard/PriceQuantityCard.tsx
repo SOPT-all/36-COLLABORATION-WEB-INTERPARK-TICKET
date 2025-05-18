@@ -18,7 +18,9 @@ export default function PriceQuantityCard({
         <p className={styles.label}>{label}</p>
         <p className={styles.price}>{price}</p>
       </div>
-      <BtnQuantity initial={initial} />
+      <div className={styles.buttonWrapper}>
+        <BtnQuantity initial={initial} />
+      </div>
     </div>
   );
 }

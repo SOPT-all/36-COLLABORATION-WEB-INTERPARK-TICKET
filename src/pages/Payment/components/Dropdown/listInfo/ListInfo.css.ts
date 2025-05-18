@@ -1,12 +1,20 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css.ts';
 import { fontStyle } from '@/shared/styles/fontStyle';
+import { LAYOUT } from '@/shared/styles/layoutConstants';
+
+export const container = style({
+  display: 'flex',
+  flexDirection: 'column',
+  width: '100%',
+  gap: '10px',
+});
 
 export const listInfo = style({
   display: 'flex',
-  width: '37.5rem',
-  height: '5.6rem',
-  padding: '1.6rem 1.8rem',
+  width: LAYOUT.CONTAINER.FULL_WIDTH,
+  height: LAYOUT.HEIGHT.SM,
+  padding: `${LAYOUT.PADDING.MD} ${LAYOUT.PADDING.MD}`,
   justifyContent: 'space-between',
   alignItems: 'center',
   flexShrink: 0,
@@ -27,4 +35,21 @@ export const listInfoIcon = style({
   alignItems: 'center',
   flexShrink: 0,
   aspectRatio: '1 / 1',
+});
+
+export const textFieldsContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: LAYOUT.GAP.SM,
+  padding: LAYOUT.PADDING.MD,
+  background: vars.color.white,
+});
+
+export const quantityCardsContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  width: '100%',
+  padding: `${LAYOUT.PADDING.NONE} ${LAYOUT.PADDING.LG}`,
+  background: vars.color.white,
 });

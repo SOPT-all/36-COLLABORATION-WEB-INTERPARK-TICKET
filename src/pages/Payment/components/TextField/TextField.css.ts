@@ -4,7 +4,7 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const textField = style({
   display: 'flex',
-  width: '33.6rem',
+  width: '100%',
   height: '5rem',
   padding: '1.6rem 1.5rem',
   alignItems: 'center',
@@ -13,11 +13,10 @@ export const textField = style({
   borderRadius: '0.4rem',
   border: `1px solid ${vars.color.gray20}`,
   transition: 'border 0.2s',
-  selectors: {
-    '&:focus-within': {
-      border: `1px solid ${vars.color.blue90}`,
-    },
-  },
+});
+
+export const textFieldFocused = style({
+  border: `1px solid ${vars.color.blue90}`,
 });
 
 export const input = style({

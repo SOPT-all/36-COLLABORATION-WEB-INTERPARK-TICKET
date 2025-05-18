@@ -1,12 +1,11 @@
-// src/components/common/InfoRowLabel/InfoRowLabel.tsx
 import * as styles from './InfoRowTitle.css';
 
-interface InfoRowLabelProps {
+interface InfoRowTitleProps {
   text: string;
   className?: string;
 }
 
-export default function InfoRowLabel({ text, className }: InfoRowLabelProps) {
+export default function InfoRowTitle({ text, className }: InfoRowTitleProps) {
   return (
     <div className={styles.infoRowTitleWrapper}>
       <span className={`${styles.infoRowTitleText} ${className ?? ''}`}>

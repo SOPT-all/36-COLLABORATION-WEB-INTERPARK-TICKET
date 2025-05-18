@@ -1,10 +1,12 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
+import { LAYOUT } from '@/shared/styles/layoutConstants';
 
 export const wrapper = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '1.6rem',
+  marginTop: LAYOUT.MARGIN.LG,
 });
 
 export const title = style({
@@ -29,6 +31,6 @@ export const description = style({
   paddingTop: '1.6rem',
 });
 
-export const TicketReceiveCardWrapper = style({
+export const ticketReceiveCardWrapper = style({
   paddingLeft: '1.8rem',
 });

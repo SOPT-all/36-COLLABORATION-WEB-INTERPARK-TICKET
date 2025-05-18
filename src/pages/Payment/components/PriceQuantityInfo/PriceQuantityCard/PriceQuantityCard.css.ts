@@ -1,14 +1,16 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
+import { LAYOUT } from '@/shared/styles/layoutConstants';
 
 export const cardWrapper = style({
   display: 'flex',
-  width: '37.5rem',
-  height: '8.6rem',
+  width: LAYOUT.CONTAINER.FULL_WIDTH,
+  height: LAYOUT.HEIGHT.LG,
   flexShrink: 0,
   background: vars.color.white,
   justifyContent: 'space-between',
   alignItems: 'center',
+  padding: `0 ${LAYOUT.PADDING.MD}`,
 });
 
 export const textWrapper = style({
@@ -16,9 +18,12 @@ export const textWrapper = style({
   width: '9.5rem',
   flexDirection: 'column',
   alignItems: 'flex-start',
-  gap: '0.2rem',
+  gap: LAYOUT.GAP.XS,
   flexShrink: 0,
-  marginLeft: '1.9rem',
+});
+
+export const buttonWrapper = style({
+  marginRight: '2px',
 });
 
 export const label = style({
@@ -38,7 +43,3 @@ export const price = style({
   letterSpacing: '-0.04rem',
 });
 
-export const PriceQuantityWrapper = style({
-  marginTop: '2rem',
-  marginBottom: '0.9rem',
-});
