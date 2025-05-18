@@ -24,7 +24,7 @@ export default function ListInfo({ label, children }: ListInfoProps) {
           {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </span>
       </button>
-      
+
       {isOpen && children}
     </div>
   );

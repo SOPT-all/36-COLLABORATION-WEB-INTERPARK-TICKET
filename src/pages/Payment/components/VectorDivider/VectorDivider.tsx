@@ -1,6 +1,6 @@
 // src/components/common/VectorDivider/VectorDivider.tsx
-import { dividerStyle } from './VectorDivider.css';
 import { clsx } from 'clsx';
+import { dividerStyle } from './VectorDivider.css';
 
 interface VectorDividerProps {
   variant?: 'gray90' | 'gray20';

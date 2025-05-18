@@ -1,6 +1,6 @@
+import { style } from '@vanilla-extract/css';
 import { fontStyle } from '@/shared/styles/fontStyle';
 import { vars } from '@/shared/styles/tokens.css';
-import { style } from '@vanilla-extract/css';
 
 export const cardContentInfo = style({
   display: 'flex',

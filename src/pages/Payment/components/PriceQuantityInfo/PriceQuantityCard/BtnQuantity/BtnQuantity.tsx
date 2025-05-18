@@ -1,12 +1,10 @@
 import { useState } from 'react';
+import clsx from 'clsx';
 import * as styles from './BtnQuantity.css';
-
 import UpIcon from '@/shared/assets/icon/ic_arrow_up_gray40_14.svg?react';
 import DownIcon from '@/shared/assets/icon/ic_arrow_down_gray40_14.svg?react';
 import VectorFrame from '@/shared/assets/vector/Vector 27.svg?react';
 import Divider from '@/shared/assets/vector/Vector 28.svg?react';
-
-import clsx from 'clsx';
 
 interface BtnQuantityProps {
   initial?: number;

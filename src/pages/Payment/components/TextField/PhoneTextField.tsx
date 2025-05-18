@@ -14,10 +14,10 @@ export default function PhoneTextField({
   onChange,
 }: PhoneTextFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
-  
+
   const formatPhoneNumber = (input: string) => {
     const numbers = input.replace(/\D/g, '');
-    
+
     if (numbers.length <= 3) {
       return numbers;
     } else if (numbers.length <= 7) {
@@ -31,11 +31,11 @@ export default function PhoneTextField({
     const formattedNumber = formatPhoneNumber(e.target.value);
     onChange(formattedNumber);
   };
-  
+
   const handleFocus = () => {
     setIsFocused(true);
   };
-  
+
   const handleBlur = () => {
     if (!value) {
       setIsFocused(false);
@@ -43,10 +43,12 @@ export default function PhoneTextField({
   };
 
   return (
-    <div className={clsx(
-      styles.textField,
-      (isFocused || value) && styles.textFieldFocused
-    )}>
+    <div
+      className={clsx(
+        styles.textField,
+        (isFocused || value) && styles.textFieldFocused
+      )}
+    >
       <input
         className={clsx(styles.input, value && styles.inputHasText)}
         type="tel"
@@ -59,4 +61,4 @@ export default function PhoneTextField({
       />
     </div>
   );
-} 
+}

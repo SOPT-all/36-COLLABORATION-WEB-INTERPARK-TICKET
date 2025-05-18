@@ -1,7 +1,7 @@
 import { recipe } from '@vanilla-extract/recipes';
+import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
-import { style } from '@vanilla-extract/css';
 
 export const largeButtonContainer = style({
   display: 'flex',

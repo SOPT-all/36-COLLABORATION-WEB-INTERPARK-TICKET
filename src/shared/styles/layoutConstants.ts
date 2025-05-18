@@ -9,7 +9,7 @@ export const LAYOUT = {
     LG: '2rem',
     XL: '2.4rem',
   },
-  
+
   // 마진
   MARGIN: {
     NONE: '0',
@@ -19,7 +19,7 @@ export const LAYOUT = {
     LG: '2rem',
     XL: '2.4rem',
   },
-  
+
   // 간격
   GAP: {
     XS: '0.2rem',
@@ -28,16 +28,16 @@ export const LAYOUT = {
     LG: '1.6rem',
     XL: '2rem',
   },
-  
+
   // 컨테이너 크기
   CONTAINER: {
     FULL_WIDTH: '37.5rem',
   },
-  
+
   // 높이
   HEIGHT: {
     SM: '5.6rem',
     MD: '7.2rem',
     LG: '8.6rem',
   },
-}; 
+};

@@ -1,5 +1,5 @@
-import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
 import { h1 } from './MainPage.css';
+import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
 
 const seatData = [
   { grade: 'R석', seatCount: 48, price: 66000 },

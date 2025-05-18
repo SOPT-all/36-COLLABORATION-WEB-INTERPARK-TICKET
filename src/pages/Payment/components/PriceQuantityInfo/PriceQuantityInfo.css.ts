@@ -7,4 +7,4 @@ export const container = style({
   alignItems: 'center',
   width: '100%',
   padding: `${LAYOUT.PADDING.NONE} ${LAYOUT.PADDING.LG}`,
-}); 
+});

@@ -42,4 +42,3 @@ export const price = style({
   lineHeight: '140%',
   letterSpacing: '-0.04rem',
 });
-

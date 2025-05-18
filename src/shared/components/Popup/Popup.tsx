@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import * as styles from './Popup.css';
 import PopIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
-import { useState } from 'react';
 
 const PopUp = () => {
   const [isVisible, setIsVisible] = useState(true);

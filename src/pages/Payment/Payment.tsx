@@ -34,33 +34,25 @@ export default function PaymentPage() {
 
   useEffect(() => {
     setIsFormValid(
-      name.trim() !== '' && 
-      birthdate.trim() !== '' && 
-      phone.trim() !== '' &&
-      phone.length >= 12 
+      name.trim() !== '' &&
+        birthdate.trim() !== '' &&
+        phone.trim() !== '' &&
+        phone.length >= 12
     );
   }, [name, birthdate, phone]);
 
   return (
     <>
-      <PayHeader 
-        step={1} 
-        onBackClick={handleBack} 
-        onCloseClick={handleClose} 
-      />
+      <PayHeader step={1} onBackClick={handleBack} onCloseClick={handleClose} />
       <main className={styles.mainContent}>
         <div className={styles.page}>
           <BookingInfoSection />
         </div>
         <Rectangle94 />
-        
+
         <ListInfo label="예매자 정보 입력">
           <div className={listInfoStyles.textFieldsContainer}>
-            <TextField
-              placeholder="예약자명"
-              value={name}
-              onChange={setName}
-            />
+            <TextField placeholder="예약자명" value={name} onChange={setName} />
             <TextField
               placeholder="생년월일 6글자"
               value={birthdate}
@@ -78,39 +70,39 @@ export default function PaymentPage() {
             />
           </div>
         </ListInfo>
-        
+
         <Rectangle94 />
         <TicketPriceInfo />
         <PriceQuantityInfo />
-        
+
         <ListInfo label="일반 할인">
           <div className={listInfoStyles.quantityCardsContainer}>
-            <PriceQuantityCard 
-              label="국가유공자" 
-              price="48,000원" 
-              initial={0} 
+            <PriceQuantityCard
+              label="국가유공자"
+              price="48,000원"
+              initial={0}
             />
-                 <Rectangle95 />
-            <PriceQuantityCard 
-              label="장애인(1~3급)" 
-              price="48,000원" 
-              initial={0} 
+            <Rectangle95 />
+            <PriceQuantityCard
+              label="장애인(1~3급)"
+              price="48,000원"
+              initial={0}
             />
-                 <Rectangle95 />
-            <PriceQuantityCard 
-              label="장애인(4~6급)" 
-              price="48,000원" 
-              initial={0} 
+            <Rectangle95 />
+            <PriceQuantityCard
+              label="장애인(4~6급)"
+              price="48,000원"
+              initial={0}
             />
           </div>
         </ListInfo>
-        
+
         <Rectangle94 />
         <TicketReceiveSelect />
-        
+
         <div className={styles.buttonContainer}>
-          <LargeButton 
-            isActive={isFormValid} 
+          <LargeButton
+            isActive={isFormValid}
             disabled={!isFormValid}
             onClick={handleSubmit}
           >

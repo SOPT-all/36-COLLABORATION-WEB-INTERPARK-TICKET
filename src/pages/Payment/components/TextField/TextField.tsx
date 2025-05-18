@@ -14,11 +14,11 @@ export default function TextField({
   onChange,
 }: TextFieldProps) {
   const [isFocused, setIsFocused] = useState(false);
-  
+
   const handleFocus = () => {
     setIsFocused(true);
   };
-  
+
   const handleBlur = () => {
     // 텍스트가 있으면 포커스가 없어도 포커스 스타일 유지
     if (!value) {
@@ -27,10 +27,12 @@ export default function TextField({
   };
 
   return (
-    <div className={clsx(
-      styles.textField,
-      (isFocused || value) && styles.textFieldFocused
-    )}>
+    <div
+      className={clsx(
+        styles.textField,
+        (isFocused || value) && styles.textFieldFocused
+      )}
+    >
       <input
         className={clsx(styles.input, value && styles.inputHasText)}
         type="text"
