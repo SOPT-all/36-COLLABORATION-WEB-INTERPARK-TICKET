@@ -16,7 +16,7 @@ export const mainContent = style({
 });
 
 export const buttonContainer = style({
-  marginTop: '6rem', 
+  marginTop: '6rem',
   paddingBottom: LAYOUT.PADDING.XL,
   display: 'flex',
   justifyContent: 'center',
