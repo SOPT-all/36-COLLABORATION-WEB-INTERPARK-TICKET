@@ -11,8 +11,11 @@ export const wrapper = style({
 });
 
 export const title = style({
-  ...fontStyle('b2_b_16'),
+  fontSize: '1.6rem',
+  fontWeight: 700,
   color: vars.color.gray80,
+  letterSpacing: '-0.032rem',
+  lineHeight: '2.24rem',
 });
 
 export const optionRow = style({
