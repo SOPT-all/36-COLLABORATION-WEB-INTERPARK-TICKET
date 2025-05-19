@@ -1,7 +1,7 @@
 import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
-import * as styles from './MainPage.css'
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
+import * as styles from './MainPage.css'
 
 function MainPage() {
   return (
@@ -18,7 +18,7 @@ function MainPage() {
             </div>
           ))}
         </div>
-        
+
       </main>
     </div>
   );
