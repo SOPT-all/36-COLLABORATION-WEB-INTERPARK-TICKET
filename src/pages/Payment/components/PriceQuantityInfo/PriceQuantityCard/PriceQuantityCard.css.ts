@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 import { LAYOUT } from '@/shared/styles/layoutConstants';
 
 export const cardWrapper = style({
@@ -27,18 +28,11 @@ export const buttonWrapper = style({
 });
 
 export const label = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: '1.2rem',
-  fontWeight: '400',
+  ...fontStyle('b15_re_12'),
   color: vars.color.gray70,
-  letterSpacing: '0.036rem',
 });
 
 export const price = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: '2rem',
-  fontWeight: '700',
+  ...fontStyle('h5_sb_20'),
   color: vars.color.black,
-  lineHeight: '140%',
-  letterSpacing: '-0.04rem',
 });

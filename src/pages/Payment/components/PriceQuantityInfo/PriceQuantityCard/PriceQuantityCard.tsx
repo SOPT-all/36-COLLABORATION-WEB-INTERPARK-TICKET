@@ -5,12 +5,16 @@ interface PriceQuantityCardProps {
   label: string;
   price: string;
   initial?: number;
+  count?: number;
+  onCountChange?: (newCount: number) => void;
 }
 
 export default function PriceQuantityCard({
   label,
   price,
   initial = 0,
+  count,
+  onCountChange,
 }: PriceQuantityCardProps) {
   return (
     <div className={styles.cardWrapper}>
@@ -19,7 +23,11 @@ export default function PriceQuantityCard({
         <p className={styles.price}>{price}</p>
       </div>
       <div className={styles.buttonWrapper}>
-        <BtnQuantity initial={initial} />
+        <BtnQuantity
+          initial={initial}
+          count={count}
+          onCountChange={onCountChange}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import * as styles from './BookingInfoSection.css';
-import BtnChangeIcon from '@/shared/assets/icon/btn__change.svg?react';
+import ChangeButton from '@/shared/components/ChangeButton/ChangeButton';
 
 export default function BookingInfoSection() {
   return (
@@ -13,9 +13,7 @@ export default function BookingInfoSection() {
             <span className={styles.valueText}>
               2025년 4월 29일(화) 19시 30분
             </span>
-            <button className={styles.iconButton}>
-              <BtnChangeIcon />
-            </button>
+            <ChangeButton>일시변경</ChangeButton>
           </span>
         </div>
 

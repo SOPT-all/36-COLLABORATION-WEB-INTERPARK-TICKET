@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const container = style({
   position: 'relative',
@@ -27,7 +28,7 @@ export const content = style({
 });
 
 export const count = style({
-  fontSize: '1.6rem',
+  ...fontStyle('b2_b_16'),
   textAlign: 'center',
   display: 'flex',
   alignItems: 'center',

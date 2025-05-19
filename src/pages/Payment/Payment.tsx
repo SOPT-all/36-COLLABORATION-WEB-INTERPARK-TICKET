@@ -20,6 +20,12 @@ export default function PaymentPage() {
   const [phone, setPhone] = useState('');
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
+  const [quantities, setQuantities] = useState({
+    normal: 1,
+    veteran: 0,
+    disability13: 0,
+    disability46: 0,
+  });
 
   const handleBack = () => {
     console.log('뒤로가기');
@@ -33,9 +39,19 @@ export default function PaymentPage() {
     console.log('결제 진행');
   };
 
+  const handleQuantityChange =
+    (type: keyof typeof quantities) => (newCount: number) => {
+      setQuantities((prev) => ({ ...prev, [type]: newCount }));
+    };
+
+  const totalQuantity = Object.values(quantities).reduce(
+    (sum, count) => sum + count,
+    0
+  );
+
   useEffect(() => {
-    setIsFormValid(validateForm(name, birthdate, phone));
-  }, [name, birthdate, phone]);
+    setIsFormValid(validateForm(name, birthdate, phone) && totalQuantity > 0);
+  }, [name, birthdate, phone, totalQuantity]);
 
   return (
     <>
@@ -69,7 +85,10 @@ export default function PaymentPage() {
 
         <Rectangle94 />
         <TicketPriceInfo />
-        <PriceQuantityInfo />
+        <PriceQuantityInfo
+          onQuantityChange={handleQuantityChange('normal')}
+          quantity={quantities.normal}
+        />
 
         <ListInfo label="일반 할인">
           <div className={listInfoStyles.quantityCardsContainer}>
@@ -77,18 +96,24 @@ export default function PaymentPage() {
               label="국가유공자"
               price="48,000원"
               initial={0}
+              count={quantities.veteran}
+              onCountChange={handleQuantityChange('veteran')}
             />
             <Rectangle95 />
             <PriceQuantityCard
               label="장애인(1~3급)"
               price="48,000원"
               initial={0}
+              count={quantities.disability13}
+              onCountChange={handleQuantityChange('disability13')}
             />
             <Rectangle95 />
             <PriceQuantityCard
               label="장애인(4~6급)"
               price="48,000원"
               initial={0}
+              count={quantities.disability46}
+              onCountChange={handleQuantityChange('disability46')}
             />
           </div>
         </ListInfo>
