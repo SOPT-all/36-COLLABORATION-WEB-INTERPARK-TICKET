@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
-import * as ListInfoStyles from './components/Dropdown/ListInfo/ListInfo.css.ts';
+import * as ListInfoStyles from './components/Dropdown/ListInfo/ListInfo.css';
 import TicketPriceInfo from './components/TicketPriceInfo/TicketPriceInfo';
 import * as styles from './Payment.css';
 import PriceQuantityInfo from './components/PriceQuantityInfo/PriceQuantityInfo';
@@ -37,6 +37,7 @@ export default function PaymentStep1() {
   };
 
   const handleSubmit = () => {
+    if (!isFormValid) return;
     window.scrollTo(0, 0);
     navigate('/payment/step2');
   };

@@ -1,6 +1,6 @@
 import PriceQuantityCard from './PriceQuantityCard/PriceQuantityCard';
-import VectorDivider from '../VectorDivider/VectorDivider';
 import * as styles from './PriceQuantityInfo.css';
+import { Rectangle95 } from '@/shared/components/Rectangle/Rectangle';
 
 interface PriceQuantityInfoProps {
   quantity: number;
@@ -20,7 +20,7 @@ export default function PriceQuantityInfo({
         count={quantity}
         onCountChange={onQuantityChange}
       />
-      <VectorDivider variant="gray20" />
+      <Rectangle95 />
     </section>
   );
 }
