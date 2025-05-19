@@ -2,9 +2,9 @@ import { useState } from 'react';
 import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
-interface Props {}
+// interface Props {}
 
-const GenreSection = ({}: Props) => {
+const GenreSection = () => {
   const keywords = ['공연', '영화', '전시', '뮤지컬'];
 
   // 현재 선택된 키워드
