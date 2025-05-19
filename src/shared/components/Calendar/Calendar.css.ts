@@ -6,8 +6,6 @@ export const calendarWrapper = style({
   flexDirection: 'column',
   width: '34.7rem',
   backgroundColor: vars.color.white,
-  borderRadius: '0.6rem',
-  boxShadow: `0px 4px 8px rgba(0, 0, 0, 0.1)`,
 });
 
 export const calendarHeader = style({
