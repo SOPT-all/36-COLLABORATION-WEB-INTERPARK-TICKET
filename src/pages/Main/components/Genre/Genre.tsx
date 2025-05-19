@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
+import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 // interface Props {}
 
 const GenreSection = () => {
@@ -66,6 +67,7 @@ const GenreSection = () => {
           />
         ))}
       </div>
+      <HomeAddButton keyword="뮤지컬 랭킹" />
     </div>
   );
 };
