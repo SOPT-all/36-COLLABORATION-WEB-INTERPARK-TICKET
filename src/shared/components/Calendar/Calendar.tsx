@@ -2,7 +2,11 @@ import { useState } from 'react';
 import Day from './Day';
 import * as styles from './Calendar.css';
 
-const Calendar = () => {
+const Calendar = ({
+  onDateSelect,
+}: {
+  onDateSelect: (selected: boolean) => void;
+}) => {
   const currentDate = new Date(2025, 3, 1);
   const [selectedDate, setSelectedDate] = useState<number | null>(null);
 
@@ -19,6 +23,7 @@ const Calendar = () => {
   const handleDayClick = (date: number) => {
     // 클릭된 날짜 서버의 날짜 데이터랑 동일하면!! 받아오기 할거임!!!
     setSelectedDate(date);
+    onDateSelect(true);
   };
 
   const month = currentDate.getMonth();
