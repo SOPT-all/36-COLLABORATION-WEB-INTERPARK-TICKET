@@ -227,7 +227,13 @@ export const vars = createGlobalTheme(':root', {
       lineHeight: '7px',
       letterSpacing: '0px',
     },
-
+    //달력
+    cale_12: {
+      size: '12px',
+      weight: '400',
+      letterSpacing: '-0.24px',
+      lineHeight: 'normal',
+    },
     // 메인쪽 추가
     main_dis_1: {
       size: '14px',
