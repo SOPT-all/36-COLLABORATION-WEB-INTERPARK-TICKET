@@ -22,7 +22,8 @@
     ]
   },
   "dependencies": {
-    "@tanstack/react-query": "^5.75.7",
+    "@tanstack/react-query": "^5.76.1",
+    "@tanstack/react-query-devtools": "^5.76.1",
     "@vanilla-extract/recipes": "^0.5.5",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
