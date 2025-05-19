@@ -1,6 +1,7 @@
-import type { ChangeEvent } from 'react';
+import { type ChangeEvent } from 'react';
 import clsx from 'clsx';
 import * as styles from './TextField.css';
+import { useFocusInput } from '../../hooks/useFocusInput';
 
 interface TextFieldProps {
   placeholder: string;
@@ -13,8 +14,15 @@ export default function TextField({
   value,
   onChange,
 }: TextFieldProps) {
+  const { isFocused, handleFocus, handleBlur } = useFocusInput();
+
   return (
-    <div className={styles.textField}>
+    <div
+      className={clsx(
+        styles.textField,
+        (isFocused || value) && styles.textFieldFocused
+      )}
+    >
       <input
         className={clsx(styles.input, value && styles.inputHasText)}
         type="text"
@@ -23,6 +31,8 @@ export default function TextField({
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           onChange(e.target.value)
         }
+        onFocus={handleFocus}
+        onBlur={() => handleBlur(value)}
       />
     </div>
   );
