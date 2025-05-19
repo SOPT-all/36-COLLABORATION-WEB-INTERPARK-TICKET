@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import * as styles from './SelectDatePage.css';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
