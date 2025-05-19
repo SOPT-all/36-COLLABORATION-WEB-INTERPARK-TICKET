@@ -10,9 +10,9 @@ import TextField from './components/TextField/TextField';
 import PhoneTextField from './components/TextField/PhoneTextField';
 import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/PriceQuantityCard';
 import * as listInfoStyles from './components/Dropdown/listInfo/ListInfo.css.ts';
+import { validateForm } from './utils/validateForm';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
-import { validateForm } from './utils/validateForm';
 
 export default function PaymentPage() {
   const [name, setName] = useState('');
