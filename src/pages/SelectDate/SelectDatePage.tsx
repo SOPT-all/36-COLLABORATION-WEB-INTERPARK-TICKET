@@ -3,6 +3,7 @@ import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 import CardContentInfo from '@/shared/components/CardContentInfo/CardContentInfo';
 import Calendar from '@/shared/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
+import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
 import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
 function SelectDatePage() {
   const performanceData = {
@@ -43,6 +44,16 @@ function SelectDatePage() {
             authors={authors}
             seatTypes={seatTypes}
           />
+          <div className={styles.waitNoti}>
+            <img
+              className={styles.waitIcon}
+              src={TimerIcon}
+              alt="타이머아이콘"
+            />
+            <span className={styles.waitTxt}>
+              예매대기 신청은 관람일 3일 전까지만 가능해요!
+            </span>
+          </div>
         </div>
       </main>
     </div>

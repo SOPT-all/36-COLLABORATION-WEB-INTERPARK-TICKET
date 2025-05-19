@@ -7,6 +7,7 @@ export const containerWrapper = style({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
+  paddingBottom: '4.3rem',
 });
 
 export const mainSection = style({
@@ -40,4 +41,19 @@ export const infoDefault = style({
   color: vars.color.gray80,
   ...fontStyle('b10_re_14'),
   textAlign: 'left',
+});
+export const waitNoti = style({
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '0.6rem',
+  alignItems: 'center',
+  marginTop: '2.2rem',
+});
+export const waitIcon = style({
+  width: '1.8rem',
+  height: '1.8rem',
+});
+export const waitTxt = style({
+  ...fontStyle('b14_me_12'),
+  color: vars.color.gray80,
 });
