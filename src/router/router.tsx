@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router';
 import MainPage from '@/pages/Main/MainPage';
 import Payment from '@/pages/Payment/Payment';
 import SeatSelectPage from '@/pages/SeatSelect/SeatSelectPage';
-
+import SelectDatePage from '@/pages/SelectDate/SelectDatePage';
 const router = createBrowserRouter([
   {
     path: '/',
