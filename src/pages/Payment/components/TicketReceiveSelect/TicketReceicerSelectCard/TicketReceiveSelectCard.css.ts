@@ -16,11 +16,8 @@ export const titleWrapper = style({
 });
 
 export const title = style({
-  fontSize: '1.6rem',
-  fontWeight: 700,
+  ...fontStyle('b2_b_16'),
   color: vars.color.gray80,
-  letterSpacing: '-0.032rem',
-  lineHeight: '2.24rem',
 });
 
 export const optionRow = style({
