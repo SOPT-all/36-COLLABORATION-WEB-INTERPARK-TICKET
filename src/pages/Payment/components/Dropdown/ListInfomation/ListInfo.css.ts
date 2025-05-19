@@ -5,7 +5,7 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
-  width: '100%', //1
+  width: '100%',
 });
 
 export const listInfo = style({
@@ -48,4 +48,5 @@ export const quantityCardsContainer = style({
   width: '100%',
   padding: '0 1.65rem 1.6rem',
   background: vars.color.white,
+  gap: '1rem',
 });
