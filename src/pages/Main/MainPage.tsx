@@ -1,4 +1,4 @@
-import * as styles from './MainPage.css'
+import * as styles from './MainPage.css';
 import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
@@ -8,7 +8,7 @@ function MainPage() {
     <div>
       <HomeHeader />
       <main className={styles.containerWrapper}>
-        <img src={MainBanner} className={styles.mainBanner}/>
+        <img src={MainBanner} className={styles.mainBanner} />
 
         <div className={styles.categoryGrid}>
           {CATEGORY_ITEMS.map(({ id, name, icon: Icon }) => (

@@ -23,5 +23,5 @@ export const categoryItem = style({
   alignItems: 'center',
   ...fontStyle('b4_m_16'),
   color: vars.color.gray70,
-  gap: '0.3rem'
+  gap: '0.3rem',
 });
