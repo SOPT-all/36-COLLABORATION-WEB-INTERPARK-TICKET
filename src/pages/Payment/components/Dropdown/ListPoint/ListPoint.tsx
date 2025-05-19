@@ -1,5 +1,5 @@
-import * as styles from './ListPoint.css';
 import ArrowDownIcon from '@/shared/assets/icon/ic_arrow_down_gray50_18.svg?react';
+import * as styles from './ListPoint.css';
 
 interface ListPointProps {
   pointTitle: string;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container } from './Container.css';
 import Btn from './Btn/Btn';
+
 import IconBank from '@/shared/assets/icon/ic_payment_28.svg?react';
 import IconCard from '@/shared/assets/icon/ic_payment_28(1).svg?react';
 import IconMobile from '@/shared/assets/icon/ic_payment_28(2).svg?react';
