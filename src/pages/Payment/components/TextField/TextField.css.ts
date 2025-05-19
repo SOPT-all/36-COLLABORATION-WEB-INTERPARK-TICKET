@@ -1,16 +1,17 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/shared/styles/tokens.css.ts';
+import { vars } from '@/shared/styles/tokens.css';
+import { LAYOUT } from '@/shared/styles/layoutConstants';
 import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const textField = style({
   display: 'flex',
   width: '100%',
-  height: '5rem',
-  padding: '1.6rem 1.5rem',
+  height: LAYOUT.HEIGHT.SM,
+  padding: `${LAYOUT.PADDING.MD} ${LAYOUT.PADDING.MD_PLUS}`,
   alignItems: 'center',
   flexShrink: 0,
   background: vars.color.gray10,
-  borderRadius: '0.4rem',
+  borderRadius: LAYOUT.BORDER_RADIUS.MD,
   border: `1px solid ${vars.color.gray20}`,
   transition: 'border 0.2s',
 });

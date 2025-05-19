@@ -1,12 +1,12 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css.ts';
 import { fontStyle } from '@/shared/styles/fontStyle';
+import { LAYOUT } from '@/shared/styles/layoutConstants';
 
 export const listPoint = style({
   display: 'flex',
   width: '37.5rem',
-  height: '3.4rem',
-  padding: '0.8rem 1.9rem',
+  padding: `1.3rem ${LAYOUT.PADDING.MD_PLUS}`,
   justifyContent: 'space-between',
   alignItems: 'center',
   flexShrink: 0,

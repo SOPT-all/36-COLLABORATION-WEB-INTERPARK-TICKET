@@ -1,33 +1,36 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 import { LAYOUT } from '@/shared/styles/layoutConstants';
-import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const wrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: LAYOUT.GAP.MD,
+  gap: '1.6rem',
   marginTop: LAYOUT.MARGIN.LG,
 });
 
 export const title = style({
-  ...fontStyle('b2_b_16'),
+  fontSize: '1.6rem',
+  fontWeight: 700,
   color: vars.color.gray80,
+  letterSpacing: '-0.032rem',
+  lineHeight: '2.24rem',
 });
 
 export const optionRow = style({
   display: 'flex',
   alignItems: 'center',
-  gap: LAYOUT.GAP.XL,
+  gap: '10.8rem',
 });
 
 export const description = style({
-  ...fontStyle('b14_me_12'),
+  fontSize: '1rem',
+  fontWeight: 500,
   color: vars.color.gray60,
   lineHeight: '2.05rem',
-  paddingTop: LAYOUT.PADDING.MD,
+  paddingTop: '1.6rem',
 });
 
 export const ticketReceiveCardWrapper = style({
-  paddingLeft: LAYOUT.PADDING.MD,
+  paddingLeft: '1.8rem',
 });

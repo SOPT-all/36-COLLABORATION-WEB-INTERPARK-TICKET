@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import * as styles from './ListInfo.css.ts';
+import * as styles from './ListInfo.css';
 import ArrowUpIcon from '@/shared/assets/icon/ic_arrow_up_gray90_24.svg?react';
 import ArrowDownIcon from '@/shared/assets/icon/ic_arrow_down_gray90_24.svg?react';
 

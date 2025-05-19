@@ -50,6 +50,6 @@ export const quantityCardsContainer = style({
   flexDirection: 'column',
   alignItems: 'center',
   width: '100%',
-  padding: `${LAYOUT.PADDING.NONE} ${LAYOUT.PADDING.LG}`,
+  padding: `${LAYOUT.PADDING.NONE} ${LAYOUT.PADDING.MD_PLUS}`,
   background: vars.color.white,
 });
