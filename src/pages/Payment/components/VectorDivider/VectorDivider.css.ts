@@ -6,7 +6,6 @@ export const dividerStyle = styleVariants({
     width: '35rem',
     height: '0.1rem',
     backgroundColor: vars.color.gray90,
-    margin: '0 auto',
   },
   gray20: {
     width: '34rem',

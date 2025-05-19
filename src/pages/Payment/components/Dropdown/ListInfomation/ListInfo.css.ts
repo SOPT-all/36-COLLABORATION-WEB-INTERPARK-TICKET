@@ -48,5 +48,4 @@ export const quantityCardsContainer = style({
   width: '100%',
   padding: '0 1.65rem 1.6rem',
   background: vars.color.white,
-  gap: '1rem',
 });
