@@ -19,7 +19,10 @@ export const cardImg = style({
 });
 
 export const discoutTitle = style({
-  ...fontStyle('main_dis_1'),
+  fontSize: '14px',
+  fontWeight: '700',
+  lineHeight: '2rem',
+  letterSpacing: '-0.28px',
   color: vars.color.black,
   padding: '0.8rem 0',
 });

@@ -233,12 +233,5 @@ export const vars = createGlobalTheme(':root', {
       letterSpacing: '-0.24px',
       lineHeight: 'normal',
     },
-    // 메인쪽 추가
-    main_dis_1: {
-      size: '14px',
-      weight: '700',
-      lineHeight: '2rem',
-      letterSpacing: '-0.28px',
-    },
   },
 });
