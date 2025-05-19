@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
-import * as ListInfoStyles from './components/Dropdown/listInfo/ListInfo.css';
-import {
-  Rectangle94,
-  Rectangle95,
-} from '@/shared/components/Rectangle/Rectangle';
+import * as ListInfoStyles from './components/Dropdown/ListInfo/ListInfo.css';
 import TicketPriceInfo from './components/TicketPriceInfo/TicketPriceInfo';
 import * as styles from './Payment.css';
 import PriceQuantityInfo from './components/PriceQuantityInfo/PriceQuantityInfo';
@@ -13,12 +9,16 @@ import TicketReceiveSelect from './components/TicketReceiveSelect/TicketReceiver
 import TextField from './components/TextField/TextField';
 import PhoneTextField from './components/TextField/PhoneTextField';
 import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/PriceQuantityCard';
-import ListInfo from './components/Dropdown/listInfo/ListInfo';
+import ListInfo from './components/Dropdown/ListInfo/ListInfo';
+import { validateForm } from './utils/validateForm';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
-import { validateForm } from './utils/validateForm';
+import {
+  Rectangle94,
+  Rectangle95,
+} from '@/shared/components/Rectangle/Rectangle';
 import { LAYOUT } from '@/shared/styles/layoutConstants';
-import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export default function PaymentStep1() {
   const navigate = useNavigate();
@@ -45,11 +45,7 @@ export default function PaymentStep1() {
 
   return (
     <>
-      <PayHeader
-        step={1}
-        onBackClick={handleBack}
-        onCloseClick={handleClose}
-      />
+      <PayHeader step={1} onBackClick={handleBack} onCloseClick={handleClose} />
       <main className={styles.mainContent}>
         <div>
           <div className={styles.page}>
@@ -86,7 +82,10 @@ export default function PaymentStep1() {
 
           <Rectangle94 />
           <TicketPriceInfo />
-          <PriceQuantityInfo quantity={quantity} onQuantityChange={setQuantity} />
+          <PriceQuantityInfo
+            quantity={quantity}
+            onQuantityChange={setQuantity}
+          />
 
           <ListInfo label="일반 할인">
             <div className={ListInfoStyles.quantityCardsContainer}>
@@ -122,8 +121,7 @@ export default function PaymentStep1() {
               maxWidth: '37.5rem',
               height: LAYOUT.HEIGHT.SM,
               borderRadius: LAYOUT.BORDER_RADIUS.MD,
-              fontSize: vars.font.b2_b_16.size,
-              fontWeight: vars.font.b2_b_16.weight,
+              ...fontStyle('b2_b_16'),
             }}
           >
             다음
@@ -132,4 +130,4 @@ export default function PaymentStep1() {
       </main>
     </>
   );
-} 
+}

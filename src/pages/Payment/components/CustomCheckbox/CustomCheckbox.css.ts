@@ -8,7 +8,7 @@ export const container = style({
   gap: '0.8rem',
 });
 
-export const checkbox = style({
+export const checkboxButton = style({
   background: 'none',
   border: 'none',
   padding: 0,

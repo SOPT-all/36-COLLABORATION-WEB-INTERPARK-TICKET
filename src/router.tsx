@@ -1,10 +1,12 @@
-import { createRouter } from 'react-router';
-import MainPage from '@/pages/MainPage/MainPage';
+import { createHashRouter } from 'react-router';
+import MainPage from '@/pages/Main/MainPage';
 import PaymentStep1 from '@/pages/Payment/Step1';
 import PaymentStep2 from '@/pages/Payment/Step2';
 import PaymentStep3 from '@/pages/Payment/Step3';
+import SelectDatePage from '@/pages/SelectDate/SelectDatePage';
+import SeatSelectPage from '@/pages/SeatSelect/SeatSelectPage';
 
-export const router = createRouter([
+export const router = createHashRouter([
   {
     path: '/',
     element: <MainPage />,
@@ -21,4 +23,12 @@ export const router = createRouter([
     path: '/payment/step3',
     element: <PaymentStep3 />,
   },
-]); 
+  {
+    path: '/date-select',
+    element: <SelectDatePage />,
+  },
+  {
+    path: '/seat-select',
+    element: <SeatSelectPage />,
+  },
+]);

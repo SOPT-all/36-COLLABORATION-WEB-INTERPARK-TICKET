@@ -14,11 +14,7 @@ export default function PaymentStep3() {
 
   return (
     <>
-      <PayHeader
-        step={3}
-        onBackClick={handleBack}
-        onCloseClick={handleClose}
-      />
+      <PayHeader step={3} onBackClick={handleBack} onCloseClick={handleClose} />
     </>
   );
-} 
+}

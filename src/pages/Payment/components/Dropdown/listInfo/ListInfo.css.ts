@@ -1,48 +1,44 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '@/shared/styles/tokens.css.ts';
+import { vars } from '@/shared/styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
-import { LAYOUT } from '@/shared/styles/layoutConstants';
 
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-  gap: '10px',
 });
 
 export const listInfo = style({
   display: 'flex',
-  width: LAYOUT.CONTAINER.FULL_WIDTH,
-  height: LAYOUT.HEIGHT.SM,
-  padding: `${LAYOUT.PADDING.MD} ${LAYOUT.PADDING.MD}`,
+  width: '100%',
+  height: '5.6rem',
+  padding: '1.6rem 1.8rem',
   justifyContent: 'space-between',
   alignItems: 'center',
-  flexShrink: 0,
   background: vars.color.white,
+  border: 'none',
+  cursor: 'pointer',
 });
 
 export const listInfoText = style({
   ...fontStyle('b2_b_16'),
-  color: vars.color.gray80,
+  color: vars.color.gray90,
 });
 
 export const listInfoIcon = style({
   display: 'flex',
-  width: '2.4rem',
-  height: '2.4rem',
-  padding: '0.8rem 0.2rem 0.9rem 0.2rem',
-  justifyContent: 'center',
   alignItems: 'center',
-  flexShrink: 0,
-  aspectRatio: '1 / 1',
+});
+
+export const content = style({
+  background: vars.color.white,
 });
 
 export const textFieldsContainer = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: LAYOUT.GAP.SM,
-  padding: LAYOUT.PADDING.MD,
-  background: vars.color.white,
+  gap: '1rem',
+  padding: '0 1.8rem 1.6rem',
 });
 
 export const quantityCardsContainer = style({
@@ -50,6 +46,7 @@ export const quantityCardsContainer = style({
   flexDirection: 'column',
   alignItems: 'center',
   width: '100%',
-  padding: `${LAYOUT.PADDING.NONE} ${LAYOUT.PADDING.MD_PLUS}`,
+  padding: '0 1.65rem 1.6rem',
   background: vars.color.white,
+  gap: '1rem',
 });

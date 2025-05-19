@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
+import * as styles from './Payment.css';
+import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
+import ListPoint from './components/Dropdown/ListPoint/ListPoint';
+import VectorDivider from './components/VectorDivider/VectorDivider';
+import CouponCard from './components/CouponCard/CouponCard';
+import CustomCheckbox from './components/CustomCheckbox/CustomCheckbox';
 import {
   Rectangle94,
   Rectangle95,
@@ -7,12 +13,6 @@ import {
   Rectangle97,
   PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
-import * as styles from './Payment.css';
-import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
-import ListPoint from './components/Dropdown/ListPoint/ListPoint';
-import VectorDivider from './components/VectorDivider/VectorDivider';
-import CouponCard from './components/CouponCard/CouponCard';
-import CustomCheckbox from './components/CustomCheckbox/CustomCheckbox';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import { LAYOUT } from '@/shared/styles/layoutConstants';
@@ -37,11 +37,7 @@ export default function PaymentStep2() {
 
   return (
     <>
-      <PayHeader
-        step={2}
-        onBackClick={handleBack}
-        onCloseClick={handleClose}
-      />
+      <PayHeader step={2} onBackClick={handleBack} onCloseClick={handleClose} />
       <main className={styles.mainContent}>
         <Rectangle96 />
         <Rectangle95 />
@@ -103,4 +99,4 @@ export default function PaymentStep2() {
       </main>
     </>
   );
-} 
+}

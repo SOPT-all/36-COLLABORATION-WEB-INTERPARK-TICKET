@@ -1,4 +1,3 @@
-// 공통으로 사용되는 레이아웃 상수들
 export const LAYOUT = {
   // 패딩
   PADDING: {
@@ -6,7 +5,7 @@ export const LAYOUT = {
     XS: '0.8rem',
     SM: '1.2rem',
     MD: '1.6rem',
-    MD_PLUS: '1.65rem', // 자주 사용되는 1.65rem 패딩
+    MD_PLUS: '1.65rem',
     LG: '2rem',
     XL: '2.4rem',
   },
