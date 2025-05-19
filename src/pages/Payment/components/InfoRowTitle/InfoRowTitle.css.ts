@@ -31,12 +31,7 @@ export const infoRowTitleWrapper = style({
 });
 
 export const infoRowTitleText = style({
-  fontFamily: vars.font.family.pretendard,
-  fontSize: '1.6rem',
-  fontStyle: 'normal',
-  fontWeight: 700,
-  lineHeight: '2.24rem',
-  letterSpacing: '-0.032rem',
+  ...fontStyle('b2_b_16'),
   color: vars.color.gray80,
 });
 
