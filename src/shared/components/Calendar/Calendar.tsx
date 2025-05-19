@@ -17,6 +17,7 @@ const Calendar = () => {
   };
 
   const handleDayClick = (date: number) => {
+    // 클릭된 날짜 서버의 날짜 데이터랑 동일하면!! 받아오기 할거임!!!
     setSelectedDate(date);
   };
 
@@ -40,9 +41,10 @@ const Calendar = () => {
         key={i}
         date={i}
         isCurrentMonth={isCurrentMonth}
-        onClick={handleDayClick}
+        onClick={handleDayClick} // onClick 핸들러 전달
         isToday={isToday}
         isSoldOut={isSoldOut}
+        isSelected={i === selectedDate}
       />
     );
   }

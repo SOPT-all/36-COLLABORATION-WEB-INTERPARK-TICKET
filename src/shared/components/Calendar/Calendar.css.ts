@@ -50,6 +50,7 @@ export const day = style({
 
 export const dayInMonth = style({
   backgroundColor: vars.color.white,
+  cursor: 'pointer',
   ':hover': {
     backgroundColor: vars.color.gray20,
     borderRadius: '99px',
@@ -64,13 +65,16 @@ export const dayOutMonth = style({
 export const today = style({
   ...fontStyle('h6_re_20'),
   color: vars.color.black,
-  // ':hover': {
-  //   backgroundColor: vars.color.blue90,
-  //   color: vars.color.white,
-  //   borderRadius: '999px',
-  // },
 });
-
+export const selected = style({
+  backgroundColor: 'black',
+  color: 'white',
+  borderRadius: '99px',
+  ':hover': {
+    backgroundColor: 'black',
+    color: 'white',
+  },
+});
 export const sunday = style({
   ...fontStyle('h6_re_20'),
   color: vars.color.red10,
@@ -83,6 +87,10 @@ export const sunday = style({
 export const todayText = style({
   ...fontStyle('c3_re_8'),
   color: vars.color.blue90,
+});
+export const todaySelected = style({
+  backgroundColor: 'black',
+  color: 'white',
 });
 export const soldOutText = style({
   ...fontStyle('c3_re_8'),
