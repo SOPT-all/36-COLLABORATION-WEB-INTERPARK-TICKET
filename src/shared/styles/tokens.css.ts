@@ -233,7 +233,7 @@ export const vars = createGlobalTheme(':root', {
       weight: '400',
       letterSpacing: '-0.24px',
       lineHeight: 'normal',
-
+    },
     // 메인쪽 추가
     main_dis_1: {
       size: '14px',
