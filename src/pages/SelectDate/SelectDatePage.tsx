@@ -47,7 +47,7 @@ function SelectDatePage() {
             <div className={styles.infoDefault}>공연 날짜를 선택해주세요</div>
           )}
           {isSelected && (
-            <div>
+            <div className={styles.showArea}>
               <DateReservationCard
                 performanceTime={performanceTime}
                 authors={authors}

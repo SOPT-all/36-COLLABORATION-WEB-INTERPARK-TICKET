@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style, keyframes } from '@vanilla-extract/css';
 import { fontStyle } from '@styles/fontStyle';
 import { vars } from '@styles/tokens.css';
 
@@ -56,4 +56,19 @@ export const waitIcon = style({
 export const waitTxt = style({
   ...fontStyle('b14_me_12'),
   color: vars.color.gray80,
+});
+
+const slideDown = keyframes({
+  '0%': {
+    transform: 'translateY(-20px)',
+    opacity: 0,
+  },
+  '100%': {
+    transform: 'translateY(0)',
+    opacity: 1,
+  },
+});
+
+export const showArea = style({
+  animation: `${slideDown} 0.5s ease-out`,
 });
