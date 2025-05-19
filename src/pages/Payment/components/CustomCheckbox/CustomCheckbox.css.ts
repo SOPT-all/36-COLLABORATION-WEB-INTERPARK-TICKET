@@ -19,7 +19,7 @@ export const checkboxButton = style({
 });
 
 export const label = style({
-  fontSize: '1.4rem',
+  ...fontStyle('b10_re_14'),
   color: vars.color.gray80,
 });
 

@@ -15,7 +15,6 @@ export const Rectangle = ({ type, hasPadding = false }: RectangleProps) => {
   return content;
 };
 
-// Legacy components for backwards compatibility
 export const Rectangle94 = () => <Rectangle type="spacer" />;
 export const Rectangle95 = () => <Rectangle type="divider" />;
 export const Rectangle96 = () => <Rectangle type="spacerXLarge" />;
