@@ -1,6 +1,7 @@
 import * as styles from './SelectDatePage.css';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 import CardContentInfo from '@/shared/components/CardContentInfo/CardContentInfo';
+import Calendar from '@/shared/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 function SelectDatePage() {
   const performanceData = {
@@ -23,6 +24,7 @@ function SelectDatePage() {
             <span className={styles.monthTxt}>2025.04</span>
             <img className={styles.monthIcon} src={RightIcon} alt={'다음 달'} />
           </div>
+          <Calendar />
         </section>
         <div className={styles.infoArea}>
           <div className={styles.infoDefault}>공연 날짜를 선택해주세요</div>
