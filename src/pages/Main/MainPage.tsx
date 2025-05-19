@@ -18,7 +18,6 @@ function MainPage() {
             </div>
           ))}
         </div>
-
       </main>
     </div>
   );
