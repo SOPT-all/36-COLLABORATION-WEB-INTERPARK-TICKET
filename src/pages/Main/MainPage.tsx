@@ -2,7 +2,7 @@ import * as styles from './MainPage.css';
 import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
-
+import GenreSection from './components/Genre/Genre';
 function MainPage() {
   return (
     <div>
@@ -18,6 +18,8 @@ function MainPage() {
             </div>
           ))}
         </div>
+
+        <GenreSection />
       </main>
     </div>
   );
