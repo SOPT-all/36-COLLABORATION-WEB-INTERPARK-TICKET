@@ -73,6 +73,7 @@ export const pageGroup = style({
   padding: '0 7.95rem',
   justifyContent: 'space-between',
   gap: '3.5rem',
+  marginBottom: '3rem',
 });
 
 export const button = style({

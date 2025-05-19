@@ -26,6 +26,10 @@ export const categoryItem = style({
   gap: '0.3rem',
 });
 
+export const icon = style({
+  cursor: 'pointer',
+});
+
 export const sectionHeader = style({
   ...fontStyle('h5_sb_20'),
   color: vars.color.black,

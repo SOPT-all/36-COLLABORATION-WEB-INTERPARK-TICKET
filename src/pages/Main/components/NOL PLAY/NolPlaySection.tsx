@@ -44,7 +44,7 @@ const NolPlaySection = ({ data }: Props) => {
 
   return (
     <section className={styles.sectionWrapper}>
-      <header className={sectionHeader}>NOL PLAY</header>
+      <header className={sectionHeader}>{data.category}</header>
       <div className={styles.keywordWrapper}>
         <CategoryTab
           keywords={data.keywordList}
