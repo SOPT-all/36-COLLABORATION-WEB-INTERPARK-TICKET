@@ -12,6 +12,6 @@ export const dividerStyle = styleVariants({
     width: '34rem',
     height: '1px',
     backgroundColor: vars.color.gray20,
-    margin: '0 auto', // ✅ 가운데 정렬
+    margin: '0 auto',
   },
 });

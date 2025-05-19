@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
 import ListInfo from './components/Dropdown/listInfo/ListInfo';
-import { Rectangle94, Rectangle95 } from './components/Rectangle/Rectangle';
 import TicketPriceInfo from './components/TicketPriceInfo/TicketPriceInfo';
 import * as styles from './Payment.css';
 import PriceQuantityInfo from './components/PriceQuantityInfo/PriceQuantityInfo';
@@ -11,6 +10,10 @@ import PhoneTextField from './components/TextField/PhoneTextField';
 import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/PriceQuantityCard';
 import * as listInfoStyles from './components/Dropdown/listInfo/ListInfo.css.ts';
 import { validateForm } from './utils/validateForm';
+import {
+  Rectangle94,
+  Rectangle95,
+} from '@/shared/components/Rectangle/Rectangle';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 
