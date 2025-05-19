@@ -65,12 +65,12 @@ export const today = style({
   color: vars.color.black,
 });
 export const selected = style({
-  backgroundColor: 'black',
-  color: 'white',
+  backgroundColor: vars.color.blue90,
+  color: vars.color.white,
   borderRadius: '99px',
   ':hover': {
-    backgroundColor: 'black',
-    color: 'white',
+    backgroundColor: vars.color.blue90,
+    color: vars.color.white,
   },
 });
 export const sunday = style({
@@ -87,8 +87,8 @@ export const todayText = style({
   color: vars.color.blue90,
 });
 export const todaySelected = style({
-  backgroundColor: 'black',
-  color: 'white',
+  backgroundColor: vars.color.blue90,
+  color: vars.color.white,
 });
 export const soldOutText = style({
   ...fontStyle('c3_re_8'),
