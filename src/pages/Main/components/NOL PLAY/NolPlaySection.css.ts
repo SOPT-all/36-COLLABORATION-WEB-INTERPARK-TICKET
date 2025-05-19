@@ -22,19 +22,17 @@ export const cardWrapper = style({
   justifyContent: 'flex-start',
   alignItems: 'center',
   gap: '1rem',
-  padding: '0 1.8rem 0 1.8rem',
+  padding: '0 1.8rem',
   width: '100%',
+  overflow: 'hidden',
+  position: 'relative',
+});
 
-  overflowX: 'auto',
-  whiteSpace: 'nowrap',
-  scrollbarWidth: 'none',
-  msOverflowStyle: 'none',
-
-  selectors: {
-    '&::-webkit-scrollbar': {
-      display: 'none',
-    },
-  },
+export const cardTrack = style({
+  display: 'flex',
+  gap: '1rem',
+  transition: 'transform 0.4s ease-in-out',
+  width: 'max-content',
 });
 
 export const cardContainer = style({
@@ -43,6 +41,8 @@ export const cardContainer = style({
   justifyContent: 'center',
   alignItems: 'center',
   flexShrink: 0,
+  transition: 'transform 0.4s ease-in-out',
+  width: '29.8rem',
 });
 
 export const bottomCard = style({
@@ -58,11 +58,55 @@ export const bottomCard = style({
 });
 
 export const bottomCardText = style({
-  ...fontStyle('b7_b_14_1'),
   display: '-webkit-box',
-  WebkitLineClamp: 2,
+  ...fontStyle('b7_b_14_1'),
   WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-  minWidth: 0,
+  whiteSpace: 'normal',
+});
+
+export const pageGroup = style({
+  display: 'flex',
+  marginTop: '2rem',
+  padding: '0 7.95rem',
+  justifyContent: 'space-between',
+  gap: '3.5rem',
+});
+
+export const button = style({
+  padding: '1.1rem 0',
+  width: '6rem',
+  height: '3.8rem',
+  borderRadius: '0.4rem',
+  border: `1px solid ${vars.color.gray20}`,
+  textAlign: 'center',
+  cursor: 'pointer',
+});
+
+export const number = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.2rem',
+  maxWidth: '2.3rem',
+});
+
+export const numberText = recipe({
+  base: {
+    ...fontStyle('b7_b_14_1'),
+  },
+  variants: {
+    kind: {
+      current: {
+        color: vars.color.black,
+      },
+      total: {
+        color: vars.color.gray60,
+      },
+      divider: {
+        color: vars.color.gray60,
+      },
+    },
+  },
 });
