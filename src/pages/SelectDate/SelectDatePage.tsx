@@ -1,3 +1,5 @@
+import React from 'react';
+import { useState } from 'react';
 import * as styles from './SelectDatePage.css';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 import CardContentInfo from '@/shared/components/CardContentInfo/CardContentInfo';
@@ -5,7 +7,7 @@ import Calendar from '@/shared/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
 import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
-import { useState } from 'react';
+
 function SelectDatePage() {
   const [isSelected, setIsSelected] = useState(false);
   const performanceData = {
