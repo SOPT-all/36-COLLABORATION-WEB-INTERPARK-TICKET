@@ -1,4 +1,3 @@
-// TicketPriceInfo.css.ts
 import { style } from '@vanilla-extract/css';
 import { LAYOUT } from '@/shared/styles/layoutConstants';
 

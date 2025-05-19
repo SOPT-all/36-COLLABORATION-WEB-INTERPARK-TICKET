@@ -1,6 +1,7 @@
-import { useState, type ChangeEvent } from 'react';
+import { type ChangeEvent } from 'react';
 import clsx from 'clsx';
 import * as styles from './TextField.css';
+import { useFocusInput } from '../../hooks/useFocusInput';
 
 interface TextFieldProps {
   placeholder: string;
@@ -13,18 +14,7 @@ export default function TextField({
   value,
   onChange,
 }: TextFieldProps) {
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    // 텍스트가 있으면 포커스가 없어도 포커스 스타일 유지
-    if (!value) {
-      setIsFocused(false);
-    }
-  };
+  const { isFocused, handleFocus, handleBlur } = useFocusInput();
 
   return (
     <div
@@ -42,7 +32,7 @@ export default function TextField({
           onChange(e.target.value)
         }
         onFocus={handleFocus}
-        onBlur={handleBlur}
+        onBlur={() => handleBlur(value)}
       />
     </div>
   );

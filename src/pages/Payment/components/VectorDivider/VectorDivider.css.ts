@@ -1,4 +1,3 @@
-// src/components/common/VectorDivider/VectorDivider.css.ts
 import { styleVariants } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 

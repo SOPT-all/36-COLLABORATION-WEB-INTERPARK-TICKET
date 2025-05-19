@@ -1,4 +1,3 @@
-// TicketPriceInfo.tsx
 import * as styles from './TicketPriceInfo.css';
 import InfoRowLabel from '../InfoRowTitle/InfoRowTitle';
 import VectorDivider from '../VectorDivider/VectorDivider';

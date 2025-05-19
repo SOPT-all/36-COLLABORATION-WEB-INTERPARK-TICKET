@@ -1,6 +1,7 @@
-import { useState, type ChangeEvent } from 'react';
+import { type ChangeEvent } from 'react';
 import clsx from 'clsx';
 import * as styles from './TextField.css';
+import { useFocusInput } from '../../hooks/useFocusInput';
 
 interface PhoneTextFieldProps {
   placeholder: string;
@@ -13,7 +14,7 @@ export default function PhoneTextField({
   value,
   onChange,
 }: PhoneTextFieldProps) {
-  const [isFocused, setIsFocused] = useState(false);
+  const { isFocused, handleFocus, handleBlur } = useFocusInput();
 
   const formatPhoneNumber = (input: string) => {
     const numbers = input.replace(/\D/g, '');
@@ -32,16 +33,6 @@ export default function PhoneTextField({
     onChange(formattedNumber);
   };
 
-  const handleFocus = () => {
-    setIsFocused(true);
-  };
-
-  const handleBlur = () => {
-    if (!value) {
-      setIsFocused(false);
-    }
-  };
-
   return (
     <div
       className={clsx(
@@ -56,7 +47,7 @@ export default function PhoneTextField({
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}
-        onBlur={handleBlur}
+        onBlur={() => handleBlur(value)}
         maxLength={13}
       />
     </div>

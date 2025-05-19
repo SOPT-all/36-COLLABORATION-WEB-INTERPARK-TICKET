@@ -1,4 +1,3 @@
-// src/components/Booking/BookingInfoSection.tsx
 import * as styles from './BookingInfoSection.css';
 import BtnChangeIcon from '@/shared/assets/icon/btn__change.svg?react';
 

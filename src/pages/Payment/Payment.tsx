@@ -12,6 +12,7 @@ import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/
 import * as listInfoStyles from './components/Dropdown/listInfo/ListInfo.css.ts';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import { validateForm } from './utils/validateForm';
 
 export default function PaymentPage() {
   const [name, setName] = useState('');
@@ -33,12 +34,7 @@ export default function PaymentPage() {
   };
 
   useEffect(() => {
-    setIsFormValid(
-      name.trim() !== '' &&
-        birthdate.trim() !== '' &&
-        phone.trim() !== '' &&
-        phone.length >= 12
-    );
+    setIsFormValid(validateForm(name, birthdate, phone));
   }, [name, birthdate, phone]);
 
   return (

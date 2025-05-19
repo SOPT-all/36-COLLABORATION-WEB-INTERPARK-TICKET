@@ -1,4 +1,3 @@
-// src/components/common/VectorDivider/VectorDivider.tsx
 import { clsx } from 'clsx';
 import { dividerStyle } from './VectorDivider.css';
 

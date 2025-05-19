@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import * as styles from './InfoRowTitle.css';
 
 interface InfoRowTitleProps {
@@ -8,9 +9,7 @@ interface InfoRowTitleProps {
 export default function InfoRowTitle({ text, className }: InfoRowTitleProps) {
   return (
     <div className={styles.infoRowTitleWrapper}>
-      <span className={`${styles.infoRowTitleText} ${className ?? ''}`}>
-        {text}
-      </span>
+      <span className={clsx(styles.infoRowTitleText, className)}>{text}</span>
     </div>
   );
 }

@@ -7,11 +7,37 @@ import VectorFrame from '@/shared/assets/vector/Vector 27.svg?react';
 import Divider from '@/shared/assets/vector/Vector 28.svg?react';
 
 interface BtnQuantityProps {
+  count?: number;
+  onCountChange?: (newCount: number) => void;
   initial?: number;
 }
 
-export default function BtnQuantity({ initial = 0 }: BtnQuantityProps) {
-  const [count, setCount] = useState(initial);
+export default function BtnQuantity({
+  count: externalCount,
+  onCountChange,
+  initial = 0,
+}: BtnQuantityProps) {
+  const [internalCount, setInternalCount] = useState(initial);
+
+  const count = externalCount !== undefined ? externalCount : internalCount;
+
+  const handleIncrement = () => {
+    const newCount = count + 1;
+    if (onCountChange) {
+      onCountChange(newCount);
+    } else {
+      setInternalCount(newCount);
+    }
+  };
+
+  const handleDecrement = () => {
+    const newCount = Math.max(0, count - 1);
+    if (onCountChange) {
+      onCountChange(newCount);
+    } else {
+      setInternalCount(newCount);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -28,16 +54,14 @@ export default function BtnQuantity({ initial = 0 }: BtnQuantityProps) {
         </span>
 
         <div className={styles.arrowGroup}>
-          <button
-            className={styles.arrowButtonUp}
-            onClick={() => setCount((prev) => prev + 1)}
-          >
+          <button className={styles.arrowButtonUp} onClick={handleIncrement}>
             <UpIcon />
           </button>
           <Divider className={styles.divider} />
           <button
             className={styles.arrowButtonDown}
-            onClick={() => setCount((prev) => Math.max(0, prev - 1))}
+            onClick={handleDecrement}
+            disabled={count === 0}
           >
             <DownIcon />
           </button>
