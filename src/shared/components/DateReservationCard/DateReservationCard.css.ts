@@ -47,7 +47,6 @@ export const line = style({
 export const seatInfoWrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  height: '9.5rem',
   padding: '1.4rem 1.4rem',
   gap: '1rem',
 });
