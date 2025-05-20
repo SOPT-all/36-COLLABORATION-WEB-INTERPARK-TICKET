@@ -14,13 +14,13 @@ const GenreSection = () => {
     queryFn: getHomeData,
   });
 
-  const genreRankingCategory = data?.find(
+  const DiscountCategory = data?.find(
     (category): category is CategoryBase<BasicPerformance> =>
       category.category === '장르별 랭킹'
   );
 
-  const keywords = genreRankingCategory?.keywordList ?? [];
-  const performances = genreRankingCategory?.getHomeResponseList ?? [];
+  const keywords = DiscountCategory?.keywordList ?? [];
+  const performances = DiscountCategory?.getHomeResponseList ?? [];
   
   const [selected, setSelected] = useState<string>('');
   useEffect(() => {
@@ -39,9 +39,8 @@ const GenreSection = () => {
   return (
     <div>
       <div className={styles.genreSection}>
-        <h1 className={styles.genreSectionTitle}>{genreRankingCategory?.category}</h1>
+        <h1 className={styles.genreSectionTitle}>{DiscountCategory?.category}</h1>
         <div className={styles.padd}>
-          {' '}
           <CategoryTab
             keywords={keywords}
             selected={selected}

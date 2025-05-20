@@ -1,57 +1,43 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as styles from './MdPick.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
+import { QUERY_KEY } from '@/shared/constants/queryKey';
+import { useQuery } from '@tanstack/react-query';
+import { getHomeData } from '../../api/api';
+import type { HomeResponse, CategoryBase, BasicPerformance } from '../../api/types';
 
 const MdPick = () => {
-  const keywords = [
-    '오직 NOL 티켓에서만',
-    '핫이슈 클래식&무용',
-    '화제의 전시',
-    '해외 공연',
-  ];
+    const { data, isLoading, isError } = useQuery<HomeResponse>({
+    queryKey: [QUERY_KEY.HOME],
+    queryFn: getHomeData,
+  });
 
-  // 현재 선택된 키워드
+  const genreRankingCategory = data?.find(
+    (category): category is CategoryBase<BasicPerformance> =>
+      category.category === 'MD PICK!'
+  );
+
+  const keywords = genreRankingCategory?.keywordList ?? [];
+  const DiscountCategory = genreRankingCategory?.getHomeResponseList ?? [];
+  
   const [selected, setSelected] = useState<string>('');
+  useEffect(() => {
+    if (keywords.length > 0 && selected === '') {
+      setSelected(keywords[0]);
+    }
+  }, [keywords, selected]);
 
-  // 키워드가 선택되었을 때 호출되는 함수
   const handleSelect = (keyword: string) => {
     setSelected(keyword);
   };
 
-  const infoCardsData = [
-    {
-      isrank: false,
-      rank: 1,
-      image:
-        'https://media.bunjang.co.kr/product/323773992_1_1743659275_w%7Bres%7D.jpg',
-      title: '뮤지컬 <팬텀>',
-      location: '세종문화회관',
-      date: '2025.07.25',
-    },
-    {
-      isrank: false,
-      rank: 2,
-      image:
-        'https://media.bunjang.co.kr/product/323773992_1_1743659275_w%7Bres%7D.jpg',
-      title: '뮤지컬 <팬텀>',
-      location: '세종문화회관',
-      date: '2025.07.25',
-    },
-    {
-      isrank: false,
-      rank: 3,
-      image:
-        'https://media.bunjang.co.kr/product/323773992_1_1743659275_w%7Bres%7D.jpg',
-      title: '뮤지컬 <팬텀>',
-      location: '세종문화회관',
-      date: '2025.07.25',
-    },
-  ];
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   return (
     <div className={styles.genreSection}>
-      <h1 className={styles.genreSectionTitle}>MD PICK</h1>
+      <h1 className={styles.genreSectionTitle}>{}</h1>
       <CategoryTab
         keywords={keywords}
         selected={selected}
@@ -60,7 +46,7 @@ const MdPick = () => {
       />
       <div className={styles.pad}>
         <div className={styles.scrollArea}>
-          {infoCardsData.map((card, index) => (
+          {/* {DiscountCategory.map((card, index) => (
             <InfoCard
               key={index}
               isrank={card.isrank}
@@ -70,7 +56,7 @@ const MdPick = () => {
               location={card.location}
               date={card.date}
             />
-          ))}
+          ))} */}
         </div>
       </div>
     </div>

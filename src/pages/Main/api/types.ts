@@ -1,5 +1,3 @@
-import type { BaseResponse } from "@/shared/network/baseResponse";
-
 // 공통 부분, NOL PLAY
 export interface BaseHome {
     id: number;
