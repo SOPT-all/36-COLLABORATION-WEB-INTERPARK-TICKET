@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
-import * as ListInfoStyles from './components/Dropdown/ListInfo/ListInfo.css';
+import * as ListInfoStyles from './components/Dropdown/ListInfomation/ListInfo.css';
 import TicketPriceInfo from './components/TicketPriceInfo/TicketPriceInfo';
 import * as styles from './Payment.css';
 import PriceQuantityInfo from './components/PriceQuantityInfo/PriceQuantityInfo';
@@ -9,7 +9,7 @@ import TicketReceiveSelect from './components/TicketReceiveSelect/TicketReceiver
 import TextField from './components/TextField/TextField';
 import PhoneTextField from './components/TextField/PhoneTextField';
 import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/PriceQuantityCard';
-import ListInfo from './components/Dropdown/ListInfo/ListInfo';
+import ListInfo from './components/Dropdown/ListInfomation/ListInfo';
 import { validateForm } from './utils/validateForm';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
