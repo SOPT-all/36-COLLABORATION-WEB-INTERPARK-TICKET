@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ic_wait_blue70_36 from '@assets/icon/ic_ wait_blue70_36.svg';
+import { useNavigate } from 'react-router';
 import SeatCard from './components/SeatCard/SeatCard';
 import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
@@ -173,6 +174,8 @@ const seatData: SeatData[] = [
 ];
 
 const SeatSelectPage = () => {
+  const navigate = useNavigate();
+
   const [selectedSeatType, setSelectedSeatType] =
     useState<SeatGradeFilter>(null);
 
@@ -213,9 +216,13 @@ const SeatSelectPage = () => {
     setShowPopup((prev) => !prev);
   };
 
+  const handleBackClick = () => {
+    navigate('/');
+  };
+
   return (
     <div className={styles.pageWrapper}>
-      <SeatHeader title="연극 이름" />
+      <SeatHeader title="연극 이름" onBackClick={handleBackClick} />
       <main className={styles.mainContent}>
         <div className={styles.seatSelectWrapper}>
           <SeatSelectChip
