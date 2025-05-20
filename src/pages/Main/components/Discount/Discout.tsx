@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import * as styles from './DiscountCard.css';
-import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import DiscountCard from './DiscoutCard';
 const DiscountSection = () => {

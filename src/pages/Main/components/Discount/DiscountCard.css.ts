@@ -78,7 +78,7 @@ export const scrollArea = style({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'column',
-  height: '70rem',
+  height: '58rem',
   gap: '1rem',
   overflow: 'scroll',
   padding: '2rem 1.8rem 2rem 0',
