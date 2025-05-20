@@ -43,3 +43,40 @@ export const checkboxContainer = style({
   paddingLeft: LAYOUT.PADDING.MD_PLUS,
   paddingTop: LAYOUT.PADDING.XL,
 });
+
+export const centerContainer = style({
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+});
+
+export const bankInfoContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.8rem',
+});
+
+export const receiptContainer = style({
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  padding: '0 2rem',
+});
+
+export const emptyContainer = style({
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+  padding: '0 2rem',
+});
+
+export const submitButtonContainer = style({
+  marginTop: '6rem',
+  display: 'flex',
+  justifyContent: 'center',
+  width: '100%',
+});
+
+export const methodContainer = style({
+  width: '34.5rem',
+});

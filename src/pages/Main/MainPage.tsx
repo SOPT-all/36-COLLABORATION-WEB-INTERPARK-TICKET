@@ -1,6 +1,6 @@
 import * as styles from './MainPage.css';
-import GenreSection from './components/Genre/Genre';
 import MdPick from './components/MdPick/MdPick';
+import GenreSection from './components/Genre/Genre';
 import KeyWordSection from './components/KeyWord/KeyWordSection';
 import {
   keywordDummyData,
@@ -32,21 +32,27 @@ function MainPage() {
           ))}
         </div>
         <HomeDivider />
+
         {/* 장르별 랭킹 */}
         <GenreSection />
         <HomeDivider />
+
         {/* 할인 중 공연 */}
         할인 중이여 오라
         <HomeDivider />
+
         {/* MD PICK */}
         <MdPick />
         <HomeDivider />
+
         {/* 이런 키워드 어때요? */}
         <KeyWordSection data={keywordDummyData} />
         <HomeDivider />
+
         {/* NOL PLAY */}
         <NolPlaySection data={NOLdummyData} />
         <img src={adBanner} />
+        
         {/* 곧 오픈 공연 */}
         <PlannedSection data={plannedDummyData} />
       </main>
