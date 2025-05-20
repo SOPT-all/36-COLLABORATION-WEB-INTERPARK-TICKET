@@ -3,13 +3,16 @@ import { recipe } from '@vanilla-extract/recipes';
 import { fontStyle } from '@/shared/styles/fontStyle';
 import { vars } from '@/shared/styles/tokens.css';
 
+const baseTabWrapper = {
+  display: 'flex',
+  gap: '0.8rem',
+  width: '100%',
+  flexShrink: 0,
+};
+
 export const tabWrapper = styleVariants({
   scroll: {
-    display: 'flex',
-    gap: '0.8rem',
-    width: '100%',
-    flexShrink: 0,
-
+    ...baseTabWrapper,
     overflowX: 'auto',
     scrollbarWidth: 'none',
     msOverflowStyle: 'none',
@@ -21,11 +24,8 @@ export const tabWrapper = styleVariants({
   },
 
   wrap: {
-    display: 'flex',
+    ...baseTabWrapper,
     flexWrap: 'wrap',
-    gap: '0.8rem',
-    width: '100%',
-    flexShrink: 0,
     alignItems: 'center',
     justifyContent: 'center',
   },
