@@ -1,14 +1,11 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const noticeContainer = style({
   alignSelf: 'stretch',
   color: vars.color.gray70,
-  fontFamily: 'Pretendard',
-  fontSize: '1rem',
-  fontStyle: 'normal',
-  fontWeight: 700,
-  lineHeight: '1.1rem',
+  ...fontStyle('b2_b_16'),
   padding: '0 2rem',
   textAlign: 'left',
   display: 'flex',
