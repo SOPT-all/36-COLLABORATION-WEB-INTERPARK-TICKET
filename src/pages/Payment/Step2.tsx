@@ -68,12 +68,7 @@ export default function PaymentStep2() {
         <Rectangle97 />
 
         <CouponCard />
-        <div
-          style={{
-            paddingLeft: LAYOUT.PADDING.MD_PLUS,
-            paddingTop: LAYOUT.PADDING.XL,
-          }}
-        >
+        <div className={styles.checkboxContainer}>
           <CustomCheckbox
             checked={isAgreed}
             onChange={(checked) => setIsAgreed(checked)}
@@ -82,17 +77,7 @@ export default function PaymentStep2() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <LargeButton
-            onClick={handleSubmit}
-            isActive={isAgreed}
-            style={{
-              maxWidth: '37.5rem',
-              height: LAYOUT.HEIGHT.SM,
-              borderRadius: LAYOUT.BORDER_RADIUS.MD,
-              fontSize: vars.font.b2_b_16.size,
-              fontWeight: vars.font.b2_b_16.weight,
-            }}
-          >
+          <LargeButton onClick={handleSubmit} isActive={isAgreed}>
             다음
           </LargeButton>
         </div>

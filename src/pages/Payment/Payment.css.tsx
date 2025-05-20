@@ -38,3 +38,8 @@ export const sectionContainer = style({
   width: '100%',
   backgroundColor: vars.color.white,
 });
+
+export const checkboxContainer = style({
+  paddingLeft: LAYOUT.PADDING.MD_PLUS,
+  paddingTop: LAYOUT.PADDING.XL,
+});
