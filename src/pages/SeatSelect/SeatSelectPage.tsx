@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import SeatCard from './components/SeatCard/SeatCard';
+import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
 import type { SeatData } from './types/SeatData';
@@ -168,11 +170,26 @@ const seatData: SeatData[] = [
 ];
 
 const SeatSelectPage = () => {
+  const [selectedSeatType, setSelectedSeatType] = useState<'S' | 'R'>('S');
   return (
     <div className={styles.pageWrapper}>
       <SeatHeader title="연극 이름" />
       <main className={styles.mainContent}>
+        <div className={styles.seatSelectWrapper}>
+          <SeatSelectChip
+            seatType="S"
+            isSelected={selectedSeatType === 'S'}
+            onClick={() => setSelectedSeatType('S')}
+          />
+          <SeatSelectChip
+            seatType="R"
+            isSelected={selectedSeatType === 'R'}
+            onClick={() => setSelectedSeatType('R')}
+          />
+        </div>
+
         <StageText />
+
         <SeatCard seats={seatData} />
       </main>
     </div>

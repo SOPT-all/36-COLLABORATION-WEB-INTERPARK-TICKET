@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css';
+import { vars } from '@/shared/styles/tokens.css';
 
 export const pageWrapper = style({
   display: 'flex',
@@ -6,9 +7,21 @@ export const pageWrapper = style({
 });
 
 export const mainContent = style({
-  marginTop: '5.6rem',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  gap: '5rem',
+  marginTop: '5.4rem',
+  backgroundColor: vars.color.gray80,
+  gap: '2rem',
+});
+
+export const seatSelectWrapper = style({
+  display: 'flex',
+  width: '100%',
+  maxHeight: '2.8rem',
+  justifyContent: 'flex-start',
+  gap: '0.6rem',
+  marginLeft: '1.8rem',
+  marginTop: '2rem',
+  marginBottom: '9rem',
 });
