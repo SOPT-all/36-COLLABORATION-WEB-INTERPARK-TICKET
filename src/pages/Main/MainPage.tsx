@@ -52,7 +52,7 @@ function MainPage() {
         {/* NOL PLAY */}
         <NolPlaySection data={NOLdummyData} />
         <img src={adBanner} />
-        
+
         {/* 곧 오픈 공연 */}
         <PlannedSection data={plannedDummyData} />
       </main>

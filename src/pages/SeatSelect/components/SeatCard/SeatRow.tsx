@@ -7,6 +7,7 @@ type Props = {
   availability: boolean[];
   selected: { row: string; index: number } | null;
   onSelect: (row: string, index: number) => void;
+  selectedGrade: 'S' | 'R' | null;
 };
 
 const SeatRow = ({
@@ -15,6 +16,7 @@ const SeatRow = ({
   availability,
   selected,
   onSelect,
+  selectedGrade,
 }: Props) => {
   const hasSelected = selected !== null;
 
@@ -28,12 +30,14 @@ const SeatRow = ({
         const aisle = index === 2 || index === 9;
 
         const isInactive = hasSelected && !isSelected;
+        const isFiltered = selectedGrade !== null && selectedGrade !== grade;
+        const seatGrade = available && !isFiltered ? grade : undefined;
 
         return (
           <div className={aisle ? styles.spacer : undefined}>
             <Seat
               key={index}
-              grade={available ? grade : undefined}
+              grade={seatGrade}
               isInactive={isInactive}
               isSelected={isSelected}
               label={isSelected ? `${rowLabel}${index + 1}` : undefined}
