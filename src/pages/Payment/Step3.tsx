@@ -1,23 +1,23 @@
-import { useNavigate } from 'react-router';
 import { useState } from 'react';
-import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
+import { useNavigate } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
 import VectorDivider from './components/VectorDivider/VectorDivider';
+import InfoPrice from './components/InfoPrice/InfoPrice';
+import ListCheck from './components/Dropdown/ListCheck/ListCheck';
+import MethodContainer from './components/Container/MethodContainer';
+import BankContainer from './components/Container/BankContainer';
+import BankNotice from './components/BankNotice/BankNotice';
+import TextField from './components/TextField/TextField';
+import BankInfoCard from '@/pages/Payment/components/BankInfo/BankInfoCard';
+import { vars } from '@/shared/styles/tokens.css';
+import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import {
   PaddedRectangle95,
   Rectangle94,
   Rectangle95,
   Rectangle97,
 } from '@/shared/components/Rectangle/Rectangle';
-import InfoPrice from './components/InfoPrice/InfoPrice';
-import { vars } from '@/shared/styles/tokens.css';
-import ListCheck from './components/Dropdown/ListCheck/ListCheck';
-import MethodContainer from './components/Container/MethodContainer';
-import BankContainer from './components/Container/BankContainer';
-import BankInfoCard from '@/pages/Payment/components/BankInfo/BankInfoCard';
-import BankNotice from './components/BankNotice/BankNotice';
-import TextField from './components/TextField/TextField';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 
 export default function PaymentStep3() {
