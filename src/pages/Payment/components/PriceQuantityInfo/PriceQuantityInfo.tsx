@@ -1,6 +1,5 @@
 import PriceQuantityCard from './PriceQuantityCard/PriceQuantityCard';
 import * as styles from './PriceQuantityInfo.css';
-import { Rectangle95 } from '@/shared/components/Rectangle/Rectangle';
 
 interface PriceQuantityInfoProps {
   quantity: number;
@@ -20,7 +19,6 @@ export default function PriceQuantityInfo({
         count={quantity}
         onCountChange={onQuantityChange}
       />
-      <Rectangle95 />
     </section>
   );
 }

@@ -16,9 +16,8 @@ import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import {
   Rectangle94,
   Rectangle95,
+  PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
-import { LAYOUT } from '@/shared/styles/layoutConstants';
-import { fontStyle } from '@/shared/styles/fontStyle';
 
 export default function PaymentStep1() {
   const navigate = useNavigate();
@@ -83,10 +82,12 @@ export default function PaymentStep1() {
 
           <Rectangle94 />
           <TicketPriceInfo />
+
           <PriceQuantityInfo
             quantity={quantity}
             onQuantityChange={setQuantity}
           />
+          <PaddedRectangle95 />
 
           <ListInfo label="일반 할인">
             <div className={ListInfoStyles.quantityCardsContainer}>
@@ -115,16 +116,7 @@ export default function PaymentStep1() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <LargeButton
-            onClick={handleSubmit}
-            isActive={isFormValid}
-            style={{
-              maxWidth: '37.5rem',
-              height: LAYOUT.HEIGHT.SM,
-              borderRadius: LAYOUT.BORDER_RADIUS.MD,
-              ...fontStyle('b2_b_16'),
-            }}
-          >
+          <LargeButton onClick={handleSubmit} isActive={isFormValid}>
             다음
           </LargeButton>
         </div>
