@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
@@ -19,16 +19,38 @@ import {
   Rectangle97,
 } from '@/shared/components/Rectangle/Rectangle';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import { createPayment } from '@/pages/Payment/constants/payment';
+import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
-  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other' | null>(null);
+  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other'>('noll');
   const [isOtherMethodOpen, setIsOtherMethodOpen] = useState(false);
   const [isBankOpen, setIsBankOpen] = useState(false);
   const [selectedBank, setSelectedBank] = useState<string>('');
   const [receiptNumber, setReceiptNumber] = useState('');
   const [isAgreed, setIsAgreed] = useState(false);
   const [isReceiptChecked, setIsReceiptChecked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const {
+    ticketCount,
+    totalPrice,
+    deliveryMethod,
+    userInfo,
+    paymentMethod,
+    discountAmount,
+    pointAmount,
+    setPaymentMethod,
+  } = usePaymentStore();
+
+  useEffect(() => {
+    // 필수 데이터가 없는 경우 이전 단계로 이동
+    if (!userInfo || !deliveryMethod || ticketCount === 0) {
+      navigate('/payment/step2');
+    }
+  }, [userInfo, deliveryMethod, ticketCount, navigate]);
 
   const handleBack = () => {
     navigate('/payment/step2');
@@ -42,9 +64,11 @@ export default function PaymentStep3() {
     setSelectedPayment(payment);
     if (payment === 'other') {
       setIsOtherMethodOpen(true);
+      setPaymentMethod(''); // 다른 결제 수단 선택 시 초기화
     } else {
       setIsOtherMethodOpen(false);
       setIsBankOpen(false);
+      setPaymentMethod(''); // NOL 인터파크 페이 선택 시 결제 수단 초기화
     }
   };
 
@@ -61,6 +85,7 @@ export default function PaymentStep3() {
 
   const handleBankChange = (bank: string) => {
     setSelectedBank(bank);
+    setPaymentMethod(bank); // 다른 결제 수단에서 은행 선택 시에만 결제 수단 설정
   };
 
   const handleReceiptNumberChange = (value: string) => {
@@ -68,10 +93,36 @@ export default function PaymentStep3() {
     setReceiptNumber(numbersOnly);
   };
 
-  const handleSubmit = () => {
-    if (!isAgreed || !selectedPayment) return;
-    navigate('/payment/complete');
+  const handleSubmit = async () => {
+    if (!isAgreed || !userInfo || !paymentMethod) return;
+    
+    try {
+      setIsSubmitting(true);
+      setError(null);
+
+      const paymentData = {
+        ticketCount,
+        totalPrice: finalPrice,
+        deliveryMethod,
+        userInfo,
+        paymentMethod
+      };
+
+      const response = await createPayment(paymentData);
+      console.log('결제 응답:', response);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : '결제 처리 중 오류가 발생했습니다.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  const formatPrice = (price: number) => {
+    return price.toLocaleString() + '원';
+  };
+
+  // 최종 결제 금액 계산
+  const finalPrice = totalPrice - discountAmount - pointAmount;
 
   return (
     <>
@@ -82,18 +133,48 @@ export default function PaymentStep3() {
           <InfoRowTitle text="결제예정금액" />
           <VectorDivider />
           <Rectangle97 />
-          <InfoPrice label="티켓 금액" value="66,000원" labelColor={vars.color.gray60} valueColor={vars.color.black} />
-          <InfoPrice label="예매 수수료" value="2000원" labelColor={vars.color.gray60} valueColor={vars.color.black} />
-          <InfoPrice label="배송료" value="0원" labelColor={vars.color.gray60} valueColor={vars.color.black} />
+          <InfoPrice
+            label="티켓 금액"
+            value={formatPrice(totalPrice)}
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.black}
+          />
+          <InfoPrice
+            label="예매 수수료"
+            value="2,000원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.black}
+          />
+          <InfoPrice
+            label="배송료"
+            value="0원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.black}
+          />
         </div>
         <PaddedRectangle95 />
         <div className={styles.sectionContainer}>
-          <InfoPrice label="할인" value="-33,000원" labelColor={vars.color.gray60} valueColor={vars.color.blue100} />
-          <InfoPrice label="포인트" value="0원" labelColor={vars.color.gray60} valueColor={vars.color.blue100} />
+          <InfoPrice
+            label="할인"
+            value={formatPrice(-discountAmount)}
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.blue100}
+          />
+          <InfoPrice
+            label="포인트"
+            value={formatPrice(-pointAmount)}
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.blue100}
+          />
           <VectorDivider />
           <VectorDivider />
           <Rectangle97 />
-          <InfoPrice label="총 결제 금액" value="35,000원" labelColor={vars.color.black} valueColor={vars.color.blue100} />
+          <InfoPrice
+            label="총 결제 금액"
+            value={formatPrice(finalPrice)}
+            labelColor={vars.color.black}
+            valueColor={vars.color.blue100}
+          />
           <Rectangle97 />
           <Rectangle94 />
           <Rectangle97 />
@@ -177,16 +258,26 @@ export default function PaymentStep3() {
           checked={isAgreed}
           onChange={() => setIsAgreed((prev) => !prev)}
         />
-        <Rectangle94 />
-        <Rectangle97 />
-        <div className={styles.centerContainer}>
-          <LargeButton
-            onClick={handleSubmit}
-            disabled={!isAgreed || !selectedPayment}
+        <ListCheck
+          label="(필수) 취소 규정 동의"
+          checked={isAgreed}
+          onChange={() => setIsAgreed(!isAgreed)}
+        />
+        <div className={styles.submitButtonContainer}>
+          {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
+          <LargeButton 
+            onClick={handleSubmit} 
+            isActive={isAgreed && !isSubmitting}
+            disabled={isSubmitting}
           >
-            결제하기
+            {isSubmitting ? '처리 중...' : '결제'}
           </LargeButton>
         </div>
+        {error && (
+          <div className={styles.errorMessage}>
+            {error}
+          </div>
+        )}
       </main>
     </>
   );

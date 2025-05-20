@@ -6,6 +6,7 @@ import ListPoint from './components/Dropdown/ListPoint/ListPoint';
 import VectorDivider from './components/VectorDivider/VectorDivider';
 import CouponCard from './components/CouponCard/CouponCard';
 import CustomCheckbox from './components/CustomCheckbox/CustomCheckbox';
+import { usePaymentStore } from './store/paymentStore';
 import {
   Rectangle94,
   Rectangle95,
@@ -19,6 +20,7 @@ import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 export default function PaymentStep2() {
   const navigate = useNavigate();
   const [isAgreed, setIsAgreed] = useState(false);
+  const { setDeliveryMethod } = usePaymentStore();
 
   const handleBack = () => {
     navigate('/payment/step1');
@@ -29,6 +31,11 @@ export default function PaymentStep2() {
   };
 
   const handleSubmit = () => {
+    if (!isAgreed) return;
+
+    // 배송 방법 저장 (현재는 "택배"로 고정)
+    setDeliveryMethod("택배");
+
     window.scrollTo(0, 0);
     navigate('/payment/step3');
   };

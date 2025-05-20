@@ -13,6 +13,7 @@ import ListInfo from './components/Dropdown/ListInfomation/ListInfo';
 import { validateForm } from './utils/validateForm';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
+import { usePaymentStore } from './store/paymentStore';
 import {
   Rectangle94,
   Rectangle95,
@@ -27,6 +28,8 @@ export default function PaymentStep1() {
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [quantity, setQuantity] = useState(1);
 
+  const { setUserInfo, setTicketCount, setTotalPrice } = usePaymentStore();
+
   const handleBack = () => {
     navigate(-1);
   };
@@ -37,6 +40,23 @@ export default function PaymentStep1() {
 
   const handleSubmit = () => {
     if (!isFormValid) return;
+
+    // 사용자 정보를 store에 저장
+    setUserInfo({
+      name,
+      birth: birthdate,
+      phoneNumber: phone,
+      email: additionalInfo || 'example@example.com', // 이메일은 필수가 아니므로 기본값 설정
+    });
+
+    // 티켓 수량 저장
+    setTicketCount(quantity);
+
+    // 총 가격 계산 (티켓 가격 * 수량)
+    const ticketPrice = 66000; // 티켓 가격
+    const totalPrice = ticketPrice * quantity;
+    setTotalPrice(totalPrice);
+
     window.scrollTo(0, 0);
     navigate('/payment/step2');
   };
