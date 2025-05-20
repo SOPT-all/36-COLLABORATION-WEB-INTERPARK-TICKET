@@ -1,50 +1,48 @@
+import { useQuery } from '@tanstack/react-query';
 import * as styles from './PlannedSection.css';
 import { sectionHeader } from '../../MainPage.css';
+import { getHomeData } from '../../api/api';
+import type {
+  HomeResponse,
+  CategoryBase,
+  PlannedPerformance,
+} from '../../api/types';
 import planned_expected_first from '@/shared/assets/icon/planned_expected_first.svg';
 import Badge from '@/shared/components/Badge/Badge';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
+import { QUERY_KEY } from '@/shared/constants/queryKey';
 
-export type TagType = 'HOT' | '단독판매';
+function PlannedSection() {
+  const { data, isLoading, isError } = useQuery<HomeResponse>({
+    queryKey: [QUERY_KEY.HOME],
+    queryFn: getHomeData,
+  });
 
-export type getHomeResponse = {
-  id: number;
-  title: string;
-  imageUrl: string;
-  startDate: string;
-  description: string;
-  tagList: TagType[];
-};
+  const PlannedCategory = data?.find(
+    (category): category is CategoryBase<PlannedPerformance> =>
+      category.category === '곧 오픈하는 공연'
+  );
 
-export type PlannedData = {
-  category: string;
-  getHomeResponseList: getHomeResponse[];
-};
+  const performances = PlannedCategory?.getHomeResponseList ?? [];
 
-interface Props {
-  data: PlannedData;
-}
-
-function PlannedSection({ data }: Props) {
-  const tagMap: Record<TagType, 'Hot' | '단독판매'> = {
-    HOT: 'Hot',
-    단독판매: '단독판매',
-  };
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   return (
     <section className={styles.sectionWrapper}>
-      <header className={sectionHeader}>{data.category}</header>
+      <header className={sectionHeader}>{PlannedCategory?.category}</header>
 
       <div className={styles.cardWrapper}>
-        {data.getHomeResponseList.map((item) => (
-          <div className={styles.cardContainer}>
-            <img src={planned_expected_first} />
+        {performances.map((planned) => (
+          <div className={styles.cardContainer} key={planned.id}>
+            <img src={planned.imageUrl} className={styles.img} />
             <div className={styles.textWrapper}>
-              <p className={styles.dateText}>{item.startDate}</p>
-              <p className={styles.titleText}>{item.title}</p>
-              <p className={styles.descriptionText}>{item.description}</p>
+              <p className={styles.dateText}>{planned.startDate}</p>
+              <p className={styles.titleText}>{planned.title}</p>
+              <p className={styles.descriptionText}>{planned.description}</p>
               <div className={styles.tagGroup}>
-                {item.tagList.map((tag) => (
-                  <Badge key={tag} type={tagMap[tag]} />
+                {planned.tagList.map((tag) => (
+                  <Badge key={tag} type={tag} />
                 ))}
               </div>
             </div>

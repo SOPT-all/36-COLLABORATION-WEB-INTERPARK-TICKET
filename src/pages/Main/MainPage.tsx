@@ -2,7 +2,6 @@ import * as styles from './MainPage.css';
 import MdPick from './components/MdPick/MdPick';
 import GenreSection from './components/Genre/Genre';
 import KeyWordSection from './components/KeyWord/KeyWordSection';
-import { plannedDummyData } from './mockData/mockData';
 import NolPlaySection from './components/NOL PLAY/NolPlaySection';
 import PlannedSection from './components/Planned/PlannedSection';
 import DiscountSection from './components/Discount/Discout';
@@ -51,7 +50,7 @@ function MainPage() {
         <img src={adBanner} />
 
         {/* 곧 오픈 공연 */}
-        <PlannedSection data={plannedDummyData} />
+        <PlannedSection />
       </main>
 
       <footer className={styles.footerWrapper}>

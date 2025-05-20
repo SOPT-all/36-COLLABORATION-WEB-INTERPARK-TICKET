@@ -5,7 +5,7 @@ export interface BaseHome {
   imageUrl: string;
 }
 
-// 장르별 랭킹, MD PICK, 이런 키워드는 어때요?
+// 장르별 랭킹, MD PICK!, 이런 키워드는 어때요?
 export interface BasicPerformance extends BaseHome {
   location?: string;
   startDate?: string;
@@ -23,6 +23,7 @@ export interface DiscountPerformance extends BaseHome {
 
 export type tagType = 'HOT' | '단독판매';
 
+// 곧 오픈하는 공연!
 export interface PlannedPerformance extends BaseHome {
   startDate: string;
   endDate: string;

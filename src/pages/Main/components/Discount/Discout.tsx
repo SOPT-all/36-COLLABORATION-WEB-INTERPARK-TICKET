@@ -32,6 +32,7 @@ const DiscountSection = () => {
       <div className={styles.scrollArea}>
         {performances.map((discountData) => (
           <DiscountCard
+            key={discountData.id}
             id={discountData.id}
             title={discountData.title}
             discountRate={discountData.discountRate}

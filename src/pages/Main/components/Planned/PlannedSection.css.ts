@@ -75,3 +75,8 @@ export const tagGroup = style({
   gap: '0.4rem',
   marginTop: '0.4rem',
 });
+
+export const img = style({
+  width: '9.525rem',
+  height: '12.7rem',
+});
