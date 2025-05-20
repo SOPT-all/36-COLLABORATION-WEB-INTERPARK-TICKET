@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as styles from './MdPick.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
-import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
+import Rectangle95 from '@/shared/components/Rectangle/Rectangle';
 // interface Props {}
 
 const MdPick = () => {
@@ -52,8 +52,9 @@ const MdPick = () => {
   ];
 
   return (
-    <div className={styles.genreSection}>
-      <div className={styles.pad}>
+    <div>
+      <Rectangle95 />
+      <div className={styles.genreSection}>
         <h1 className={styles.genreSectionTitle}>장르별 랭킹</h1>
         <CategoryTab
           keywords={keywords}
@@ -61,20 +62,23 @@ const MdPick = () => {
           onSelect={handleSelect}
           variant="wrap"
         />
-        <div className={styles.scrollArea}>
-          {infoCardsData.map((card, index) => (
-            <InfoCard
-              key={index} // 고유한 key값 제공
-              isrank={card.isrank}
-              rank={card.rank}
-              image={card.image}
-              title={card.title}
-              location={card.location}
-              date={card.date}
-            />
-          ))}
+        <div className={styles.pad}>
+          <div className={styles.scrollArea}>
+            {infoCardsData.map((card, index) => (
+              <InfoCard
+                key={index}
+                isrank={card.isrank}
+                rank={card.rank}
+                image={card.image}
+                title={card.title}
+                location={card.location}
+                date={card.date}
+              />
+            ))}
+          </div>
         </div>
       </div>
+      <Rectangle95 />
     </div>
   );
 };

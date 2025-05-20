@@ -4,6 +4,7 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const genreSection = style({
   display: 'flex',
   flexDirection: 'column',
+  padding: '3rem 0 3rem 0',
 });
 export const genreSectionTitle = style({
   ...fontStyle('h5_sb_20'),
@@ -11,9 +12,7 @@ export const genreSectionTitle = style({
   marginBottom: '2rem',
   textAlign: 'center',
 });
-export const pad = style({
-  padding: '3rem 0 3rem 1.3rem',
-});
+export const pad = style({ paddingLeft: '1.3rem' });
 export const scrollArea = style({
   display: 'flex',
   overflow: 'scroll',
