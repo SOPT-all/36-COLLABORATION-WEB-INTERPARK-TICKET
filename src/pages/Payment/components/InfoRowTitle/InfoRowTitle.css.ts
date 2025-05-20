@@ -13,3 +13,11 @@ export const infoRowTitleText = style({
   ...fontStyle('b2_b_16'),
   color: vars.color.gray80,
 });
+
+export const infoRowSubText = style({
+  ...fontStyle('b12_sb_12'),
+  color: vars.color.gray60,
+  marginLeft: 'auto',
+  textAlign: 'right',
+  paddingRight: '1.5rem',
+});

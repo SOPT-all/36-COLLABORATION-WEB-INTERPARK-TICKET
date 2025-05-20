@@ -6,7 +6,7 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const wrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  gap: LAYOUT.GAP.MD,
+  gap: '1.6rem',
   marginTop: LAYOUT.MARGIN.LG,
 });
 
@@ -18,16 +18,16 @@ export const title = style({
 export const optionRow = style({
   display: 'flex',
   alignItems: 'center',
-  gap: LAYOUT.GAP.XL,
+  gap: '10.8rem',
 });
 
 export const description = style({
-  ...fontStyle('b14_me_12'),
+  ...fontStyle('c2_me_10'),
   color: vars.color.gray60,
   lineHeight: '2.05rem',
-  paddingTop: LAYOUT.PADDING.MD,
+  paddingTop: '1.6rem',
 });
 
 export const ticketReceiveCardWrapper = style({
-  paddingLeft: LAYOUT.PADDING.MD,
+  paddingLeft: '1.8rem',
 });

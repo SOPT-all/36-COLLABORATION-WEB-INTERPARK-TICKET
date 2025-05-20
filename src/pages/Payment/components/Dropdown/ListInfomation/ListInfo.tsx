@@ -1,33 +1,18 @@
 import { useState } from 'react';
-import type { ReactNode } from 'react';
-import * as styles from './ListInfo.css.ts';
+import * as styles from './ListInfo.css';
 import ArrowUpIcon from '@/shared/assets/icon/ic_arrow_up_gray90_24.svg?react';
 import ArrowDownIcon from '@/shared/assets/icon/ic_arrow_down_gray90_24.svg?react';
 
 interface ListInfoProps {
   label: string;
-  children?: ReactNode;
-  isOpen?: boolean;
-  onToggle?: (isOpen: boolean) => void;
+  children?: React.ReactNode;
 }
 
-export default function ListInfo({
-  label,
-  children,
-  isOpen: externalIsOpen,
-  onToggle,
-}: ListInfoProps) {
-  const [internalIsOpen, setInternalIsOpen] = useState(false);
-
-  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+export default function ListInfo({ label, children }: ListInfoProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => {
-    const newIsOpen = !isOpen;
-    if (onToggle) {
-      onToggle(newIsOpen);
-    } else {
-      setInternalIsOpen(newIsOpen);
-    }
+    setIsOpen((prev) => !prev);
   };
 
   return (
@@ -38,8 +23,7 @@ export default function ListInfo({
           {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
         </span>
       </button>
-
-      {isOpen && children}
+      {isOpen && <div className={styles.content}>{children}</div>}
     </div>
   );
 }

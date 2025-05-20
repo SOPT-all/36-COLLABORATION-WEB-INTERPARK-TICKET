@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router';
+import { createHashRouter } from 'react-router';
 import MainPage from '@/pages/Main/MainPage';
 import PaymentStep1 from '@/pages/Payment/Step1';
 import PaymentStep2 from '@/pages/Payment/Step2';
@@ -6,7 +6,7 @@ import PaymentStep3 from '@/pages/Payment/Step3';
 import SelectDatePage from '@/pages/SelectDate/SelectDatePage';
 import SeatSelectPage from '@/pages/SeatSelect/SeatSelectPage';
 
-const router = createBrowserRouter([
+export const router = createHashRouter([
   {
     path: '/',
     element: <MainPage />,
@@ -32,5 +32,3 @@ const router = createBrowserRouter([
     element: <SeatSelectPage />,
   },
 ]);
-
-export default router;

@@ -1,4 +1,5 @@
 import * as styles from './MainPage.css';
+import GenreSection from './components/Genre/Genre';
 import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
@@ -13,11 +14,13 @@ function MainPage() {
         <div className={styles.categoryGrid}>
           {CATEGORY_ITEMS.map(({ id, name, icon: Icon }) => (
             <div key={id} className={styles.categoryItem}>
-              <img src={Icon} />
+              <img src={Icon} className={styles.icon} />
               <span>{name}</span>
             </div>
           ))}
         </div>
+
+        <GenreSection />
       </main>
     </div>
   );

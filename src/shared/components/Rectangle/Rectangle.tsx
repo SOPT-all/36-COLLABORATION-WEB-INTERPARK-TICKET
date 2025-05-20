@@ -1,13 +1,22 @@
-import { rectangleVariants } from './Rectangle.css';
+import { rectangle, paddedContainer } from './Rectangle.css';
 
 interface RectangleProps {
-  variant?: 'gray10' | 'gray20';
+  type: 'divider' | 'spacer' | 'spacerLarge' | 'spacerXLarge';
+  hasPadding?: boolean;
 }
 
-export default function Rectangle({ variant = 'gray10' }: RectangleProps) {
-  const variantKey = variant === 'gray10' ? 'gray10_1rem' : 'gray20_0_1rem';
-  return <div className={rectangleVariants[variantKey]} />;
-}
+export const Rectangle = ({ type, hasPadding = false }: RectangleProps) => {
+  const content = <div className={rectangle({ type })} />;
 
-export const Rectangle94 = () => <Rectangle variant="gray10" />;
-export const Rectangle95 = () => <Rectangle variant="gray20" />;
+  if (hasPadding) {
+    return <div className={paddedContainer}>{content}</div>;
+  }
+
+  return content;
+};
+
+export const Rectangle94 = () => <Rectangle type="spacer" />;
+export const Rectangle95 = () => <Rectangle type="divider" />;
+export const Rectangle96 = () => <Rectangle type="spacerXLarge" />;
+export const Rectangle97 = () => <Rectangle type="spacerLarge" />;
+export const PaddedRectangle95 = () => <Rectangle type="divider" hasPadding />;
