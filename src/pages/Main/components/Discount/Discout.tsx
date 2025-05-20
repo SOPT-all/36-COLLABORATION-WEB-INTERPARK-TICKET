@@ -1,6 +1,6 @@
 import * as styles from './DiscountCard.css';
-import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import DiscountCard from './DiscoutCard';
+import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import Rectangle95 from '@/shared/components/Rectangle/Rectangle';
 const DiscountSection = () => {
   const discountCardsData = [
