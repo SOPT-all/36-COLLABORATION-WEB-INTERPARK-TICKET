@@ -25,7 +25,7 @@ const GenreSection = () => {
   );
 
   const keywords = useMemo(() => {
-    return GenreCategory?.keywordList ?? []
+    return GenreCategory?.keywordList ?? [];
   }, [GenreCategory]);
 
   const performances = GenreCategory?.getHomeResponseList ?? [];
@@ -46,9 +46,7 @@ const GenreSection = () => {
   return (
     <div>
       <div className={styles.genreSection}>
-        <h1 className={styles.genreSectionTitle}>
-          {GenreCategory?.category}
-        </h1>
+        <h1 className={styles.genreSectionTitle}>{GenreCategory?.category}</h1>
         <div className={styles.padd}>
           <CategoryTab
             keywords={keywords}

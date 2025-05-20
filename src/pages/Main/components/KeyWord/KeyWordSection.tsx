@@ -27,9 +27,9 @@ function KeyWordSection() {
   const performances = AboutKewordCategory?.getHomeResponseList ?? [];
 
   const keywords = useMemo(() => {
-    return AboutKewordCategory?.keywordList ?? []
+    return AboutKewordCategory?.keywordList ?? [];
   }, [AboutKewordCategory]);
-  
+
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
       setSelected(keywords[0]);

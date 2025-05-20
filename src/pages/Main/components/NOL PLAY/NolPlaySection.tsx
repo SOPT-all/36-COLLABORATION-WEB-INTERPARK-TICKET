@@ -25,12 +25,12 @@ const NolPlaySection = () => {
     (category): category is CategoryBase<BasicPerformance> =>
       category.category === 'NOL PLAY'
   );
-  
+
   const performances = NolPlayCategory?.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
   const keywords = useMemo(() => {
-        return NolPlayCategory?.keywordList ?? []
-      }, [NolPlayCategory]);
+    return NolPlayCategory?.keywordList ?? [];
+  }, [NolPlayCategory]);
 
   const [currentPage, setCurrentPage] = useState(0);
   const totalCards = performances.length;

@@ -26,9 +26,9 @@ const MdPick = () => {
   const performances = MDpickCategory?.getHomeResponseList ?? [];
 
   const keywords = useMemo(() => {
-      return MDpickCategory?.keywordList ?? []
-    }, [MDpickCategory]);
-  
+    return MDpickCategory?.keywordList ?? [];
+  }, [MDpickCategory]);
+
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
       setSelected(keywords[0]);
