@@ -10,14 +10,14 @@ interface Props {
   endDate: string;
 }
 
-const InfoCard = ({ 
-  isrank, 
-  rank, 
-  image, 
-  title, 
-  location, 
-  startDate, 
-  endDate 
+const InfoCard = ({
+  isrank,
+  rank,
+  image,
+  title,
+  location,
+  startDate,
+  endDate,
 }: Props) => {
   const rankLayer = isrank ? ` ${styles.rank}` : ``;
 
@@ -32,7 +32,9 @@ const InfoCard = ({
       <div className={styles.pad_45}>
         <h2 className={styles.InfoCardTitle}>{title}</h2>
         <address className={styles.InfoCardTxt}> {location}</address>
-        <time className={styles.InfoCardDate}>{startDate} ~ {endDate}</time>
+        <time className={styles.InfoCardDate}>
+          {startDate} ~ {endDate}
+        </time>
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ import {
 } from './mockData/mockData';
 import NolPlaySection from './components/NOL PLAY/NolPlaySection';
 import PlannedSection from './components/Planned/PlannedSection';
+import DiscountSection from './components/Discount/Discout';
 import Footer from '@/shared/components/Footer/Footer';
 import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
@@ -16,7 +17,6 @@ import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
 import bar_navigation from '@/shared/assets/icon/bar_navigation.svg';
-import DiscountSection from './components/Discount/Discout';
 
 function MainPage() {
   return (

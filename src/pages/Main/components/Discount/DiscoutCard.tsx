@@ -1,5 +1,5 @@
-import type { DiscountPerformance } from '../../api/types';
 import * as styles from './DiscountCard.css';
+import type { DiscountPerformance } from '../../api/types';
 import TimeDeal from '@/shared/components/TimeDeal/TimeDeal';
 
 const DiscountCard = ({

@@ -1,14 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import * as styles from './MdPick.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
+import { getHomeData } from '../../api/api';
+import type {
+  HomeResponse,
+  CategoryBase,
+  BasicPerformance,
+} from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
-import { useQuery } from '@tanstack/react-query';
-import { getHomeData } from '../../api/api';
-import type { HomeResponse, CategoryBase, BasicPerformance } from '../../api/types';
 
 const MdPick = () => {
-    const { data, isLoading, isError } = useQuery<HomeResponse>({
+  const { data, isLoading, isError } = useQuery<HomeResponse>({
     queryKey: [QUERY_KEY.HOME],
     queryFn: getHomeData,
   });
@@ -20,7 +24,7 @@ const MdPick = () => {
 
   const keywords = MDpickCategory?.keywordList ?? [];
   const performances = MDpickCategory?.getHomeResponseList ?? [];
-  
+
   const [selected, setSelected] = useState<string>('');
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {

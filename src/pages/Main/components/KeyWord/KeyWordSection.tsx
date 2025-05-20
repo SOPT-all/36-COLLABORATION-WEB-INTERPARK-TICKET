@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import * as styles from './KeyWordSection.css';
 import { sectionHeader } from '../../MainPage.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
+import { getHomeData } from '../../api/api';
+import type {
+  BasicPerformance,
+  CategoryBase,
+  HomeResponse,
+} from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import keyword_sangsang from '@/shared/assets/icon/keyword_sangsang.svg';
-import type { BasicPerformance, CategoryBase, HomeResponse } from '../../api/types';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
-import { useQuery } from '@tanstack/react-query';
-import { getHomeData } from '../../api/api';
 
 function KeyWordSection() {
   const { data, isLoading, isError } = useQuery<HomeResponse>({
@@ -22,7 +26,7 @@ function KeyWordSection() {
 
   const keywords = AboutKewordCategory?.keywordList ?? [];
   const performances = AboutKewordCategory?.getHomeResponseList ?? [];
-  
+
   const [selected, setSelected] = useState<string>('');
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {

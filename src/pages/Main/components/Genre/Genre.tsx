@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import * as styles from './Genre.css';
 import { getHomeData } from '../../api/api';
 import CategoryTab from '../CategoryTab/CategoryTab';
+import type {
+  CategoryBase,
+  BasicPerformance,
+  HomeResponse,
+} from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
-import { useQuery } from '@tanstack/react-query';
-import type { CategoryBase, BasicPerformance, HomeResponse } from '../../api/types';
 
 const GenreSection = () => {
   const { data, isLoading, isError } = useQuery<HomeResponse>({
@@ -21,7 +25,7 @@ const GenreSection = () => {
 
   const keywords = DiscountCategory?.keywordList ?? [];
   const performances = DiscountCategory?.getHomeResponseList ?? [];
-  
+
   const [selected, setSelected] = useState<string>('');
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
@@ -39,7 +43,9 @@ const GenreSection = () => {
   return (
     <div>
       <div className={styles.genreSection}>
-        <h1 className={styles.genreSectionTitle}>{DiscountCategory?.category}</h1>
+        <h1 className={styles.genreSectionTitle}>
+          {DiscountCategory?.category}
+        </h1>
         <div className={styles.padd}>
           <CategoryTab
             keywords={keywords}
@@ -51,7 +57,7 @@ const GenreSection = () => {
               <InfoCard
                 key={genre.id}
                 isrank={true}
-                rank={idx+1}
+                rank={idx + 1}
                 image={genre.imageUrl}
                 title={genre.title}
                 location={genre.location ?? ''}
