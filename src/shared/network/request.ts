@@ -26,8 +26,8 @@ export const request = async <T>(config: RequestConfig): Promise<T> => {
       params: query,
       data: body,
     });
-
-    console.log(`[성공] ${url} : ${response.data.message}`);
+    
+    console.log(`[성공] ${url} :`, response.data.data);
     // toast.success(response.data.message);
 
     return response.data.data;

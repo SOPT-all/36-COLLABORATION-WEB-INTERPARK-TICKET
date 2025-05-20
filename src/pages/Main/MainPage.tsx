@@ -16,6 +16,7 @@ import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
 import bar_navigation from '@/shared/assets/icon/bar_navigation.svg';
+import DiscountSection from './components/Discount/Discout';
 
 function MainPage() {
   return (
@@ -38,7 +39,7 @@ function MainPage() {
         <HomeDivider />
 
         {/* 할인 중 공연 */}
-        할인 중이여 오라
+        <DiscountSection />
         <HomeDivider />
 
         {/* MD PICK */}
