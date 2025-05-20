@@ -6,8 +6,6 @@ export const calendarWrapper = style({
   flexDirection: 'column',
   width: '34.7rem',
   backgroundColor: vars.color.white,
-  borderRadius: '0.6rem',
-  boxShadow: `0px 4px 8px rgba(0, 0, 0, 0.1)`,
 });
 
 export const calendarHeader = style({
@@ -67,12 +65,12 @@ export const today = style({
   color: vars.color.black,
 });
 export const selected = style({
-  backgroundColor: 'black',
-  color: 'white',
+  backgroundColor: vars.color.blue90,
+  color: vars.color.white,
   borderRadius: '99px',
   ':hover': {
-    backgroundColor: 'black',
-    color: 'white',
+    backgroundColor: vars.color.blue90,
+    color: vars.color.white,
   },
 });
 export const sunday = style({
@@ -89,8 +87,8 @@ export const todayText = style({
   color: vars.color.blue90,
 });
 export const todaySelected = style({
-  backgroundColor: 'black',
-  color: 'white',
+  backgroundColor: vars.color.blue90,
+  color: vars.color.white,
 });
 export const soldOutText = style({
   ...fontStyle('c3_re_8'),

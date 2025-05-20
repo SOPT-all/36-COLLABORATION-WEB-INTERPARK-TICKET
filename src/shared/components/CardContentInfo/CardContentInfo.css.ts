@@ -44,3 +44,8 @@ export const performanceInfoText = style({
   ...fontStyle('b13_me_12_narrow'),
   color: vars.color.gray70,
 });
+export const performanceImg = style({
+  borderRadius: '0.5rem',
+  width: ' 6.75rem',
+  height: '9rem',
+});

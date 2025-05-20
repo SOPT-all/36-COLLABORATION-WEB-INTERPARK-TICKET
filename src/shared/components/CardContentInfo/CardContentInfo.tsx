@@ -27,7 +27,11 @@ const CardContentInfo = ({ data }: Props) => {
 
   return (
     <div className={styles.cardContentInfo}>
-      <img src={performanceImage} alt={performanceTitle} />
+      <img
+        className={styles.performanceImg}
+        src={performanceImage}
+        alt={performanceTitle}
+      />
 
       <div className={styles.performanceInfoWrapper}>
         {/* 연극 제목  */}

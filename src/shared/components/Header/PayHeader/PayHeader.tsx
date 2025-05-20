@@ -1,3 +1,4 @@
+import React from 'react';
 import * as styles from './PayHeader.css';
 import BackIcon from '@/shared/assets/icon/ic_back_white_24.svg';
 import CloseIcon from '@/shared/assets/icon/ic_close_white_24.svg';
