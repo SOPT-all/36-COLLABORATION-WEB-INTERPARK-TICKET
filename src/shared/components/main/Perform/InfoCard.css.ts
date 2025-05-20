@@ -1,4 +1,6 @@
 import { style } from '@vanilla-extract/css';
+import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const InfoCardBox = style({
   display: 'flex',
@@ -17,27 +19,20 @@ export const InfoCardImg = style({
 });
 
 export const InfoCardTitle = style({
-  fontSize: '1.4rem',
-  fontWeight: 700,
-  lineHeight: '2rem',
-  letterSpacing: '-0.028rem',
-  color: '#0E0E0E',
+  ...fontStyle('b8_sb_14'),
+  color: vars.color.black,
   marginBottom: '0.7rem',
 });
 
 export const InfoCardTxt = style({
-  fontSize: '1.2rem',
-  fontWeight: 400,
-  letterSpacing: '0.036rem',
-  color: '#3B3F44',
+  ...fontStyle('b14_me_12'),
+  color: vars.color.gray80,
   marginBottom: '0.4rem',
 });
 
 export const InfoCardDate = style({
-  fontSize: '1.2rem',
-  fontWeight: 400,
-  letterSpacing: '0.036rem',
-  color: '#7E7E7E',
+  ...fontStyle('b14_me_12'),
+  color: vars.color.gray70,
 });
 
 export const rank = style({
@@ -50,11 +45,8 @@ export const rank = style({
   top: '0',
 });
 export const rankTxt = style({
-  color: '#FFF',
-  fontSize: '3.8rem',
-  fontWeight: 600,
-  lineHeight: '4.5rem',
-  letterSpacing: '-0.152rem',
+  color: vars.color.white,
+  ...fontStyle('h1_sb_38'),
   paddingLeft: '1.1rem',
   marginTop: 'auto',
   height: '100%',

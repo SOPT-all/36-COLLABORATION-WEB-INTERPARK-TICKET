@@ -16,7 +16,7 @@ function MainPage() {
         <div className={styles.categoryGrid}>
           {CATEGORY_ITEMS.map(({ id, name, icon: Icon }) => (
             <div key={id} className={styles.categoryItem}>
-              <img src={Icon} />
+              <img src={Icon} className={styles.icon} />
               <span>{name}</span>
             </div>
           ))}
