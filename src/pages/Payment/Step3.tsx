@@ -214,7 +214,7 @@ export default function PaymentStep3() {
             showCheckbox={true}
             checked={isAgreed}
             onCheckboxChange={setIsAgreed}
-            checkboxLabel="신청"
+            checkboxLabel="동의"
           />
         </div>
         <ListCheck
