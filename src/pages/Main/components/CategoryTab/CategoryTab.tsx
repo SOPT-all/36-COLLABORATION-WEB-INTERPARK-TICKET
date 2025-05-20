@@ -1,22 +1,28 @@
 import * as styles from './CategoryTab.css';
 
+type CategoryTabVariant = 'scroll' | 'wrap';
 interface CategoryTabProps {
   keywords: string[];
   selected: string;
   onSelect: (keyword: string) => void;
+  variant?: CategoryTabVariant;
 }
 
-const CategoryTab = ({ keywords, selected, onSelect }: CategoryTabProps) => {
+const CategoryTab = ({
+  keywords,
+  selected,
+  onSelect,
+  variant = 'scroll',
+}: CategoryTabProps) => {
   return (
-    <div className={styles.tabWrapper}>
+    <div className={styles.tabWrapper[variant]}>
       {keywords.map((keyword) => (
         <button
           key={keyword}
-          className={
-            selected === keyword
-              ? styles.tabItem.selected
-              : styles.tabItem.default
-          }
+          className={styles.tabItem({
+            variant,
+            selected: selected === keyword,
+          })}
           onClick={() => onSelect(keyword)}
         >
           {keyword}
