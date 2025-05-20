@@ -33,13 +33,13 @@ const GenreSection = () => {
     setSelected(keyword);
   };
 
-    if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   return (
     <div>
       <div className={styles.genreSection}>
-        <h1 className={styles.genreSectionTitle}>장르별 랭킹</h1>
+        <h1 className={styles.genreSectionTitle}>{genreRankingCategory?.category}</h1>
         <div className={styles.padd}>
           {' '}
           <CategoryTab

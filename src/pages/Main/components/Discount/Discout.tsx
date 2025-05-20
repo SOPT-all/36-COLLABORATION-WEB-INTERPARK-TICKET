@@ -1,97 +1,40 @@
+import { QUERY_KEY } from '@/shared/constants/queryKey';
+import { useQuery } from '@tanstack/react-query';
+import { getHomeData } from '../../api/api';
+import type { HomeResponse, CategoryBase, DiscountPerformance } from '../../api/types';
 import * as styles from './DiscountCard.css';
 import DiscountCard from './DiscoutCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 
 const DiscountSection = () => {
-  const discountCardsData = [
-    {
-      id: 1,
-      title: 'Summer Sale',
-      discount: 20,
-      price: 10000,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEFvOd7aYqqEMQ-bpfaCsVrHfArpyql2E2w&s',
-      location: '서울',
-      startDate: '2025-06-01',
-      endDate: '2025-06-30',
-      description: '여름 세일, 다양한 상품 20% 할인!',
-    },
-    {
-      id: 2,
-      title: 'Summer Sale',
-      discount: 20,
-      price: 10000,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEFvOd7aYqqEMQ-bpfaCsVrHfArpyql2E2w&s',
-      location: '서울',
-      startDate: '2025-06-01',
-      endDate: '2025-06-30',
-      description: '여름 세일, 다양한 상품 20% 할인!',
-    },
-    {
-      id: 3,
-      title: 'Summer Sale',
-      discount: 20,
-      price: 10000,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEFvOd7aYqqEMQ-bpfaCsVrHfArpyql2E2w&s',
-      location: '서울',
-      startDate: '2025-06-01',
-      endDate: '2025-06-30',
-      description: '여름 세일, 다양한 상품 20% 할인!',
-    },
-    {
-      id: 4,
-      title: 'Summer Sale',
-      discount: 20,
-      price: 10000,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEFvOd7aYqqEMQ-bpfaCsVrHfArpyql2E2w&s',
-      location: '서울',
-      startDate: '2025-06-01',
-      endDate: '2025-06-30',
-      description: '여름 세일, 다양한 상품 20% 할인!',
-    },
-    {
-      id: 5,
-      title: 'Summer Sale',
-      discount: 20,
-      price: 10000,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEFvOd7aYqqEMQ-bpfaCsVrHfArpyql2E2w&s',
-      location: '서울',
-      startDate: '2025-06-01',
-      endDate: '2025-06-30',
-      description: '여름 세일, 다양한 상품 20% 할인!',
-    },
-    {
-      id: 6,
-      title: 'Summer Sale',
-      discount: 20,
-      price: 10000,
-      imageUrl:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbEFvOd7aYqqEMQ-bpfaCsVrHfArpyql2E2w&s',
-      location: '서울',
-      startDate: '2025-06-01',
-      endDate: '2025-06-30',
-      description: '여름 세일, 다양한 상품 20% 할인!',
-    },
-  ];
+  const { data, isLoading, isError } = useQuery<HomeResponse>({
+    queryKey: [QUERY_KEY.HOME],
+    queryFn: getHomeData,
+  });
+
+  const genreRankingCategory = data?.find(
+    (category): category is CategoryBase<DiscountPerformance> =>
+      category.category === '할인 중인 공연은 어때요?'
+  );
+
+  const performances = genreRankingCategory?.getHomeResponseList ?? [];
+  
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   return (
       <div className={styles.discountSection}>
-        <h1 className={styles.sectionTitle}>할인 중인 공연은 어때요?</h1>
+        <h1 className={styles.sectionTitle}>{genreRankingCategory?.category}</h1>
         <div className={styles.scrollArea}>
-          {discountCardsData.map((discountData, index) => (
+          {performances.map((discountData) => (
             <DiscountCard
-              key={index}
               id={discountData.id}
               title={discountData.title}
-              discount={discountData.discount}
+              discountRate={discountData.discountRate}
               price={discountData.price}
               imageUrl={discountData.imageUrl}
               location={discountData.location}
-              startDate={discountData.startDate}
+              openDate={discountData.openDate}
               endDate={discountData.endDate}
               description={discountData.description}
             />
