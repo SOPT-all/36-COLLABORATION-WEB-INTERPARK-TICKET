@@ -2,7 +2,7 @@ import { useState } from 'react';
 import * as styles from './MdPick.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
-import Rectangle95 from '@/shared/components/Rectangle/Rectangle';
+import { Rectangle95 } from '@/shared/components/Rectangle/Rectangle';
 // interface Props {}
 
 const MdPick = () => {
