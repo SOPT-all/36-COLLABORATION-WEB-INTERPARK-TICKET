@@ -3,7 +3,8 @@ import MainPage from '@/pages/Main/MainPage';
 import Payment from '@/pages/Payment/Payment';
 import SelectDatePage from '@/pages/SelectDate/SelectDatePage';
 import SeatSelectPage from '@/pages/SeatSelect/SeatSelectPage';
-export const router = createBrowserRouter([
+
+const router = createBrowserRouter([
   {
     path: '/',
     element: <MainPage />,
@@ -21,3 +22,5 @@ export const router = createBrowserRouter([
     element: <SeatSelectPage />,
   },
 ]);
+
+export default router;
