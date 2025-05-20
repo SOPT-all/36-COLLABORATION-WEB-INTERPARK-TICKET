@@ -33,4 +33,5 @@ export const waitIcon = style({
   marginRight: '1.8rem',
   marginBottom: '2.3rem',
   alignSelf: 'flex-end',
+  cursor: 'pointer',
 });

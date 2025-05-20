@@ -4,6 +4,7 @@ import SeatCard from './components/SeatCard/SeatCard';
 import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
+import Popup from './components/Popup/Popup';
 import type { SeatData } from './types/SeatData';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 
@@ -175,8 +176,14 @@ const SeatSelectPage = () => {
   const [selectedSeatType, setSelectedSeatType] =
     useState<SeatGradeFilter>(null);
 
+  const [showPopup, setShowPopup] = useState(false);
+
   const handleSeatTypeClick = (type: 'S' | 'R') => {
     setSelectedSeatType((prev) => (prev === type ? null : type));
+  };
+
+  const handleWaitIconClick = () => {
+    setShowPopup((prev) => !prev);
   };
 
   return (
@@ -199,10 +206,11 @@ const SeatSelectPage = () => {
         <StageText />
 
         <SeatCard seats={seatData} selectedGrade={selectedSeatType} />
-        <button className={styles.waitIcon}>
+        <button className={styles.waitIcon} onClick={handleWaitIconClick}>
           <img src={ic_wait_blue70_36} alt="wait" />
         </button>
       </main>
+      {showPopup && <Popup onClose={handleWaitIconClick} />}
     </div>
   );
 };
