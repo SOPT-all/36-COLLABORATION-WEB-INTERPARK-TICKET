@@ -6,7 +6,7 @@ export const button = style({
   display: 'flex',
   width: '33.8rem',
   height: '4.4rem',
-  padding: '1.2rem 10.3rem',
+  padding: '1.2rem 0',
   justifyContent: 'center',
   alignItems: 'center',
   gap: '0.3rem',
