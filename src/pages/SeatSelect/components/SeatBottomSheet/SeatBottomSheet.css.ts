@@ -4,18 +4,31 @@ import { recipe } from '@vanilla-extract/recipes';
 import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const sheetWrapper = style({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '37.5rem',
-  borderRadius: '3rem 3rem 0rem 0rem',
-  border: `1px solid ${vars.color.gray20}`,
-  boxShadow: '0px 0px 2px 0px rgba(0, 0, 0, 0.25)',
-  borderBottom: 'none',
+  position: 'fixed',
+  bottom: 0,
+  left: '50%',
+  transform: 'translate(-50%, 0)',
+  width: '100%',
+  maxWidth: '37.5rem',
+  backgroundColor: vars.color.white,
+  borderRadius: '3rem 3rem 0 0',
+  boxShadow: '0 0 2px rgba(0,0,0,0.25)',
+  transition: 'transform 0.3s ease-in-out',
+  zIndex: 1000,
+  overflow: 'hidden',
+});
+
+export const sheetWrapperExpanded = style({
+  transform: 'translate(-50%, 0)',
+});
+
+export const sheetWrapperCollapsed = style({
+  transform: 'translate(-50%, calc(100% - 14.6rem))',
 });
 
 export const line = style({
   display: 'block',
-  height: '.1rem',
+  height: '0.1rem',
   width: '37.4rem',
   backgroundColor: vars.color.gray20,
 });
@@ -24,7 +37,7 @@ export const locationWrapper = style({
   display: 'flex',
   alignItems: 'center',
   height: '5.7rem',
-  padding: '2rem 24.3rem 2rem 2.5rem',
+  paddingLeft: '2.5rem',
 });
 
 export const locationText = style({
@@ -76,12 +89,13 @@ export const infoText = recipe({
 
 // 좌석 선택 이후
 export const bottomArea = style({
-  marginTop: '0',
   backgroundColor: vars.color.gray10,
   padding: '1.5rem 2.5rem',
   display: 'flex',
   flexDirection: 'column',
   gap: '2rem',
+  opacity: 1,
+  transition: 'opacity 0.3s ease-in-out',
 });
 
 export const priceContainer = style({
@@ -93,6 +107,9 @@ export const priceText = styleVariants({
   normal: {
     color: vars.color.gray70,
     ...fontStyle('b15_re_12'),
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.2rem',
   },
   strong: {
     color: vars.color.gray90,

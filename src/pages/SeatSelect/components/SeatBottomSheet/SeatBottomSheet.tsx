@@ -1,12 +1,14 @@
-import ChangeButton from '../ChangeButton/ChangeButton';
-import SmallButton from '../SmallButton/SmallButton';
+import clsx from 'clsx';
 import * as styles from './SeatBottomSheet.css';
+import ChangeButton from '@/shared/components/ChangeButton/ChangeButton';
+import SmallButton from '@/shared/components/SmallButton/SmallButton';
 
 interface SeatBottomSheetProps {
   placeInfo: string;
   dateTime: string;
   seatInfo?: string;
   price?: number;
+  onRetryClick: () => void;
 }
 
 const SeatBottomSheet = ({
@@ -14,17 +16,23 @@ const SeatBottomSheet = ({
   dateTime,
   seatInfo,
   price,
+  onRetryClick,
 }: SeatBottomSheetProps) => {
   const isSeatSelected = !!seatInfo;
 
   return (
-    <div className={styles.sheetWrapper}>
+    <div
+      className={clsx(
+        styles.sheetWrapper,
+        isSeatSelected
+          ? styles.sheetWrapperExpanded
+          : styles.sheetWrapperCollapsed
+      )}
+    >
       <div className={styles.locationWrapper}>
         <p className={styles.locationText}>{placeInfo}</p>
       </div>
-
       <hr className={styles.line} />
-
       <div className={styles.infoWrapper}>
         <div className={styles.infoContainer}>
           <p className={styles.infoText({ state: 'default' })}>좌석</p>
@@ -51,7 +59,7 @@ const SeatBottomSheet = ({
             <p className={styles.infoText({ state: 'default' })}>결제금액</p>
             {price !== undefined ? (
               <p className={styles.priceText.normal}>
-                총{' '}
+                총
                 <span className={styles.priceText.strong}>
                   {price.toLocaleString()}
                 </span>
@@ -62,7 +70,9 @@ const SeatBottomSheet = ({
             )}
           </div>
           <div className={styles.buttonGroup}>
-            <SmallButton variant="retry">재선택</SmallButton>
+            <SmallButton variant="retry" onClick={onRetryClick}>
+              재선택
+            </SmallButton>
             <SmallButton variant="next">다음</SmallButton>
           </div>
         </div>

@@ -5,7 +5,8 @@ import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
 import Popup from './components/Popup/Popup';
-import type { SeatData } from './types/SeatData';
+import SeatBottomSheet from './components/SeatBottomSheet/SeatBottomSheet';
+import type { SeatData, SeatGradeFilter, SeatPosition } from './types/SeatData';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 
 const seatData: SeatData[] = [
@@ -171,14 +172,40 @@ const seatData: SeatData[] = [
   },
 ];
 
-type SeatGradeFilter = 'S' | 'R' | null;
 const SeatSelectPage = () => {
   const [selectedSeatType, setSelectedSeatType] =
     useState<SeatGradeFilter>(null);
 
   const [showPopup, setShowPopup] = useState(false);
 
-  const handleSeatTypeClick = (type: 'S' | 'R') => {
+  const [selectedSeatInfo, setSelectedSeatInfo] = useState<
+    string | undefined
+  >();
+  const [selectedSeatPrice, setSelectedSeatPrice] = useState<
+    number | undefined
+  >();
+
+  const [selectedSeat, setSelectedSeat] = useState<SeatPosition | null>(null);
+
+  const handleSelectSeat = (
+    row: string,
+    index: number,
+    grade: SeatGradeFilter,
+    price: number
+  ) => {
+    setSelectedSeat({ row, index });
+    setSelectedSeatInfo(`${grade}석 ${row}열 ${index + 1}`);
+    setSelectedSeatPrice(price);
+  };
+
+  const handleRetryClick = () => {
+    setSelectedSeat(null);
+    setSelectedSeatInfo(undefined);
+    setSelectedSeatPrice(undefined);
+    setSelectedSeatType(null);
+  };
+
+  const handleSeatTypeClick = (type: SeatGradeFilter) => {
     setSelectedSeatType((prev) => (prev === type ? null : type));
   };
 
@@ -205,12 +232,26 @@ const SeatSelectPage = () => {
 
         <StageText />
 
-        <SeatCard seats={seatData} selectedGrade={selectedSeatType} />
+        <SeatCard
+          seats={seatData}
+          selectedGrade={selectedSeatType}
+          selected={selectedSeat}
+          onSelectSeat={handleSelectSeat}
+        />
         <button className={styles.waitIcon} onClick={handleWaitIconClick}>
           <img src={ic_wait_blue70_36} alt="wait" />
         </button>
+
+        <SeatBottomSheet
+          placeInfo="예스24아트원 2관"
+          dateTime="2025.07.10 (수) 19:30"
+          seatInfo={selectedSeatInfo}
+          price={selectedSeatPrice}
+          onRetryClick={handleRetryClick}
+        />
+
+        {showPopup && <Popup onClose={handleWaitIconClick} />}
       </main>
-      {showPopup && <Popup onClose={handleWaitIconClick} />}
     </div>
   );
 };

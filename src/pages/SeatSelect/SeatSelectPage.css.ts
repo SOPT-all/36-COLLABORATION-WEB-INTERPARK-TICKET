@@ -4,6 +4,9 @@ import { vars } from '@/shared/styles/tokens.css';
 export const pageWrapper = style({
   display: 'flex',
   flexDirection: 'column',
+  width: '100%',
+  minHeight: '100vh',
+  backgroundColor: vars.color.gray80,
 });
 
 export const mainContent = style({
@@ -11,7 +14,7 @@ export const mainContent = style({
   flexDirection: 'column',
   alignItems: 'center',
   marginTop: '5.4rem',
-  backgroundColor: vars.color.gray80,
+
   gap: '2rem',
 });
 

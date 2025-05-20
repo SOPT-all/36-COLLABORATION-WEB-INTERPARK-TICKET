@@ -1,8 +1,7 @@
 import * as styles from './SeatSelectChip.css';
+import type { SeatType } from '../../types/SeatData';
 import SIcon from '@/shared/assets/icon/ic_S_seat.svg';
 import RIcon from '@/shared/assets/icon/ic_R_seat.svg';
-
-type SeatType = 'S' | 'R';
 
 interface Props {
   seatType: SeatType;
