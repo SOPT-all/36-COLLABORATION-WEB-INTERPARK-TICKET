@@ -5,7 +5,7 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const noticeContainer = style({
   alignSelf: 'stretch',
   color: vars.color.gray70,
-  ...fontStyle('b2_b_16'),
+  ...fontStyle('b17_b_10'),
   padding: '0 2rem',
   textAlign: 'left',
   display: 'flex',

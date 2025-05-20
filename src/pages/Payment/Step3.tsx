@@ -22,9 +22,7 @@ import LargeButton from '@/shared/components/LargeButton/LargeButton';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
-  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other'>(
-    'noll'
-  );
+  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other' | null>(null);
   const [isOtherMethodOpen, setIsOtherMethodOpen] = useState(false);
   const [isBankOpen, setIsBankOpen] = useState(false);
   const [selectedBank, setSelectedBank] = useState<string>('');
@@ -72,7 +70,7 @@ export default function PaymentStep3() {
   };
 
   const handleSubmit = () => {
-    if (!isAgreed) return;
+    if (!isAgreed || !selectedPayment) return;
     // TODO: 결제 처리 로직
     navigate('/payment/complete');
   };
@@ -225,7 +223,7 @@ export default function PaymentStep3() {
           onChange={() => setIsAgreed(!isAgreed)}
         />
         <div className={styles.submitButtonContainer}>
-          <LargeButton onClick={handleSubmit} isActive={isAgreed}>
+          <LargeButton onClick={handleSubmit} isActive={isAgreed && selectedPayment !== null}>
             결제
           </LargeButton>
         </div>
