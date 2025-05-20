@@ -50,12 +50,10 @@ export const rectangle = recipe({
 });
 
 export const rectangle95 = style({
-  width: '100%',
-  height: '0.1rem',
+  width: '35rem',
+  height: '0.2rem',
   flexShrink: 0,
-  background: vars.color.gray20,
-  paddingLeft: '1.65rem',
-  paddingRight: '1.65rem',
+  background: vars.color.gray90,
 });
 
 export const rectangle94 = style({
@@ -73,10 +71,10 @@ export const rectangle96 = style({
 });
 
 export const rectangle97 = style({
-  width: '100%',
-  height: '2rem',
+  width: '35rem',
+  height: '0.2rem',
   flexShrink: 0,
-  background: vars.color.white,
+  background: vars.color.gray90,
 });
 
 export const rectangle95PaddedContainer = style({

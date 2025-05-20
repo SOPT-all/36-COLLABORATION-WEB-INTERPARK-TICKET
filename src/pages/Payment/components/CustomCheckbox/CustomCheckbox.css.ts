@@ -19,8 +19,9 @@ export const checkboxButton = style({
 });
 
 export const label = style({
-  ...fontStyle('b10_re_14'),
+  ...fontStyle('b9_sb_14'),
   color: vars.color.gray80,
+  cursor: 'pointer',
 });
 
 export const checkboxIcon = style({

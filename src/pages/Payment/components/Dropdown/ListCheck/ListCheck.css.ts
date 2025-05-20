@@ -20,8 +20,6 @@ export const listCheckLeft = style({
 
 export const listCheckCheckIcon = style({
   display: 'flex',
-  width: '1.8rem',
-  height: '1.8rem',
   padding: '0.3rem 0 0.3rem 0.1rem',
   justifyContent: 'center',
   alignItems: 'center',
@@ -34,8 +32,6 @@ export const listCheckLabel = style({
 
 export const listCheckArrow = style({
   display: 'flex',
-  width: '2.4rem',
-  height: '2.4rem',
   padding: '0.8rem 0.2rem 0.9rem 0.2rem',
   justifyContent: 'center',
   alignItems: 'center',

@@ -7,6 +7,7 @@ export const stageContainer = style({
   flexDirection: 'column',
   alignItems: 'center',
   gap: '0.5rem',
+  marginBottom: '2rem',
 });
 
 export const stageText = style({
