@@ -1,6 +1,7 @@
 import * as styles from './DiscountCard.css';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import DiscountCard from './DiscoutCard';
+import Rectangle95 from '@/shared/components/Rectangle/Rectangle';
 const DiscountSection = () => {
   const discountCardsData = [
     {
@@ -78,26 +79,29 @@ const DiscountSection = () => {
   ];
 
   return (
-    <div className={styles.discountSection}>
-      <h1 className={styles.sectionTitle}>장르별 랭킹</h1>
+    <div>
+      <Rectangle95 />
+      <div className={styles.discountSection}>
+        <h1 className={styles.sectionTitle}>할인 중인 공연은 어때요?</h1>
 
-      <div className={styles.scrollArea}>
-        {discountCardsData.map((discountData, index) => (
-          <DiscountCard
-            key={index}
-            id={discountData.id}
-            title={discountData.title}
-            discount={discountData.discount}
-            price={discountData.price}
-            imageUrl={discountData.imageUrl}
-            location={discountData.location}
-            startDate={discountData.startDate}
-            endDate={discountData.endDate}
-            description={discountData.description}
-          />
-        ))}
+        <div className={styles.scrollArea}>
+          {discountCardsData.map((discountData, index) => (
+            <DiscountCard
+              key={index}
+              id={discountData.id}
+              title={discountData.title}
+              discount={discountData.discount}
+              price={discountData.price}
+              imageUrl={discountData.imageUrl}
+              location={discountData.location}
+              startDate={discountData.startDate}
+              endDate={discountData.endDate}
+              description={discountData.description}
+            />
+          ))}
+        </div>
+        <HomeAddButton keyword="할인티켓" />
       </div>
-      <HomeAddButton keyword="할인티켓" />
     </div>
   );
 };

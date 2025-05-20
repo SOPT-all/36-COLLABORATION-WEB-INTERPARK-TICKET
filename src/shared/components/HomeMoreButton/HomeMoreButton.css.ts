@@ -13,6 +13,7 @@ export const button = style({
   borderRadius: '0.4rem',
   border: '1px solid',
   borderColor: vars.color.gray20,
+  margin: '0 auto',
 });
 
 export const text = style({
