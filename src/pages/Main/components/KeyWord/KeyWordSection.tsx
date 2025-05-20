@@ -10,7 +10,6 @@ import type {
   HomeResponse,
 } from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
-import keyword_sangsang from '@/shared/assets/icon/keyword_sangsang.svg';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 
 function KeyWordSection() {

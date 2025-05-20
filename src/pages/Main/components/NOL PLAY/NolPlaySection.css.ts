@@ -45,6 +45,11 @@ export const cardContainer = style({
   width: '29.8rem',
 });
 
+export const smallImg = style({
+  width: '4.8rem',
+  height: '6.2rem',
+});
+
 export const bottomCard = style({
   display: 'flex',
   width: '29.8rem',
