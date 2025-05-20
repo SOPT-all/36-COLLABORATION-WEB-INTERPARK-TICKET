@@ -4,13 +4,13 @@ import { vars } from '@/shared/styles/tokens.css';
 import { LAYOUT } from '@/shared/styles/layoutConstants';
 
 export const paddedContainer = style({
-    width: '100%',
-    padding: `0 ${LAYOUT.PADDING.LG}`,
+  width: '100%',
+  padding: `0 ${LAYOUT.PADDING.LG}`,
 });
 
 const baseRectangle = style({
-    width: '100%',
-    flexShrink: 0,
+  width: '100%',
+  flexShrink: 0,
 });
 
 export const rectangle = recipe({
@@ -23,9 +23,9 @@ export const rectangle = recipe({
         background: vars.color.gray20,
       },
       spacer: {
-    height: '1rem',
-    background: vars.color.gray10,
-  },
+        height: '1rem',
+        background: vars.color.gray10,
+      },
       spacerLarge: {
         height: '2rem',
         background: vars.color.white,

@@ -13,15 +13,21 @@ interface ListCheckProps {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 02d19f9 (fix: 스타일 수정)
 export default function ListCheck({
   label,
   checked = false,
   onChange,
   onArrowClick,
 }: ListCheckProps) {
+<<<<<<< HEAD
 =======
 export default function ListCheck({ label, checked = false, onChange, onArrowClick }: ListCheckProps) {
 >>>>>>> 77a4909 (feat: step3 구현)
+=======
+>>>>>>> 02d19f9 (fix: 스타일 수정)
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCheckClick = () => {
