@@ -3,15 +3,12 @@ import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
-// interface Props {}
 
 const GenreSection = () => {
   const keywords = ['공연', '영화', '전시', '뮤지컬'];
 
-  // 현재 선택된 키워드
   const [selected, setSelected] = useState<string>('');
 
-  // 키워드가 선택되었을 때 호출되는 함수
   const handleSelect = (keyword: string) => {
     setSelected(keyword);
   };

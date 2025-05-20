@@ -34,7 +34,7 @@ const DiscountCard = ({
         </p>
         <p className={styles.descriptionTxt}>{description}</p>
         <div className={styles.priceDisplay}>
-          <p className={styles.discoutNum}>{discount}% 할인</p>
+          <p className={styles.discoutNum}>{discount}%</p>
 
           <p className={styles.priceNum}>{price}원</p>
         </div>
