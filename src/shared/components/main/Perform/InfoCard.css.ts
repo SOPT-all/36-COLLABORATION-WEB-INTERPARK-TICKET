@@ -19,31 +19,30 @@ export const InfoCardImg = style({
 });
 
 export const InfoCardTitle = style({
-  ...fontStyle('b8_sb_14'),
+  ...fontStyle('b7_b_14_1'),
   color: vars.color.black,
   marginBottom: '0.7rem',
 });
 
 export const InfoCardTxt = style({
-  ...fontStyle('b14_me_12'),
+  ...fontStyle('b15_re_12'),
   color: vars.color.gray80,
   marginBottom: '0.4rem',
 });
 
 export const InfoCardDate = style({
-  ...fontStyle('b14_me_12'),
-  color: vars.color.gray70,
+  ...fontStyle('b15_re_12'),
+  color: vars.color.gray60,
 });
 
 export const rank = style({
   width: '100%',
-  backgroundColor: 'black',
-  opacity: '0.5',
   borderRadius: '0.8rem',
   position: 'absolute',
   height: '19rem',
   top: '0',
 });
+
 export const rankTxt = style({
   color: vars.color.white,
   ...fontStyle('h1_sb_38'),
@@ -52,13 +51,15 @@ export const rankTxt = style({
   height: '100%',
   width: '100%',
   alignContent: 'flex-end',
-  zIndex: 1,
+  zIndex: 10,
   position: 'absolute',
+  textShadow: '0 0 4px rgba(0,0,0,0.7)',
 });
 
 export const relative = style({
   position: 'relative',
 });
+
 export const pad_45 = style({
   padding: '0 0.45rem',
   width: '100%',
