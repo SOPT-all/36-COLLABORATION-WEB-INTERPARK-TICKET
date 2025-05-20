@@ -4,7 +4,10 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const genreSection = style({
   display: 'flex',
   flexDirection: 'column',
-  padding: '2rem 0 3rem 1.8rem',
+  padding: '2rem 0 3rem 0',
+});
+export const padd = style({
+  paddingLeft: '1.8rem',
 });
 export const genreSectionTitle = style({
   ...fontStyle('h5_sb_20'),
