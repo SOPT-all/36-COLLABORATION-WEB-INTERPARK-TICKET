@@ -14,11 +14,13 @@ export const titleContainer = style({
   display: 'flex',
   alignItems: 'center',
   gap: '0.5rem',
+  flex: 1,
 });
 
 export const title = style({
   ...fontStyle('b2_b_16'),
   color: vars.color.gray80,
+  textAlign: 'left',
 });
 
 export const infoRowTitleWrapper = style({
@@ -44,4 +46,6 @@ export const infoRowSubText = style({
 export const subText = style({
   ...fontStyle('b12_sb_12'),
   color: vars.color.gray60,
+  textAlign: 'right',
+  marginLeft: 'auto',
 });

@@ -188,6 +188,26 @@ export default function PaymentStep3() {
           />
         </div>
         <Rectangle97 />
+        {isReceiptChecked && (
+          <>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+                padding: '0 2rem',
+              }}
+            >
+              <TextField
+                value={receiptNumber}
+                onChange={handleReceiptNumberChange}
+                placeholder="휴대폰번호 또는 사업자등록번호"
+                numbersOnly={true}
+              />
+            </div>
+            <Rectangle97 />
+          </>
+        )}
         <div
           style={{
             display: 'flex',
@@ -196,14 +216,7 @@ export default function PaymentStep3() {
             padding: '0 2rem',
           }}
         >
-          <TextField
-            value={receiptNumber}
-            onChange={handleReceiptNumberChange}
-            placeholder="휴대폰번호 또는 사업자등록번호"
-            numbersOnly={true}
-          />
         </div>
-        <Rectangle97 />
         <Rectangle94 />
         <Rectangle97 />
         <div
