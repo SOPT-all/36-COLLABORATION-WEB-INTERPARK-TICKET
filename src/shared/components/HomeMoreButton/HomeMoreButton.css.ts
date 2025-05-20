@@ -14,7 +14,10 @@ export const button = style({
   border: '1px solid',
   borderColor: vars.color.gray20,
   cursor: 'pointer',
+<<<<<<< HEAD
   margin: '0 auto',
+=======
+>>>>>>> 3ef57a9 (feat: 결제 API 연동 및 타입 에러 수정)
 });
 
 export const text = style({
