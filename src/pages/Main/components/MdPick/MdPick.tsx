@@ -60,7 +60,6 @@ const MdPick = () => {
           keywords={keywords}
           selected={selected}
           onSelect={handleSelect}
-          variant="wrap"
         />
         <div className={styles.pad}>
           <div className={styles.scrollArea}>
