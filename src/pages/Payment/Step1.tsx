@@ -82,6 +82,7 @@ export default function PaymentStep1() {
 
           <Rectangle94 />
           <TicketPriceInfo />
+
           <PriceQuantityInfo
             quantity={quantity}
             onQuantityChange={setQuantity}
