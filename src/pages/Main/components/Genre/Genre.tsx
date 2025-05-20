@@ -3,7 +3,7 @@ import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
-import Rectangle95 from '@/shared/components/Rectangle/Rectangle';
+import { Rectangle95 } from '@/shared/components/Rectangle/Rectangle';
 const GenreSection = () => {
   const keywords = ['공연', '영화', '전시', '뮤지컬'];
 
