@@ -7,6 +7,7 @@ export const InfoCardBox = style({
   alignItems: 'center',
   width: '14.2rem',
   gap: '1.4rem',
+  flexShrink: 0,
 });
 
 export const InfoCardImg = style({
@@ -68,4 +69,5 @@ export const relative = style({
 });
 export const pad_45 = style({
   padding: '0 0.45rem',
+  width: '100%',
 });
