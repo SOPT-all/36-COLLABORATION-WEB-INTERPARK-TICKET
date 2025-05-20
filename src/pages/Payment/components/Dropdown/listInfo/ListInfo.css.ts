@@ -5,7 +5,7 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const container = style({
   display: 'flex',
   flexDirection: 'column',
-  width: '100%',
+  width: '100%', //1
 });
 
 export const listInfo = style({
