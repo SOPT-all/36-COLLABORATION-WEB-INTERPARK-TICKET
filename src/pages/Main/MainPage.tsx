@@ -1,6 +1,6 @@
 import * as styles from './MainPage.css';
-import GenreSection from './components/Genre/Genre';
 import MdPick from './components/MdPick/MdPick';
+import GenreSection from './components/Genre/Genre';
 import KeyWordSection from './components/KeyWord/KeyWordSection';
 import {
   keywordDummyData,
@@ -49,6 +49,8 @@ function MainPage() {
         <img src={adBanner} />
         {/* 곧 오픈 공연 */}
         <PlannedSection data={plannedDummyData} />
+        <DiscountSection />
+        <MdPick />
       </main>
 
       <footer className={styles.footerWrapper}>

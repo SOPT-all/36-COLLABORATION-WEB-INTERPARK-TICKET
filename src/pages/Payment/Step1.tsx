@@ -73,7 +73,7 @@ export default function PaymentStep1() {
                 onChange={setPhone}
               />
               <TextField
-                placeholder="추가 정보"
+                placeholder="이메일"
                 value={additionalInfo}
                 onChange={setAdditionalInfo}
               />

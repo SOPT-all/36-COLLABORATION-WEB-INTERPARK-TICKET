@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
+import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const button = style({
   display: 'flex',
@@ -12,7 +13,6 @@ export const button = style({
 });
 
 export const label = style({
-  fontSize: '1.4rem',
-  fontWeight: 600,
+  ...fontStyle('b8_sb_14'),
   color: vars.color.black,
 });

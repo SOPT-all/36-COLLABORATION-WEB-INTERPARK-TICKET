@@ -3,7 +3,9 @@ import { vars } from '@/shared/styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
 export const discountCard = style({
   display: 'flex',
+  flexShrink: 0,
   gap: '1.1rem',
+  marginRight: '3rem',
 });
 export const cardContent = style({
   padding: '0.65rem 0',
@@ -16,6 +18,7 @@ export const cardImg = style({
   height: '16.8rem',
   flexShrink: 0,
   borderRadius: '0.8rem',
+  objectFit: 'cover',
 });
 
 export const discoutTitle = style({
@@ -46,6 +49,7 @@ export const descriptionTxt = style({
 export const discoutNum = style({
   color: vars.color.red50,
   ...fontStyle('b2_b_16'),
+  marginRight: '0.6rem',
 });
 export const priceNum = style({
   color: vars.color.black,
@@ -56,4 +60,29 @@ export const priceDisplay = style({
   gap: '0.1rem',
   alignItems: 'center',
   justifyContent: 'flex-start',
+});
+
+export const discountSection = style({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '2rem 0 3rem 1.8rem',
+});
+
+export const sectionTitle = style({
+  ...fontStyle('h5_sb_20'),
+  color: vars.color.black,
+  marginBottom: '2rem',
+  textAlign: 'center',
+});
+export const scrollArea = style({
+  display: 'flex',
+  flexWrap: 'wrap',
+  flexDirection: 'column',
+  height: '58rem',
+  gap: '1rem',
+  overflow: 'scroll',
+  padding: '2rem 1.8rem 2rem 0',
+  '::-webkit-scrollbar': {
+    display: 'none',
+  },
 });
