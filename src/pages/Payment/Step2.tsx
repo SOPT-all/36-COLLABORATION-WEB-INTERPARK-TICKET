@@ -15,8 +15,6 @@ import {
 } from '@/shared/components/Rectangle/Rectangle';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
-import { LAYOUT } from '@/shared/styles/layoutConstants';
-import { vars } from '@/shared/styles/tokens.css';
 
 export default function PaymentStep2() {
   const navigate = useNavigate();
