@@ -12,7 +12,12 @@ interface ListCheckProps {
   onArrowClick?: () => void;
 }
 
-export default function ListCheck({ label, checked = false, onChange, onArrowClick }: ListCheckProps) {
+export default function ListCheck({
+  label,
+  checked = false,
+  onChange,
+  onArrowClick,
+}: ListCheckProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCheckClick = () => {

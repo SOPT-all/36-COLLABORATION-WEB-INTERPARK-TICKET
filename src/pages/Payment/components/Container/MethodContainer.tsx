@@ -10,7 +10,9 @@ interface MethodContainerProps {
   onBankSelect?: () => void;
 }
 
-export default function MethodContainer({ onBankSelect }: MethodContainerProps) {
+export default function MethodContainer({
+  onBankSelect,
+}: MethodContainerProps) {
   const [selected, setSelected] = useState<string>('');
 
   const methodList = [

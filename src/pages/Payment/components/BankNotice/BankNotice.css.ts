@@ -25,4 +25,4 @@ export const noticeItem = style({
     fontSize: '1.2rem',
     lineHeight: '1rem',
   },
-}); 
+});

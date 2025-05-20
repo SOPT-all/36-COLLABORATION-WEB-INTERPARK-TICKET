@@ -1,4 +1,3 @@
-
 import * as styles from './InfoRowTitle.css';
 import CustomCheckbox from '../CustomCheckbox/CustomCheckbox';
 
@@ -11,13 +10,13 @@ interface InfoRowTitleProps {
   checkboxLabel?: string;
 }
 
-export default function InfoRowTitle({ 
-  text, 
+export default function InfoRowTitle({
+  text,
   subText,
-  showCheckbox = false, 
-  checked = false, 
+  showCheckbox = false,
+  checked = false,
   onCheckboxChange,
-  checkboxLabel 
+  checkboxLabel,
 }: InfoRowTitleProps) {
   return (
     <div className={styles.infoRowTitle}>

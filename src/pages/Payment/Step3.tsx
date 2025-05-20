@@ -4,7 +4,12 @@ import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
 import VectorDivider from './components/VectorDivider/VectorDivider';
-import { PaddedRectangle95, Rectangle94, Rectangle95, Rectangle97 } from '@/shared/components/Rectangle/Rectangle';
+import {
+  PaddedRectangle95,
+  Rectangle94,
+  Rectangle95,
+  Rectangle97,
+} from '@/shared/components/Rectangle/Rectangle';
 import InfoPrice from './components/InfoPrice/InfoPrice';
 import { vars } from '@/shared/styles/tokens.css';
 import ListCheck from './components/Dropdown/ListCheck/ListCheck';
@@ -17,7 +22,9 @@ import LargeButton from '@/shared/components/LargeButton/LargeButton';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
-  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other'>('noll');
+  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other'>(
+    'noll'
+  );
   const [isOtherMethodOpen, setIsOtherMethodOpen] = useState(false);
   const [isBankOpen, setIsBankOpen] = useState(false);
   const [receiptNumber, setReceiptNumber] = useState('');
@@ -74,23 +81,55 @@ export default function PaymentStep3() {
           <InfoRowTitle text="결제예정금액" />
           <VectorDivider />
           <Rectangle97 />
-          <InfoPrice label="티켓 금액" value="66,000원" labelColor={vars.color.gray60} valueColor={vars.color.black} />
-          <InfoPrice label="예매 수수료" value="2000원" labelColor={vars.color.gray60} valueColor={vars.color.black} />
-          <InfoPrice label="배송료" value="0원" labelColor={vars.color.gray60} valueColor={vars.color.black} />
+          <InfoPrice
+            label="티켓 금액"
+            value="66,000원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.black}
+          />
+          <InfoPrice
+            label="예매 수수료"
+            value="2000원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.black}
+          />
+          <InfoPrice
+            label="배송료"
+            value="0원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.black}
+          />
         </div>
-        <PaddedRectangle95/>
+        <PaddedRectangle95 />
         <div className={styles.sectionContainer}>
-          <InfoPrice label="할인" value="-33,000원" labelColor={vars.color.gray60} valueColor={vars.color.blue100} />
-          <InfoPrice label="포인트" value="0원" labelColor={vars.color.gray60} valueColor={vars.color.blue100} />
+          <InfoPrice
+            label="할인"
+            value="-33,000원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.blue100}
+          />
+          <InfoPrice
+            label="포인트"
+            value="0원"
+            labelColor={vars.color.gray60}
+            valueColor={vars.color.blue100}
+          />
           <VectorDivider />
           <VectorDivider />
           <Rectangle97 />
-          <InfoPrice label="총 결제 금액" value="35,000원" labelColor={vars.color.black} valueColor={vars.color.blue100} />
+          <InfoPrice
+            label="총 결제 금액"
+            value="35,000원"
+            labelColor={vars.color.black}
+            valueColor={vars.color.blue100}
+          />
           <Rectangle97 />
           <Rectangle94 />
           <Rectangle97 />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+        <div
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
           <div style={{ width: '34.5rem' }}>
             <InfoRowTitle text="결제수단" />
           </div>
@@ -109,19 +148,27 @@ export default function PaymentStep3() {
           onArrowClick={handleOtherMethodToggle}
         />
         {isOtherMethodOpen && (
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div
+            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+          >
             <MethodContainer onBankSelect={handleBankSelect} />
           </div>
         )}
         <Rectangle97 />
         {isBankOpen && (
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div
+            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+          >
             <BankContainer />
           </div>
         )}
         <Rectangle97 />
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}
+        >
+          <div
+            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+          >
             <BankInfoCard />
           </div>
           <BankNotice />
@@ -129,9 +176,11 @@ export default function PaymentStep3() {
         <Rectangle97 />
         <Rectangle94 />
         <Rectangle97 />
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <InfoRowTitle 
-            text="현금영수증" 
+        <div
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
+          <InfoRowTitle
+            text="현금영수증"
             showCheckbox={true}
             checked={isReceiptChecked}
             onCheckboxChange={setIsReceiptChecked}
@@ -139,20 +188,29 @@ export default function PaymentStep3() {
           />
         </div>
         <Rectangle97 />
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%', padding: '0 2rem' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            padding: '0 2rem',
+          }}
+        >
           <TextField
             value={receiptNumber}
             onChange={handleReceiptNumberChange}
-            placeholder="현금영수증 번호를 입력해주세요"
+            placeholder="휴대폰번호 또는 사업자등록번호"
             numbersOnly={true}
           />
         </div>
         <Rectangle97 />
         <Rectangle94 />
         <Rectangle97 />
-        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <InfoRowTitle 
-            text="약관 동의" 
+        <div
+          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
+        >
+          <InfoRowTitle
+            text="약관 동의"
             showCheckbox={true}
             checked={isAgreed}
             onCheckboxChange={setIsAgreed}
@@ -163,17 +221,21 @@ export default function PaymentStep3() {
           label="(필수) 제 3자 정보제공 동의"
           checked={isAgreed}
           onChange={() => setIsAgreed(!isAgreed)}
-        />  
+        />
         <ListCheck
           label="(필수) 취소 규정 동의"
           checked={isAgreed}
           onChange={() => setIsAgreed(!isAgreed)}
         />
-        <div style={{ marginTop: '6rem', display: 'flex', justifyContent: 'center', width: '100%' }}>
-          <LargeButton
-            onClick={handleSubmit}
-            isActive={isAgreed}
-          >
+        <div
+          style={{
+            marginTop: '6rem',
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+          }}
+        >
+          <LargeButton onClick={handleSubmit} isActive={isAgreed}>
             결제
           </LargeButton>
         </div>
@@ -181,4 +243,3 @@ export default function PaymentStep3() {
     </>
   );
 }
- 

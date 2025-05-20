@@ -22,4 +22,4 @@ export const label = style({
 
 export const value = style({
   ...fontStyle('b2_b_16'),
-}); 
+});

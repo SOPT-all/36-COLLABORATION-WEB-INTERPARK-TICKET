@@ -7,18 +7,18 @@ export const infoRowTitle = style({
   width: '34.5rem',
   justifyContent: 'space-between',
   alignItems: 'center',
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 export const titleContainer = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '0.5rem'
+  gap: '0.5rem',
 });
 
 export const title = style({
   ...fontStyle('b2_b_16'),
-  color: vars.color.gray80
+  color: vars.color.gray80,
 });
 
 export const infoRowTitleWrapper = style({
@@ -43,5 +43,5 @@ export const infoRowSubText = style({
 
 export const subText = style({
   ...fontStyle('b12_sb_12'),
-  color: vars.color.gray60
+  color: vars.color.gray60,
 });
