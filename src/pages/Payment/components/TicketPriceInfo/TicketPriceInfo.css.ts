@@ -6,3 +6,7 @@ export const ticketPriceWrapper = style({
   marginBottom: '0.9rem',
   width: '100%',
 });
+
+export const titleWrapper = style({
+  paddingLeft: '1.5rem',
+});

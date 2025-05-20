@@ -2,8 +2,17 @@ import { useState } from 'react';
 import SelectionContainer from './SelectionContainer';
 import { BANK_LIST } from '../../constants/banks';
 
-export default function BankContainer() {
+interface BankContainerProps {
+  onSelect?: (bank: string) => void;
+}
+
+export default function BankContainer({ onSelect }: BankContainerProps) {
   const [selected, setSelected] = useState<string>('');
+
+  const handleSelect = (bank: string) => {
+    setSelected(bank);
+    onSelect?.(bank);
+  };
 
   const items = BANK_LIST.map((bank) => ({
     name: bank.name,
@@ -14,7 +23,7 @@ export default function BankContainer() {
     <SelectionContainer
       items={items}
       selected={selected}
-      onSelect={setSelected}
+      onSelect={handleSelect}
     />
   );
 }

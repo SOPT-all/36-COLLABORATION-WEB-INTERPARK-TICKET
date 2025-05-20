@@ -27,6 +27,7 @@ export default function PaymentStep3() {
   );
   const [isOtherMethodOpen, setIsOtherMethodOpen] = useState(false);
   const [isBankOpen, setIsBankOpen] = useState(false);
+  const [selectedBank, setSelectedBank] = useState<string>('');
   const [receiptNumber, setReceiptNumber] = useState('');
   const [isAgreed, setIsAgreed] = useState(false);
   const [isReceiptChecked, setIsReceiptChecked] = useState(false);
@@ -58,6 +59,10 @@ export default function PaymentStep3() {
 
   const handleBankSelect = () => {
     setIsBankOpen(true);
+  };
+
+  const handleBankChange = (bank: string) => {
+    setSelectedBank(bank);
   };
 
   const handleReceiptNumberChange = (value: string) => {
@@ -127,10 +132,8 @@ export default function PaymentStep3() {
           <Rectangle94 />
           <Rectangle97 />
         </div>
-        <div
-          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-        >
-          <div style={{ width: '34.5rem' }}>
+        <div className={styles.centerContainer}>
+          <div className={styles.methodContainer}>
             <InfoRowTitle text="결제수단" />
           </div>
         </div>
@@ -148,37 +151,35 @@ export default function PaymentStep3() {
           onArrowClick={handleOtherMethodToggle}
         />
         {isOtherMethodOpen && (
-          <div
-            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-          >
-            <MethodContainer onBankSelect={handleBankSelect} />
-          </div>
+          <>
+            <div className={styles.centerContainer}>
+              <MethodContainer onBankSelect={handleBankSelect} />
+            </div>
+            <Rectangle97 />
+          </>
         )}
-        <Rectangle97 />
         {isBankOpen && (
-          <div
-            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-          >
-            <BankContainer />
-          </div>
+          <>
+            <div className={styles.centerContainer}>
+              <BankContainer onSelect={handleBankChange} />
+            </div>
+            <Rectangle97 />
+          </>
         )}
-        <Rectangle97 />
-        <div
-          style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}
-        >
-          <div
-            style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-          >
-            <BankInfoCard />
-          </div>
-          <BankNotice />
-        </div>
-        <Rectangle97 />
+        {selectedBank === '농협(중앙)' && (
+          <>
+            <div className={styles.bankInfoContainer}>
+              <div className={styles.centerContainer}>
+                <BankInfoCard />
+              </div>
+              <BankNotice />
+            </div>
+            <Rectangle97 />
+          </>
+        )}
         <Rectangle94 />
         <Rectangle97 />
-        <div
-          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-        >
+        <div className={styles.centerContainer}>
           <InfoRowTitle
             text="현금영수증"
             showCheckbox={true}
@@ -190,14 +191,7 @@ export default function PaymentStep3() {
         <Rectangle97 />
         {isReceiptChecked && (
           <>
-            <div
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                width: '100%',
-                padding: '0 2rem',
-              }}
-            >
+            <div className={styles.receiptContainer}>
               <TextField
                 value={receiptNumber}
                 onChange={handleReceiptNumberChange}
@@ -208,20 +202,10 @@ export default function PaymentStep3() {
             <Rectangle97 />
           </>
         )}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-            padding: '0 2rem',
-          }}
-        >
-        </div>
+        <div className={styles.emptyContainer}></div>
         <Rectangle94 />
         <Rectangle97 />
-        <div
-          style={{ display: 'flex', justifyContent: 'center', width: '100%' }}
-        >
+        <div className={styles.centerContainer}>
           <InfoRowTitle
             text="약관 동의"
             showCheckbox={true}
@@ -240,14 +224,7 @@ export default function PaymentStep3() {
           checked={isAgreed}
           onChange={() => setIsAgreed(!isAgreed)}
         />
-        <div
-          style={{
-            marginTop: '6rem',
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-          }}
-        >
+        <div className={styles.submitButtonContainer}>
           <LargeButton onClick={handleSubmit} isActive={isAgreed}>
             결제
           </LargeButton>
