@@ -2,7 +2,7 @@ import * as styles from './InfoCard.css';
 
 interface Props {
   isrank: boolean;
-  rank: number;
+  rank?: number;
   image: string;
   title: string;
   location: string;

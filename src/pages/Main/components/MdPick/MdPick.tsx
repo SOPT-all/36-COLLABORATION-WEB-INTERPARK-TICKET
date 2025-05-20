@@ -13,13 +13,13 @@ const MdPick = () => {
     queryFn: getHomeData,
   });
 
-  const genreRankingCategory = data?.find(
+  const MDpickCategory = data?.find(
     (category): category is CategoryBase<BasicPerformance> =>
       category.category === 'MD PICK!'
   );
 
-  const keywords = genreRankingCategory?.keywordList ?? [];
-  const DiscountCategory = genreRankingCategory?.getHomeResponseList ?? [];
+  const keywords = MDpickCategory?.keywordList ?? [];
+  const performances = MDpickCategory?.getHomeResponseList ?? [];
   
   const [selected, setSelected] = useState<string>('');
   useEffect(() => {
@@ -37,7 +37,7 @@ const MdPick = () => {
 
   return (
     <div className={styles.genreSection}>
-      <h1 className={styles.genreSectionTitle}>{}</h1>
+      <h1 className={styles.genreSectionTitle}>{MDpickCategory?.category}</h1>
       <CategoryTab
         keywords={keywords}
         selected={selected}
@@ -46,17 +46,17 @@ const MdPick = () => {
       />
       <div className={styles.pad}>
         <div className={styles.scrollArea}>
-          {/* {DiscountCategory.map((card, index) => (
+          {performances.map((md) => (
             <InfoCard
-              key={index}
-              isrank={card.isrank}
-              rank={card.rank}
-              image={card.image}
-              title={card.title}
-              location={card.location}
-              date={card.date}
+              key={md.id}
+              isrank={false}
+              image={md.imageUrl}
+              title={md.title}
+              location={md.location ?? ''}
+              startDate={md.startDate ?? ''}
+              endDate={md.endDate ?? ''}
             />
-          ))} */}
+          ))}
         </div>
       </div>
     </div>
