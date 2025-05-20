@@ -1,11 +1,13 @@
 import { toast } from 'react-toastify';
 import axiosInstance from './axiosInstance';
 import type { BaseResponse } from './baseResponse';
+
 export enum HTTPMethod {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
   DELETE = 'DELETE',
+  PATCH = 'PATCH',
 }
 export interface RequestConfig {
   method: HTTPMethod;
