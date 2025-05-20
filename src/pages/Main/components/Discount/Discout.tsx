@@ -16,19 +16,19 @@ const DiscountSection = () => {
     queryFn: getHomeData,
   });
 
-  const genreRankingCategory = data?.find(
+  const disCountCategory = data?.find(
     (category): category is CategoryBase<DiscountPerformance> =>
       category.category === '할인 중인 공연은 어때요?'
   );
 
-  const performances = genreRankingCategory?.getHomeResponseList ?? [];
+  const performances = disCountCategory?.getHomeResponseList ?? [];
 
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   return (
     <div className={styles.discountSection}>
-      <h1 className={styles.sectionTitle}>{genreRankingCategory?.category}</h1>
+      <h1 className={styles.sectionTitle}>{disCountCategory?.category}</h1>
       <div className={styles.scrollArea}>
         {performances.map((discountData) => (
           <DiscountCard

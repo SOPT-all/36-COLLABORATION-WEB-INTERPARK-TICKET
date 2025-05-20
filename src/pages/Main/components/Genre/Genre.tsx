@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import * as styles from './Genre.css';
 import { getHomeData } from '../../api/api';
@@ -13,20 +13,23 @@ import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 
 const GenreSection = () => {
+  const [selected, setSelected] = useState<string>('');
   const { data, isLoading, isError } = useQuery<HomeResponse>({
     queryKey: [QUERY_KEY.HOME],
     queryFn: getHomeData,
   });
 
-  const DiscountCategory = data?.find(
+  const GenreCategory = data?.find(
     (category): category is CategoryBase<BasicPerformance> =>
       category.category === '장르별 랭킹'
   );
 
-  const keywords = DiscountCategory?.keywordList ?? [];
-  const performances = DiscountCategory?.getHomeResponseList ?? [];
+  const keywords = useMemo(() => {
+    return GenreCategory?.keywordList ?? []
+  }, [GenreCategory]);
 
-  const [selected, setSelected] = useState<string>('');
+  const performances = GenreCategory?.getHomeResponseList ?? [];
+
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
       setSelected(keywords[0]);
@@ -44,7 +47,7 @@ const GenreSection = () => {
     <div>
       <div className={styles.genreSection}>
         <h1 className={styles.genreSectionTitle}>
-          {DiscountCategory?.category}
+          {GenreCategory?.category}
         </h1>
         <div className={styles.padd}>
           <CategoryTab

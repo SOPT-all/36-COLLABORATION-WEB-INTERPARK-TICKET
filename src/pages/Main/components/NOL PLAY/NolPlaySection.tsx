@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import * as styles from './NolPlaySection.css';
 import { sectionHeader } from '../../MainPage.css';
@@ -9,8 +9,6 @@ import type {
   CategoryBase,
   BasicPerformance,
 } from '../../api/types';
-import nolplay_first from '@/shared/assets/icon/nolplay_first.svg';
-import nolplay_video_first from '@/shared/assets/icon/nolplay_video_first.svg';
 import left_arrow from '@/shared/assets/icon/ic_arrow_left_gray70_16.svg';
 import right_arrow from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
@@ -27,12 +25,14 @@ const NolPlaySection = () => {
     (category): category is CategoryBase<BasicPerformance> =>
       category.category === 'NOL PLAY'
   );
-
-  const keywords = NolPlayCategory?.keywordList ?? [];
+  
   const performances = NolPlayCategory?.getHomeResponseList ?? [];
+  const [selected, setSelected] = useState<string>('');
+  const keywords = useMemo(() => {
+        return NolPlayCategory?.keywordList ?? []
+      }, [NolPlayCategory]);
 
   const [currentPage, setCurrentPage] = useState(0);
-
   const totalCards = performances.length;
   const maxPage = Math.max(0, Math.ceil(totalCards) - 1);
 
@@ -46,7 +46,6 @@ const NolPlaySection = () => {
     );
   };
 
-  const [selected, setSelected] = useState<string>('');
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
       setSelected(keywords[0]);

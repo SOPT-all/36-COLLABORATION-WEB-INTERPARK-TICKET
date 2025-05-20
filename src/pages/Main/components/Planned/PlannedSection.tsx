@@ -7,7 +7,6 @@ import type {
   CategoryBase,
   PlannedPerformance,
 } from '../../api/types';
-import planned_expected_first from '@/shared/assets/icon/planned_expected_first.svg';
 import Badge from '@/shared/components/Badge/Badge';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 import { QUERY_KEY } from '@/shared/constants/queryKey';

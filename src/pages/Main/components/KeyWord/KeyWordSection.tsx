@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import * as styles from './KeyWordSection.css';
 import { sectionHeader } from '../../MainPage.css';
@@ -13,6 +13,7 @@ import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 
 function KeyWordSection() {
+  const [selected, setSelected] = useState<string>('');
   const { data, isLoading, isError } = useQuery<HomeResponse>({
     queryKey: [QUERY_KEY.HOME],
     queryFn: getHomeData,
@@ -23,10 +24,12 @@ function KeyWordSection() {
       category.category === '이런 키워드는 어때요?'
   );
 
-  const keywords = AboutKewordCategory?.keywordList ?? [];
   const performances = AboutKewordCategory?.getHomeResponseList ?? [];
 
-  const [selected, setSelected] = useState<string>('');
+  const keywords = useMemo(() => {
+    return AboutKewordCategory?.keywordList ?? []
+  }, [AboutKewordCategory]);
+  
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
       setSelected(keywords[0]);

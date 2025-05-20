@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import * as styles from './MdPick.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
@@ -12,6 +12,7 @@ import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 
 const MdPick = () => {
+  const [selected, setSelected] = useState<string>('');
   const { data, isLoading, isError } = useQuery<HomeResponse>({
     queryKey: [QUERY_KEY.HOME],
     queryFn: getHomeData,
@@ -22,10 +23,12 @@ const MdPick = () => {
       category.category === 'MD PICK!'
   );
 
-  const keywords = MDpickCategory?.keywordList ?? [];
   const performances = MDpickCategory?.getHomeResponseList ?? [];
 
-  const [selected, setSelected] = useState<string>('');
+  const keywords = useMemo(() => {
+      return MDpickCategory?.keywordList ?? []
+    }, [MDpickCategory]);
+  
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
       setSelected(keywords[0]);
