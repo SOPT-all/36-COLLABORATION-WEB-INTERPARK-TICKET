@@ -49,7 +49,7 @@ const seatData: SeatData[] = [
     ],
   },
   {
-    grade: 'S',
+    grade: 'R',
     price: 30000,
     row: 'C',
     availability: [
@@ -170,28 +170,35 @@ const seatData: SeatData[] = [
   },
 ];
 
+type SeatGradeFilter = 'S' | 'R' | null;
 const SeatSelectPage = () => {
-  const [selectedSeatType, setSelectedSeatType] = useState<'S' | 'R'>('S');
+  const [selectedSeatType, setSelectedSeatType] =
+    useState<SeatGradeFilter>(null);
+
+  const handleSeatTypeClick = (type: 'S' | 'R') => {
+    setSelectedSeatType((prev) => (prev === type ? null : type));
+  };
+
   return (
     <div className={styles.pageWrapper}>
       <SeatHeader title="연극 이름" />
       <main className={styles.mainContent}>
         <div className={styles.seatSelectWrapper}>
           <SeatSelectChip
-            seatType="S"
-            isSelected={selectedSeatType === 'S'}
-            onClick={() => setSelectedSeatType('S')}
-          />
-          <SeatSelectChip
             seatType="R"
             isSelected={selectedSeatType === 'R'}
-            onClick={() => setSelectedSeatType('R')}
+            onClick={() => handleSeatTypeClick('R')}
+          />
+          <SeatSelectChip
+            seatType="S"
+            isSelected={selectedSeatType === 'S'}
+            onClick={() => handleSeatTypeClick('S')}
           />
         </div>
 
         <StageText />
 
-        <SeatCard seats={seatData} />
+        <SeatCard seats={seatData} selectedGrade={selectedSeatType} />
         <button className={styles.waitIcon}>
           <img src={ic_wait_blue70_36} alt="wait" />
         </button>

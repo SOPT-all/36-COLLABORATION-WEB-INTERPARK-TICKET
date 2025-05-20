@@ -5,9 +5,10 @@ import type { SeatData } from '../../types/SeatData';
 
 type Props = {
   seats: SeatData[];
+  selectedGrade: 'S' | 'R' | null;
 };
 
-const SeatCard = ({ seats }: Props) => {
+const SeatCard = ({ seats, selectedGrade }: Props) => {
   const [selected, setSelected] = useState<{
     row: string;
     index: number;
@@ -37,6 +38,7 @@ const SeatCard = ({ seats }: Props) => {
           availability={seat.availability}
           selected={selected}
           onSelect={handleSelect}
+          selectedGrade={selectedGrade}
         />
       );
     });
