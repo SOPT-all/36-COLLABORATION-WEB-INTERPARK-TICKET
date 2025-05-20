@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import { toast } from 'react-toastify';
 import { getSeatData, patchSelectedSeat } from './api';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 
