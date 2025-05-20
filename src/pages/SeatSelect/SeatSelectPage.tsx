@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ic_wait_blue70_36 from '@assets/icon/ic_ wait_blue70_36.svg';
 import SeatCard from './components/SeatCard/SeatCard';
 import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
@@ -191,6 +192,9 @@ const SeatSelectPage = () => {
         <StageText />
 
         <SeatCard seats={seatData} />
+        <button className={styles.waitIcon}>
+          <img src={ic_wait_blue70_36} alt="wait" />
+        </button>
       </main>
     </div>
   );

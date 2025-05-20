@@ -25,3 +25,12 @@ export const seatSelectWrapper = style({
   marginTop: '2rem',
   marginBottom: '9rem',
 });
+
+export const waitIcon = style({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginTop: '7.8rem',
+  marginRight: '1.8rem',
+  marginBottom: '2.3rem',
+  alignSelf: 'flex-end',
+});
