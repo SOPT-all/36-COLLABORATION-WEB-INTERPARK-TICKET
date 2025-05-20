@@ -47,7 +47,7 @@ function MainPage() {
         <HomeDivider />
 
         {/* 이런 키워드 어때요? */}
-        <KeyWordSection data={keywordDummyData} />
+        <KeyWordSection />
         <HomeDivider />
 
         {/* NOL PLAY */}

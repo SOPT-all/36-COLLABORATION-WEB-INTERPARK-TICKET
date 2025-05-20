@@ -1,53 +1,63 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as styles from './KeyWordSection.css';
 import { sectionHeader } from '../../MainPage.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import keyword_sangsang from '@/shared/assets/icon/keyword_sangsang.svg';
+import type { BasicPerformance, CategoryBase, HomeResponse } from '../../api/types';
+import { QUERY_KEY } from '@/shared/constants/queryKey';
+import { useQuery } from '@tanstack/react-query';
+import { getHomeData } from '../../api/api';
 
-export type getHomeResponse = {
-  id: number;
-  title: string;
-  imageUrl: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-};
+function KeyWordSection() {
+  const { data, isLoading, isError } = useQuery<HomeResponse>({
+    queryKey: [QUERY_KEY.HOME],
+    queryFn: getHomeData,
+  });
 
-export type KeywordData = {
-  category: string;
-  keywordList: string[];
-  getHomeResponseList: getHomeResponse[];
-};
+  const AboutKewordCategory = data?.find(
+    (category): category is CategoryBase<BasicPerformance> =>
+      category.category === '이런 키워드는 어때요?'
+  );
 
-interface Props {
-  data: KeywordData;
-}
+  const keywords = AboutKewordCategory?.keywordList ?? [];
+  const performances = AboutKewordCategory?.getHomeResponseList ?? [];
+  
+  const [selected, setSelected] = useState<string>('');
+  useEffect(() => {
+    if (keywords.length > 0 && selected === '') {
+      setSelected(keywords[0]);
+    }
+  }, [keywords, selected]);
 
-function KeyWordSection({ data }: Props) {
-  const [selectedKeyword, setSelectedKeyword] = useState(data.keywordList[0]);
+  const handleSelect = (keyword: string) => {
+    setSelected(keyword);
+  };
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   return (
     <section className={styles.sectionWrapper}>
-      <header className={sectionHeader}>{data.category}</header>
+      <header className={sectionHeader}>{AboutKewordCategory?.category}</header>
       <div className={styles.keywordWrapper}>
         <CategoryTab
-          keywords={data.keywordList}
-          selected={selectedKeyword}
-          onSelect={setSelectedKeyword}
+          keywords={keywords}
+          selected={selected}
+          onSelect={handleSelect}
           variant="wrap"
         />
       </div>
       <div className={styles.cardWrapper}>
-        {data.getHomeResponseList.map((item) => (
-          <div key={item.id}>
+        {performances.map((AboutKeyword) => (
+          <div key={AboutKeyword.id}>
             <InfoCard
               isrank={false}
-              rank={0}
-              image={keyword_sangsang}
-              title={item.title}
-              location={item.location}
-              date={`${item.startDate} ~ ${item.endDate}`}
+              image={AboutKeyword.imageUrl}
+              title={AboutKeyword.title}
+              location={AboutKeyword.location ?? ''}
+              startDate={AboutKeyword.startDate ?? ''}
+              endDate={AboutKeyword.endDate ?? ''}
             />
           </div>
         ))}
