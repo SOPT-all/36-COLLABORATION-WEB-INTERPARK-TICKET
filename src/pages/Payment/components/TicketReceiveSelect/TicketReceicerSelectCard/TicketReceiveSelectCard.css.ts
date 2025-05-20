@@ -4,10 +4,15 @@ import { LAYOUT } from '@/shared/styles/layoutConstants';
 import { fontStyle } from '@/shared/styles/fontStyle';
 
 export const wrapper = style({
+  width: '100%',
   display: 'flex',
   flexDirection: 'column',
   gap: '1.6rem',
   marginTop: LAYOUT.MARGIN.LG,
+});
+
+export const titleWrapper = style({
+  paddingLeft: '1.5rem',
 });
 
 export const title = style({

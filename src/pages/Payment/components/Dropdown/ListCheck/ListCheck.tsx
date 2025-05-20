@@ -7,18 +7,26 @@ import ArrowDownIcon from '@/shared/assets/icon/ic_arrow_down_gray90_24.svg?reac
 
 interface ListCheckProps {
   label: string;
+  checked?: boolean;
+  onChange?: () => void;
+  onArrowClick?: () => void;
 }
 
-export default function ListCheck({ label }: ListCheckProps) {
-  const [checked, setChecked] = useState(false);
+export default function ListCheck({
+  label,
+  checked = false,
+  onChange,
+  onArrowClick,
+}: ListCheckProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCheckClick = () => {
-    setChecked((prev) => !prev);
+    onChange?.();
   };
 
   const handleArrowClick = () => {
     setIsOpen((prev) => !prev);
+    onArrowClick?.();
   };
 
   return (
@@ -28,13 +36,11 @@ export default function ListCheck({ label }: ListCheckProps) {
         className={styles.listCheckLeft}
         onClick={handleCheckClick}
       >
-        <div className={styles.listCheckCheckIcon}>
-          {checked ? (
-            <CheckBlueIcon width={17} height={12} />
-          ) : (
-            <CheckGrayIcon width={17} height={12} />
-          )}
-        </div>
+        {checked ? (
+          <CheckBlueIcon width={18} height={18} />
+        ) : (
+          <CheckGrayIcon width={18} height={18} />
+        )}
         <span className={styles.listCheckLabel}>{label}</span>
       </button>
 

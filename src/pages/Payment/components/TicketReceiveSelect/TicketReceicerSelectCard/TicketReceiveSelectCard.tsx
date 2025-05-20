@@ -13,7 +13,9 @@ export default function TicketReceiveSelectCard({
 }: TicketReceiveSelectCardProps) {
   return (
     <div className={styles.wrapper}>
-      <InfoRowLabel text="티켓 수령 방법 선택" />
+      <div className={styles.titleWrapper}>
+        <InfoRowLabel text="티켓 수령 방법 선택" />
+      </div>
 
       <div className={styles.ticketReceiveCardWrapper}>
         <div className={styles.optionRow}>
