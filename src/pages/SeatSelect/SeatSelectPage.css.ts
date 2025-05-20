@@ -14,8 +14,6 @@ export const mainContent = style({
   flexDirection: 'column',
   alignItems: 'center',
   marginTop: '5.4rem',
-
-  gap: '2rem',
 });
 
 export const seatSelectWrapper = style({

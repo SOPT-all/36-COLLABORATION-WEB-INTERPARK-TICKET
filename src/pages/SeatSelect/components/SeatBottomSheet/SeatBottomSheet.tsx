@@ -53,30 +53,28 @@ const SeatBottomSheet = ({
         </div>
       </div>
 
-      {isSeatSelected && (
-        <div className={styles.bottomArea}>
-          <div className={styles.priceContainer}>
-            <p className={styles.infoText({ state: 'default' })}>결제금액</p>
-            {price !== undefined ? (
-              <p className={styles.priceText.normal}>
-                총
-                <span className={styles.priceText.strong}>
-                  {price.toLocaleString()}
-                </span>
-                원
-              </p>
-            ) : (
-              <p className={styles.priceText.normal}>가격 정보 없음</p>
-            )}
-          </div>
-          <div className={styles.buttonGroup}>
-            <SmallButton variant="retry" onClick={onRetryClick}>
-              재선택
-            </SmallButton>
-            <SmallButton variant="next">다음</SmallButton>
-          </div>
+      <div className={styles.bottomArea({ open: isSeatSelected })}>
+        <div className={styles.priceContainer}>
+          <p className={styles.infoText({ state: 'default' })}>결제금액</p>
+          {price !== undefined ? (
+            <p className={styles.priceText.normal}>
+              총
+              <span className={styles.priceText.strong}>
+                {price.toLocaleString()}
+              </span>
+              원
+            </p>
+          ) : (
+            <p className={styles.priceText.normal}>가격 정보 없음</p>
+          )}
         </div>
-      )}
+        <div className={styles.buttonGroup}>
+          <SmallButton variant="retry" onClick={onRetryClick}>
+            재선택
+          </SmallButton>
+          <SmallButton variant="next">다음</SmallButton>
+        </div>
+      </div>
     </div>
   );
 };

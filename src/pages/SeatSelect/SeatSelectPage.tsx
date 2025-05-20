@@ -52,7 +52,7 @@ const seatData: SeatData[] = [
   },
   {
     grade: 'R',
-    price: 30000,
+    price: 48000,
     row: 'C',
     availability: [
       false,
@@ -238,6 +238,7 @@ const SeatSelectPage = () => {
           selected={selectedSeat}
           onSelectSeat={handleSelectSeat}
         />
+
         <button className={styles.waitIcon} onClick={handleWaitIconClick}>
           <img src={ic_wait_blue70_36} alt="wait" />
         </button>

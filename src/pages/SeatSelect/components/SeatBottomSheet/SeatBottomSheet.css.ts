@@ -13,8 +13,9 @@ export const sheetWrapper = style({
   backgroundColor: vars.color.white,
   borderRadius: '3rem 3rem 0 0',
   boxShadow: '0 0 2px rgba(0,0,0,0.25)',
-  transition: 'transform 0.3s ease-in-out',
-  zIndex: 1000,
+  willChange: 'transform',
+  transition: 'transform 0.3s ease-in-out ',
+  zIndex: 1,
   overflow: 'hidden',
 });
 
@@ -87,15 +88,29 @@ export const infoText = recipe({
   },
 });
 
-// 좌석 선택 이후
-export const bottomArea = style({
-  backgroundColor: vars.color.gray10,
-  padding: '1.5rem 2.5rem',
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '2rem',
-  opacity: 1,
-  transition: 'opacity 0.3s ease-in-out',
+export const bottomArea = recipe({
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: vars.color.gray10,
+    padding: '1.5rem 2.5rem',
+    gap: '2rem',
+    overflow: 'hidden',
+    transition: 'max-height 0.2s ease-out, opacity 0.2s ease-out',
+  },
+  variants: {
+    open: {
+      true: {
+        maxHeight: '15rem',
+        opacity: 1,
+      },
+      false: {
+        maxHeight: 0,
+        opacity: 0,
+      },
+    },
+  },
+  defaultVariants: { open: false },
 });
 
 export const priceContainer = style({
