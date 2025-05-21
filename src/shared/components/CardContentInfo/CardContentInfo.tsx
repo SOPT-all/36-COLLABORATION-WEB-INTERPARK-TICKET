@@ -12,10 +12,13 @@ interface PerformanceInfoProps {
 }
 
 interface Props {
-  data: PerformanceInfoProps;
+  data: PerformanceInfoProps | null;
 }
 
 const CardContentInfo = ({ data }: Props) => {
+  if (!data) {
+    return <div>공연 정보가 없습니다.</div>;
+  }
   const {
     performanceTitle,
     performanceLocation,
@@ -29,7 +32,7 @@ const CardContentInfo = ({ data }: Props) => {
     <div className={styles.cardContentInfo}>
       <img
         className={styles.performanceImg}
-        src={performanceImage}
+        src={`https://www.sopt-interpark.shop${performanceImage}`}
         alt={performanceTitle}
       />
 
