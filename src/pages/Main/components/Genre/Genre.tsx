@@ -1,70 +1,52 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
+import type { BasicPerformance, CategoryBase } from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
-import { Rectangle95 } from '@/shared/components/Rectangle/Rectangle';
-const GenreSection = () => {
-  const keywords = ['공연', '영화', '전시', '뮤지컬'];
+interface GenreSectionProps {
+  category: CategoryBase<BasicPerformance>;
+}
 
+const GenreSection = ({ category }: GenreSectionProps) => {
+  const performances = category.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
+
+  const keywords = useMemo(() => {
+    return category?.keywordList ?? [];
+  }, [category]);
+
+  useEffect(() => {
+    if (keywords.length > 0 && selected === '') {
+      setSelected(keywords[0]);
+    }
+  }, [keywords, selected]);
 
   const handleSelect = (keyword: string) => {
     setSelected(keyword);
   };
 
-  const infoCardsData = [
-    {
-      isrank: true,
-      rank: 1,
-      image:
-        'https://media.bunjang.co.kr/product/323773992_1_1743659275_w%7Bres%7D.jpg',
-      title: '뮤지컬 <팬텀>',
-      location: '세종문화회관',
-      date: '2025.07.25',
-    },
-    {
-      isrank: true,
-      rank: 2,
-      image:
-        'https://media.bunjang.co.kr/product/323773992_1_1743659275_w%7Bres%7D.jpg',
-      title: '뮤지컬 <팬텀>',
-      location: '세종문화회관',
-      date: '2025.07.25',
-    },
-    {
-      isrank: true,
-      rank: 3,
-      image:
-        'https://media.bunjang.co.kr/product/323773992_1_1743659275_w%7Bres%7D.jpg',
-      title: '뮤지컬 <팬텀>',
-      location: '세종문화회관',
-      date: '2025.07.25',
-    },
-  ];
-
   return (
     <div>
-      <Rectangle95 />
       <div className={styles.genreSection}>
-        <h1 className={styles.genreSectionTitle}>장르별 랭킹</h1>
+        <h1 className={styles.genreSectionTitle}>{category.category}</h1>
         <div className={styles.padd}>
-          {' '}
           <CategoryTab
             keywords={keywords}
             selected={selected}
             onSelect={handleSelect}
           />
           <div className={styles.scrollArea}>
-            {infoCardsData.map((card, index) => (
+            {performances.map((genre, idx) => (
               <InfoCard
-                key={index} // 고유한 key값 제공
-                isrank={card.isrank}
-                rank={card.rank}
-                image={card.image}
-                title={card.title}
-                location={card.location}
-                date={card.date}
+                key={genre.id}
+                isrank={true}
+                rank={idx + 1}
+                image={genre.imageUrl}
+                title={genre.title}
+                location={genre.location ?? ''}
+                startDate={genre.startDate ?? ''}
+                endDate={genre.endDate ?? ''}
               />
             ))}
           </div>

@@ -43,6 +43,12 @@ export const cardContainer = style({
   flexShrink: 0,
   transition: 'transform 0.4s ease-in-out',
   width: '29.8rem',
+  cursor: 'pointer',
+});
+
+export const smallImg = style({
+  width: '4.8rem',
+  height: '6.2rem',
 });
 
 export const bottomCard = style({
@@ -54,7 +60,13 @@ export const bottomCard = style({
   border: `0.1rem solid ${vars.color.gray20}`,
   borderRadius: '0rem 0rem 1rem 1rem',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'canter',
+});
+
+export const textWrapper = style({
+  display: 'flex',
+  alignItems: 'center',
+  height: '100%',
 });
 
 export const bottomCardText = style({
