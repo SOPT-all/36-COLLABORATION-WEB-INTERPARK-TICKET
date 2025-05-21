@@ -1,6 +1,5 @@
 export interface BaseResponse<T> {
-  success: boolean;
-  code: string;
+  status: number;
   message: string;
   data: T;
 }
