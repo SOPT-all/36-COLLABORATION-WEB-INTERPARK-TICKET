@@ -37,10 +37,6 @@ function SelectDatePage() {
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
-  console.log('전체 데이터:', data);
-  console.log('전체 데이터:', data?.performance);
-  console.log('전체 데이터:', data?.seatGrades);
-
   const handleSelectDate = (selected: boolean) => {
     setIsSelected(selected); // true로 바뀌는거면! 그러면 이제 예매박스 띄우기
   };
