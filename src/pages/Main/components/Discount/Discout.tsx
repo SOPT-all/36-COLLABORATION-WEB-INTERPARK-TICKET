@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import * as styles from './DiscountCard.css';
 import DiscountCard from './DiscoutCard';
 import type { CategoryBase, DiscountPerformance } from '../../api/types';
@@ -7,7 +8,12 @@ interface DiscountSectionProp {
 }
 
 const DiscountSection = ({ category }: DiscountSectionProp) => {
+  const navigate = useNavigate();
   const performances = category?.getHomeResponseList ?? [];
+
+  const handleClick = (performance: DiscountPerformance) => {
+    navigate('/date-select', { state: performance });
+  };
 
   return (
     <div className={styles.discountSection}>
@@ -15,6 +21,7 @@ const DiscountSection = ({ category }: DiscountSectionProp) => {
       <div className={styles.scrollArea}>
         {performances.map((discountData) => (
           <DiscountCard
+            onClick={() => handleClick(discountData)}
             key={discountData.id}
             id={discountData.id}
             title={discountData.title}

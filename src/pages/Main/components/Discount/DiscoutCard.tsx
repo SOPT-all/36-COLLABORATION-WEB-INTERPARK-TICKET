@@ -2,6 +2,10 @@ import * as styles from './DiscountCard.css';
 import type { DiscountPerformance } from '../../api/types';
 import TimeDeal from '@/shared/components/TimeDeal/TimeDeal';
 
+interface DiscountCardProps extends DiscountPerformance {
+  onClick?: () => void;
+}
+
 const DiscountCard = ({
   title,
   discountRate,
@@ -11,9 +15,10 @@ const DiscountCard = ({
   openDate,
   endDate,
   description,
-}: DiscountPerformance) => {
+  onClick,
+}: DiscountCardProps) => {
   return (
-    <div className={styles.discountCard}>
+    <div className={styles.discountCard} onClick={onClick}>
       <img src={imageUrl} className={styles.cardImg} alt={title} />
       <div className={styles.cardContent}>
         <TimeDeal text="타임딜" time="17:26:38" />
