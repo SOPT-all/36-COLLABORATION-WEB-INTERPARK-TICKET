@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
+import React from 'react';
 import ic_wait_blue70_36 from '@assets/icon/ic_ wait_blue70_36.svg';
 import { useNavigate } from 'react-router';
 import SeatCard from './components/SeatCard/SeatCard';
 import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
-import Popup from './components/Popup/Popup';
 import SeatBottomSheet from './components/SeatBottomSheet/SeatBottomSheet';
 import { usePatchSeatData, useSeatData } from './api/hooks';
 import type { SeatData, SeatGrade, SeatInfo } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
+
+const LazyPopup = React.lazy(() => import('./components/Popup/Popup'));
 
 const SeatSelectPage = () => {
   const navigate = useNavigate();
@@ -121,7 +123,11 @@ const SeatSelectPage = () => {
           onNextClick={handleNextClick}
         />
 
-        {showPopup && <Popup onClose={handleWaitIconClick} />}
+        {showPopup && (
+          <Suspense fallback={<div>로딩 중…</div>}>
+            <LazyPopup onClose={handleWaitIconClick} />
+          </Suspense>
+        )}
       </main>
     </div>
   );
