@@ -1,10 +1,10 @@
 import * as styles from './SeatSelectChip.css';
-import type { SeatType } from '../../types/SeatData';
+import type { SeatGrade } from '../../api/types';
 import SIcon from '@/shared/assets/icon/ic_S_seat.svg';
 import RIcon from '@/shared/assets/icon/ic_R_seat.svg';
 
 interface Props {
-  seatType: SeatType;
+  seatType: SeatGrade;
   isSelected: boolean;
   onClick?: () => void;
 }
