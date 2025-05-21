@@ -20,7 +20,7 @@ import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 export default function PaymentStep2() {
   const navigate = useNavigate();
   const [isAgreed, setIsAgreed] = useState(false);
-  const { setDeliveryMethod } = usePaymentStore();
+  const { setDeliveryMethod, userInfo } = usePaymentStore();
 
   const handleBack = () => {
     navigate('/payment/step1');
@@ -86,7 +86,7 @@ export default function PaymentStep2() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <LargeButton onClick={handleSubmit} isActive={isAgreed}>
+          <LargeButton onClick={handleSubmit} isActive={isAgreed && !!userInfo?.email}>
             다음
           </LargeButton>
         </div>
