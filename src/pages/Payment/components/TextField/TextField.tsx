@@ -1,7 +1,7 @@
 import { type ChangeEvent } from 'react';
 import clsx from 'clsx';
 import * as styles from './TextField.css';
-import { useFocusInput } from '../../hooks/useFocusInput';
+import { useFocusInput } from './hooks/useFocusInput';
 
 interface TextFieldProps {
   placeholder: string;

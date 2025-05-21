@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SelectionContainer from './SelectionContainer';
-import { useBanks } from '@/pages/Payment/constants/banks.hooks';
-import type { PaymentMethod } from '@/pages/Payment/constants/banks.types';
+import type { PaymentMethod } from '@/pages/Payment/api/banks.types';
+import { useBanks } from '@/pages/Payment/api/banks.hooks';
 
 interface BankContainerProps {
   onSelect?: (bank: string) => void;

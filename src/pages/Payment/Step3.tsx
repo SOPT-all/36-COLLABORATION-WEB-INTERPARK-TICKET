@@ -19,7 +19,7 @@ import {
   Rectangle97,
 } from '@/shared/components/Rectangle/Rectangle';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
-import { useCreatePayment } from '@/pages/Payment/constants/payment.hooks';
+import { useCreatePayment } from '@/pages/Payment/api/payment.hooks';
 import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
