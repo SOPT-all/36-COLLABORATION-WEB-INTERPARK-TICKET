@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import SelectionContainer from './SelectionContainer';
-import type { PaymentMethod } from '@/pages/Payment/constants/banks';
-import { fetchPaymentMethods } from '@/pages/Payment/constants/banks';
+import { useBanks } from '@/pages/Payment/constants/banks.hooks';
+import type { PaymentMethod } from '@/pages/Payment/constants/banks.types';
 
 interface BankContainerProps {
   onSelect?: (bank: string) => void;
@@ -9,28 +9,9 @@ interface BankContainerProps {
 
 export default function BankContainer({ onSelect }: BankContainerProps) {
   const [selected, setSelected] = useState<string>('');
-  const [banks, setBanks] = useState<PaymentMethod[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data, isLoading, error } = useBanks();
 
-  useEffect(() => {
-    const loadBanks = async () => {
-      try {
-        const paymentMethods = await fetchPaymentMethods();
-        setBanks(paymentMethods);
-      } catch (err) {
-        setError(
-          err instanceof Error
-            ? err.message
-            : '은행 목록을 불러오는데 실패했습니다.'
-        );
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadBanks();
-  }, []);
+  const banks: PaymentMethod[] = data?.paymentMethodList || [];
 
   const handleSelect = (bank: string) => {
     setSelected(bank);
@@ -42,7 +23,14 @@ export default function BankContainer({ onSelect }: BankContainerProps) {
   }
 
   if (error) {
-    return <div>에러: {error}</div>;
+    return (
+      <div>
+        에러:{' '}
+        {error instanceof Error
+          ? error.message
+          : '은행 목록을 불러오는데 실패했습니다.'}
+      </div>
+    );
   }
 
   const items = banks.map((bank) => ({

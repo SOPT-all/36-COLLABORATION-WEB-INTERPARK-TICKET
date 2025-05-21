@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { UserInfo } from '../constants/payment';
+import type { UserInfo } from '../constants/payment.types';
 
 interface PaymentState {
   ticketCount: number;

@@ -1,25 +1,2 @@
-import { request, HTTPMethod } from '@/shared/network/request';
-
-export interface PaymentMethod {
-  name: string;
-  imageUrl: string;
-}
-
-export interface PaymentMethodResponse {
-  status: number;
-  message: string;
-  data: {
-    paymentMethodList: PaymentMethod[];
-  };
-}
-
-export const fetchPaymentMethods = async (): Promise<PaymentMethod[]> => {
-  const data = await request<{
-    paymentMethodList: PaymentMethod[];
-  }>({
-    method: HTTPMethod.GET,
-    url: '/api/v1/tickets/payment',
-  });
-  console.log(data.paymentMethodList);
-  return data.paymentMethodList;
-};
+// ...이 파일의 모든 코드는 types.ts, api.ts, hooks.ts로 분리됩니다.
+// 필요하다면 여기서 재export만 남기세요.

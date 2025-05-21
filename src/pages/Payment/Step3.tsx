@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
 import VectorDivider from './components/VectorDivider/VectorDivider';
@@ -19,11 +19,13 @@ import {
   Rectangle97,
 } from '@/shared/components/Rectangle/Rectangle';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
-import { createPayment } from '@/pages/Payment/constants/payment';
+import { useCreatePayment } from '@/pages/Payment/constants/payment.hooks';
 import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { seatInfo, ticketPrice: stateTicketPrice } = location.state || {};
   const [selectedPayment, setSelectedPayment] = useState<
     'noll' | 'other' | null
   >(null);
@@ -38,7 +40,6 @@ export default function PaymentStep3() {
 
   const {
     ticketCount,
-    totalPrice,
     deliveryMethod,
     userInfo,
     paymentMethod,
@@ -46,6 +47,8 @@ export default function PaymentStep3() {
     pointAmount,
     setPaymentMethod,
   } = usePaymentStore();
+
+  const createPaymentMutation = useCreatePayment();
 
   useEffect(() => {
     if (!userInfo || !deliveryMethod || ticketCount === 0) {
@@ -96,31 +99,39 @@ export default function PaymentStep3() {
 
   const handleSubmit = async () => {
     if (!isAgreed || !userInfo || !userInfo.email || !paymentMethod) return;
-    try {
-      setIsSubmitting(true);
-      setError(null);
-      const paymentData = {
-        ticketCount,
-        totalPrice: finalPrice,
-        deliveryMethod,
-        userInfo,
-        paymentMethod,
-      };
-      const response = await createPayment(paymentData);
-      console.log('결제 응답:', response);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : '결제 처리 중 오류가 발생했습니다.'
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
+    setIsSubmitting(true);
+    setError(null);
+    const paymentData = {
+      ticketCount: ticketCountFromState,
+      totalPrice: finalPrice,
+      deliveryMethod,
+      userInfo,
+      paymentMethod,
+    };
+    createPaymentMutation.mutate(paymentData, {
+      onSuccess: (response) => {
+        console.log('결제 응답:', response);
+      },
+      onError: (err) => {
+        setError(
+          err instanceof Error
+            ? err.message
+            : '결제 처리 중 오류가 발생했습니다.'
+        );
+      },
+      onSettled: () => {
+        setIsSubmitting(false);
+      },
+    });
   };
 
   const formatPrice = (price: number) => {
     return price.toLocaleString() + '원';
   };
 
+  const ticketCountFromState = seatInfo?.quantity || ticketCount;
+  const ticketPrice = stateTicketPrice || 66000;
+  const totalPrice = ticketPrice * ticketCountFromState;
   const finalPrice = totalPrice - discountAmount - pointAmount;
 
   return (
