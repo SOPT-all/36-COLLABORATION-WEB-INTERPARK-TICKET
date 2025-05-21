@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
 import * as ListInfoStyles from './components/Dropdown/ListInfomation/ListInfo.css';
 import TicketPriceInfo from './components/TicketPriceInfo/TicketPriceInfo';
@@ -19,11 +19,9 @@ import {
   Rectangle95,
   PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
+import type { SeatInfo } from '@/pages/SeatSelect/api/types';
 
 export default function PaymentStep1() {
-  const { state } = useLocation();
-  const selectedSeatInfo = state?.selectedSeatInfo;
-
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [birthdate, setBirthdate] = useState('');
@@ -63,13 +61,20 @@ export default function PaymentStep1() {
 
   const isFormValid = validateForm(name, birthdate, phone) && quantity > 0;
 
+  // 예시 seatInfo (실제 데이터로 대체 필요)
+  const seatInfo: SeatInfo = {
+    position: { row: 'A', index: 1 },
+    grade: 'R',
+    price: 66000,
+  };
+
   return (
     <>
       <PayHeader step={1} onBackClick={handleBack} onCloseClick={handleClose} />
       <main className={styles.mainContent}>
         <div>
           <div className={styles.page}>
-            <BookingInfoSection seatInfo={selectedSeatInfo} />
+            <BookingInfoSection seatInfo={seatInfo} />
           </div>
           <Rectangle94 />
 
