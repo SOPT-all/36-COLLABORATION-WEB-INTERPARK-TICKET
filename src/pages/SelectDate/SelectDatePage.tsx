@@ -1,16 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import { getDateData } from './api/api';
+import { useDateData } from './api/hooks';
 import * as styles from './SelectDatePage.css';
-import type { Performance, DatePageResponse, SeatGrades } from './api/types';
-import { QUERY_KEY } from '@/shared/constants/queryKey';
+import { formatTime } from './utils/utils';
+import type { Performance, SeatGrades } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 import CardContentInfo from '@/shared/components/CardContentInfo/CardContentInfo';
 import Calendar from '@/shared/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
 import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
-
 function SelectDatePage() {
   const [isSelected, setIsSelected] = useState(false);
   const [performanceData, setPerformanceData] = useState<Performance | null>(
@@ -20,11 +18,8 @@ function SelectDatePage() {
   const [authors, setAuthors] = useState('');
   const [time, setTime] = useState('');
   // API 연동
-  const { data, isLoading, isError } = useQuery<DatePageResponse>({
-    queryKey: [QUERY_KEY.HOME],
-    queryFn: getDateData,
-    staleTime: 1000 * 60 * 5,
-  });
+  const { data, isLoading, isError } = useDateData();
+
   useEffect(() => {
     if (data) {
       setPerformanceData(data.performance);
@@ -39,12 +34,6 @@ function SelectDatePage() {
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
-  function formatTime(time: string): string {
-    const [hours, minutes] = time.split(':').map(Number);
-    const period = hours >= 12 ? '오후' : '오전';
-    const hour12 = hours % 12 || 12;
-    return `${period} ${hour12}:${minutes.toString().padStart(2, '0')}`;
-  }
   const handleSelectDate = (selected: boolean) => {
     setIsSelected(selected); // true로 바뀌는거면! 그러면 이제 예매박스 띄우기
   };

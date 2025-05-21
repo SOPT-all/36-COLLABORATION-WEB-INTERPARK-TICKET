@@ -32,7 +32,7 @@ const CardContentInfo = ({ data }: Props) => {
     <div className={styles.cardContentInfo}>
       <img
         className={styles.performanceImg}
-        src={`https://www.sopt-interpark.shop${performanceImage}`}
+        src={`${import.meta.env.VITE_BASE_URL}${performanceImage}`}
         alt={performanceTitle}
       />
 
