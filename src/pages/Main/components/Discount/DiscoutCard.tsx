@@ -26,7 +26,7 @@ const DiscountCard = ({
         <div className={styles.priceDisplay}>
           <p className={styles.discoutNum}>{discountRate}%</p>
 
-          <p className={styles.priceNum}>{price}원</p>
+          <p className={styles.priceNum}>{price.toLocaleString()}원</p>
         </div>
       </div>
     </div>
