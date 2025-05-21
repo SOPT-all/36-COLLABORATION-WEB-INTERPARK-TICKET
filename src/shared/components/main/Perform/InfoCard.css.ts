@@ -10,6 +10,7 @@ export const InfoCardBox = style({
   width: '14.2rem',
   gap: '1.4rem',
   flexShrink: 0,
+  cursor: 'pointer',
 });
 
 export const InfoCardImg = style({
@@ -22,12 +23,24 @@ export const InfoCardTitle = style({
   ...fontStyle('b7_b_14_1'),
   color: vars.color.black,
   marginBottom: '0.7rem',
+
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  whiteSpace: 'normal',
 });
 
 export const InfoCardTxt = style({
   ...fontStyle('b15_re_12'),
   color: vars.color.gray80,
   marginBottom: '0.4rem',
+
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
+  whiteSpace: 'normal',
 });
 
 export const InfoCardDate = style({

@@ -36,7 +36,7 @@ function PlannedSection() {
           <div className={styles.cardContainer} key={planned.id}>
             <img src={planned.imageUrl} className={styles.img} />
             <div className={styles.textWrapper}>
-              <p className={styles.dateText}>{planned.startDate}</p>
+              <p className={styles.dateText}>{planned.openDate}</p>
               <p className={styles.titleText}>{planned.title}</p>
               <p className={styles.descriptionText}>{planned.description}</p>
               <div className={styles.tagGroup}>

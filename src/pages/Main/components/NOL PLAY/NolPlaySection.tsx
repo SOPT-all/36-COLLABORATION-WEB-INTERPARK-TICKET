@@ -82,7 +82,9 @@ const NolPlaySection = () => {
               <img src={NOL.imageUrl} />
               <div className={styles.bottomCard}>
                 <img src={NOL.imageUrl} className={styles.smallImg} />
-                <p className={styles.bottomCardText}>{NOL.title}</p>
+                <div className={styles.textWrapper}>
+                  <p className={styles.bottomCardText}>{NOL.title}</p>
+                </div>
               </div>
             </div>
           ))}

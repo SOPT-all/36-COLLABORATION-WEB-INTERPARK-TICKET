@@ -23,6 +23,7 @@ export const scrollArea = style({
   overflow: 'scroll',
   padding: '2rem 1.8rem 2rem 0',
   gap: '1.2rem',
+  alignItems: 'flex-start',
 
   '::-webkit-scrollbar': {
     display: 'none',

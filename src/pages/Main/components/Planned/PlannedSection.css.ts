@@ -63,11 +63,17 @@ export const titleText = style({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   ...fontStyle('b8_sb_14'),
+  lineHeight: '1.6rem',
 });
 
 export const descriptionText = style({
   ...fontStyle('b4_m_16'),
   color: vars.color.gray60,
+
+  display: '-webkit-box',
+  WebkitBoxOrient: 'vertical',
+  WebkitLineClamp: 2,
+  whiteSpace: 'normal',
 });
 
 export const tagGroup = style({

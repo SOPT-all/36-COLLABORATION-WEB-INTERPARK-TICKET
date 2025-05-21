@@ -25,8 +25,7 @@ export type tagType = 'HOT' | '단독판매';
 
 // 곧 오픈하는 공연!
 export interface PlannedPerformance extends BaseHome {
-  startDate: string;
-  endDate: string;
+  openDate: string;
   description: string;
   tagList: tagType[];
 }

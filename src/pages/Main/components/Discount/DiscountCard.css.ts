@@ -1,12 +1,14 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
+
 export const discountCard = style({
   display: 'flex',
   flexShrink: 0,
   gap: '1.1rem',
   marginRight: '3rem',
-  width: '27rem',
+  width: '28.5rem',
+  cursor: 'pointer',
 });
 
 export const cardContent = style({
@@ -85,7 +87,7 @@ export const scrollArea = style({
   display: 'flex',
   flexWrap: 'wrap',
   flexDirection: 'column',
-  height: '55rem',
+  height: '56rem',
   gap: '1rem',
   overflow: 'scroll',
   padding: '0 1.8rem 2rem 0',

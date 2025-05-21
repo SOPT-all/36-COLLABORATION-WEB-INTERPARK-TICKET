@@ -19,6 +19,7 @@ export const pad = style({ paddingLeft: '1.3rem' });
 
 export const scrollArea = style({
   display: 'flex',
+  alignItems: 'flex-start',
   overflow: 'scroll',
   padding: '3rem 1.8rem 0rem 0',
   margin: '0 auto',
