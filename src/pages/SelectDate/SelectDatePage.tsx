@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 import { useDateData } from './api/hooks';
 import * as styles from './SelectDatePage.css';
 import { formatTime } from './utils/utils';
@@ -10,6 +11,7 @@ import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
 import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
 function SelectDatePage() {
+  const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
   const [performanceData, setPerformanceData] = useState<Performance | null>(
     null
@@ -37,10 +39,12 @@ function SelectDatePage() {
   const handleSelectDate = (selected: boolean) => {
     setIsSelected(selected); // true로 바뀌는거면! 그러면 이제 예매박스 띄우기
   };
-
+  const handleBackClick = () => {
+    navigate('/');
+  };
   return (
     <div>
-      <SeatHeader title={''} />
+      <SeatHeader title={''} onBackClick={handleBackClick} />
       <main className={styles.containerWrapper}>
         <CardContentInfo data={performanceData || null} />
         <section className={styles.mainSection}>
