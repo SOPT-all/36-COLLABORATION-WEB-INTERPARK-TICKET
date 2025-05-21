@@ -9,6 +9,12 @@ export type SeatData = {
 
 export type SeatPosition = { row: string; index: number };
 
+export interface SeatInfo {
+  position: SeatPosition;
+  grade: SeatGrade;
+  price: number;
+}
+
 export interface SeatDataResponse {
   seats: SeatData[];
 }

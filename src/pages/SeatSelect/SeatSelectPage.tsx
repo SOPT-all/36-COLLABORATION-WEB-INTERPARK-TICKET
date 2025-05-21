@@ -7,53 +7,48 @@ import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
 import Popup from './components/Popup/Popup';
 import SeatBottomSheet from './components/SeatBottomSheet/SeatBottomSheet';
-import { useSeatData } from './api/hooks';
-import type { SeatData, SeatGradeFilter, SeatPosition } from './types/SeatData';
+import { usePatchSeatData, useSeatData } from './api/hooks';
+import type { SeatData, SeatGrade, SeatInfo } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 
 const SeatSelectPage = () => {
   const navigate = useNavigate();
 
-  const [selectedSeatType, setSelectedSeatType] =
-    useState<SeatGradeFilter>(null);
+  const [selectedSeatInfo, setSelectedSeatInfo] = useState<SeatInfo | null>(
+    null
+  );
 
+  const [selectedSeatType, setSelectedSeatType] = useState<SeatGrade | null>(
+    null
+  );
   const [showPopup, setShowPopup] = useState(false);
 
-  const [selectedSeatInfo, setSelectedSeatInfo] = useState<
-    string | undefined
-  >();
-
-  const [selectedSeatPrice, setSelectedSeatPrice] = useState<
-    number | undefined
-  >();
-
-  const [selectedSeat, setSelectedSeat] = useState<SeatPosition | null>(null);
-
-  const { data: seatResponse, isLoading, isError } = useSeatData();
-  if (isLoading) return <div>로딩중…</div>;
-  if (isError) return <div>좌석 정보를 불러올 수 없습니다.</div>;
+  const { data: seatResponse } = useSeatData();
+  const { mutate: patchSeat } = usePatchSeatData();
 
   const seatData: SeatData[] = seatResponse?.seats ?? [];
+
+  const seatInfo = selectedSeatInfo
+    ? `${selectedSeatInfo.grade}석 ${selectedSeatInfo.position.row}열 ${selectedSeatInfo.position.index + 1}`
+    : undefined;
+  const seatPrice = selectedSeatInfo?.price;
 
   const handleSelectSeat = (
     row: string,
     index: number,
-    grade: SeatGradeFilter,
+    grade: SeatGrade,
     price: number
   ) => {
-    setSelectedSeat({ row, index });
-    setSelectedSeatInfo(`${grade}석 ${row}열 ${index + 1}`);
-    setSelectedSeatPrice(price);
+    setSelectedSeatInfo({
+      position: { row, index },
+      grade,
+      price,
+    });
   };
 
-  const handleRetryClick = () => {
-    setSelectedSeat(null);
-    setSelectedSeatInfo(undefined);
-    setSelectedSeatPrice(undefined);
-    setSelectedSeatType(null);
-  };
+  const handleRetryClick = () => setSelectedSeatInfo(null);
 
-  const handleSeatTypeClick = (type: SeatGradeFilter) => {
+  const handleSeatTypeClick = (type: SeatGrade) => {
     setSelectedSeatType((prev) => (prev === type ? null : type));
   };
 
@@ -63,6 +58,25 @@ const SeatSelectPage = () => {
 
   const handleBackClick = () => {
     navigate('/');
+  };
+
+  const handleNextClick = () => {
+    if (!selectedSeatInfo) return;
+    patchSeat(
+      {
+        seats: [
+          {
+            grade: selectedSeatInfo.grade,
+            row: selectedSeatInfo.position.row,
+            number: selectedSeatInfo.position.index + 1,
+          },
+        ],
+      },
+      {
+        onSuccess: () => navigate('/payment/step1'),
+        onError: () => alert('좌석 선택에 실패했습니다.'),
+      }
+    );
   };
 
   return (
@@ -87,7 +101,7 @@ const SeatSelectPage = () => {
         <SeatCard
           seats={seatData}
           selectedGrade={selectedSeatType}
-          selected={selectedSeat}
+          selected={selectedSeatInfo?.position ?? null}
           onSelectSeat={handleSelectSeat}
         />
 
@@ -98,9 +112,10 @@ const SeatSelectPage = () => {
         <SeatBottomSheet
           placeInfo="예스24아트원 2관"
           dateTime="2025.07.10 (수) 19:30"
-          seatInfo={selectedSeatInfo}
-          price={selectedSeatPrice}
+          seatInfo={seatInfo}
+          price={seatPrice}
           onRetryClick={handleRetryClick}
+          onNextClick={handleNextClick}
         />
 
         {showPopup && <Popup onClose={handleWaitIconClick} />}
