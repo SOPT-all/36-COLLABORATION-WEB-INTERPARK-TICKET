@@ -48,10 +48,12 @@ export default function PaymentStep2() {
         <Rectangle95 />
         <Rectangle97 />
         <div className={styles.sectionContainer}>
-          <InfoRowTitle
-            text="포인트"
-            subText="한 종류의 포인트만 사용 가능합니다."
-          />
+          <div className={styles.methodTitleSpacing}>
+            <InfoRowTitle
+              text="포인트"
+              subText="한 종류의 포인트만 사용 가능합니다."
+            />
+          </div>
           <VectorDivider />
           <ListPoint pointTitle="i포인트" pointValue="0" />
           <PaddedRectangle95 />
@@ -63,7 +65,9 @@ export default function PaymentStep2() {
         <Rectangle94 />
         <Rectangle97 />
         <div className={styles.sectionContainer}>
-          <InfoRowTitle text="예매권" />
+          <div className={styles.methodTitleSpacing}>
+            <InfoRowTitle text="예매권" />
+          </div>
           <VectorDivider />
           <ListPoint pointTitle="예매권 사용" pointValue="0" />
         </div>

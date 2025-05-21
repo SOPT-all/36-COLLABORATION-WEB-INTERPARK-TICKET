@@ -88,3 +88,7 @@ export const errorMessage = style({
   marginTop: '1rem',
   ...fontStyle('b10_re_14'),
 });
+
+export const methodTitleSpacing = style({
+  marginBottom: '1.3rem',
+});

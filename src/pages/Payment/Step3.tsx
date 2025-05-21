@@ -24,7 +24,7 @@ import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
-  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other'>('noll');
+  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other' | null>(null);
   const [isOtherMethodOpen, setIsOtherMethodOpen] = useState(false);
   const [isBankOpen, setIsBankOpen] = useState(false);
   const [selectedBank, setSelectedBank] = useState<string>('');
@@ -32,7 +32,7 @@ export default function PaymentStep3() {
   const [isAgreed, setIsAgreed] = useState(false);
   const [isReceiptChecked, setIsReceiptChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [, setError] = useState<string | null>(null);
 
   const {
     ticketCount,
@@ -46,7 +46,6 @@ export default function PaymentStep3() {
   } = usePaymentStore();
 
   useEffect(() => {
-    // 필수 데이터가 없는 경우 이전 단계로 이동
     if (!userInfo || !deliveryMethod || ticketCount === 0) {
       navigate('/payment/step2');
     }
@@ -64,11 +63,11 @@ export default function PaymentStep3() {
     setSelectedPayment(payment);
     if (payment === 'other') {
       setIsOtherMethodOpen(true);
-      setPaymentMethod(''); // 다른 결제 수단 선택 시 초기화
+      setPaymentMethod(''); 
     } else {
       setIsOtherMethodOpen(false);
       setIsBankOpen(false);
-      setPaymentMethod(''); // NOL 인터파크 페이 선택 시 결제 수단 초기화
+      setPaymentMethod(''); 
     }
   };
 
@@ -85,7 +84,7 @@ export default function PaymentStep3() {
 
   const handleBankChange = (bank: string) => {
     setSelectedBank(bank);
-    setPaymentMethod(bank); // 다른 결제 수단에서 은행 선택 시에만 결제 수단 설정
+    setPaymentMethod(bank); 
   };
 
   const handleReceiptNumberChange = (value: string) => {
@@ -94,12 +93,10 @@ export default function PaymentStep3() {
   };
 
   const handleSubmit = async () => {
-    if (!isAgreed || !userInfo || !paymentMethod) return;
-    
+    if (!isAgreed || !userInfo || !userInfo.email || !paymentMethod) return;
     try {
       setIsSubmitting(true);
       setError(null);
-
       const paymentData = {
         ticketCount,
         totalPrice: finalPrice,
@@ -107,7 +104,6 @@ export default function PaymentStep3() {
         userInfo,
         paymentMethod
       };
-
       const response = await createPayment(paymentData);
       console.log('결제 응답:', response);
     } catch (err) {
@@ -130,7 +126,9 @@ export default function PaymentStep3() {
       <main className={styles.mainContent}>
         <Rectangle97 />
         <div className={styles.sectionContainer}>
-          <InfoRowTitle text="결제예정금액" />
+          <div className={styles.methodTitleSpacing}>
+            <InfoRowTitle text="결제예정금액" />
+          </div>
           <VectorDivider />
           <Rectangle97 />
           <InfoPrice
@@ -180,7 +178,7 @@ export default function PaymentStep3() {
           <Rectangle97 />
         </div>
         <div className={styles.centerContainer}>
-          <div className={styles.methodContainer}>
+          <div className={styles.methodContainer + ' ' + styles.methodTitleSpacing}>
             <InfoRowTitle text="결제수단" />
           </div>
         </div>
@@ -227,36 +225,44 @@ export default function PaymentStep3() {
         <Rectangle94 />
         <Rectangle97 />
         <div className={styles.centerContainer}>
-          <InfoRowTitle text="현금영수증" />
+          <InfoRowTitle
+            text="현금영수증"
+            showCheckbox={true}
+            checked={isReceiptChecked}
+            onCheckboxChange={setIsReceiptChecked}
+            checkboxLabel="신청"
+          />
         </div>
-        <VectorDivider />
-        <ListCheck
-          label="현금영수증 신청"
-          checked={isReceiptChecked}
-          onChange={() => setIsReceiptChecked((prev) => !prev)}
-        />
+        <Rectangle97 />
         {isReceiptChecked && (
           <>
-            <Rectangle97 />
-            <div className={styles.centerContainer}>
+            <div className={styles.receiptContainer}>
               <TextField
                 value={receiptNumber}
                 onChange={handleReceiptNumberChange}
-                placeholder="현금영수증 번호를 입력해주세요"
+                placeholder="휴대폰번호 또는 사업자등록번호"
+                numbersOnly={true}
               />
             </div>
+            <Rectangle97 />
           </>
         )}
+        <div className={styles.emptyContainer}></div>
         <Rectangle94 />
         <Rectangle97 />
         <div className={styles.centerContainer}>
-          <InfoRowTitle text="약관동의" />
+          <InfoRowTitle
+            text="약관 동의"
+            showCheckbox={true}
+            checked={isAgreed}
+            onCheckboxChange={setIsAgreed}
+            checkboxLabel="동의"
+          />
         </div>
-        <VectorDivider />
         <ListCheck
-          label="결제 진행에 동의합니다"
+          label="(필수) 제 3자 정보제공 동의"
           checked={isAgreed}
-          onChange={() => setIsAgreed((prev) => !prev)}
+          onChange={() => setIsAgreed(!isAgreed)}
         />
         <ListCheck
           label="(필수) 취소 규정 동의"
@@ -264,20 +270,14 @@ export default function PaymentStep3() {
           onChange={() => setIsAgreed(!isAgreed)}
         />
         <div className={styles.submitButtonContainer}>
-          {error && <div style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
           <LargeButton 
             onClick={handleSubmit} 
-            isActive={isAgreed && !isSubmitting}
-            disabled={isSubmitting}
+            isActive={isAgreed && !isSubmitting && !!userInfo?.email}
+            disabled={isSubmitting || !isAgreed || !userInfo?.email}
           >
             {isSubmitting ? '처리 중...' : '결제'}
           </LargeButton>
         </div>
-        {error && (
-          <div className={styles.errorMessage}>
-            {error}
-          </div>
-        )}
       </main>
     </>
   );

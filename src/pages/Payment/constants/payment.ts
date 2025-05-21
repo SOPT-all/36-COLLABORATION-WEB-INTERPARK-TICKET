@@ -1,3 +1,5 @@
+import { request, HTTPMethod } from '@/shared/network/request';
+
 export interface UserInfo {
   name: string;
   birth: string;
@@ -13,26 +15,14 @@ export interface PaymentRequest {
   paymentMethod: string;
 }
 
-export interface PaymentResponse {
-  status: number;
-  message: string;
-  data: PaymentRequest;
-}
-
-export const createPayment = async (paymentData: PaymentRequest): Promise<PaymentResponse> => {
-  const response = await fetch('https://www.sopt-interpark.shop/api/v1/tickets/payment', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(paymentData),
+export const createPayment = async (paymentData: PaymentRequest) => {
+  const response = await request({
+    method: HTTPMethod.POST,
+    url: '/api/v1/tickets/payment',
+    body: paymentData,
   });
 
-  const data: PaymentResponse = await response.json();
-  
-  if (data.status !== 201) {
-    throw new Error(data.message);
-  }
-  
-  return data;
+  console.log('결제 전체 응답:', response);
+
+  return response;
 }; 

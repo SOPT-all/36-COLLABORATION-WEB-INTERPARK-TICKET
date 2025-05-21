@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { UserInfo } from '../constants/payment';
+import type { UserInfo } from '../constants/payment';
 
 interface PaymentState {
   ticketCount: number;
@@ -25,7 +25,7 @@ export const usePaymentStore = create<PaymentState>((set) => ({
   deliveryMethod: '',
   userInfo: null,
   paymentMethod: '',
-  discountAmount: 0,
+  discountAmount: -33000,
   pointAmount: 0,
   setTicketCount: (count) => set({ ticketCount: count }),
   setTotalPrice: (price) => set({ totalPrice: price }),
@@ -40,7 +40,7 @@ export const usePaymentStore = create<PaymentState>((set) => ({
     deliveryMethod: '',
     userInfo: null,
     paymentMethod: '',
-    discountAmount: 0,
+    discountAmount: -33000,
     pointAmount: 0,
   }),
 })); 
