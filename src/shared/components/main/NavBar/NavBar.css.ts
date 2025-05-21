@@ -8,6 +8,9 @@ export const navWrapper = style({
   width: '37.5rem',
   padding: '0.85rem 3.8rem',
   justifyContent: 'center',
+  position: 'fixed',
+  top: 0,
+  zIndex: 1,
 });
 
 export const navItem = style({
