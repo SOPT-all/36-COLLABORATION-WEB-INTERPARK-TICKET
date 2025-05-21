@@ -1,50 +1,31 @@
 import * as styles from './PlannedSection.css';
 import { sectionHeader } from '../../MainPage.css';
-import planned_expected_first from '@/shared/assets/icon/planned_expected_first.svg';
+import type { CategoryBase, PlannedPerformance } from '../../api/types';
 import Badge from '@/shared/components/Badge/Badge';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
 
-export type TagType = 'HOT' | '단독판매';
-
-export type getHomeResponse = {
-  id: number;
-  title: string;
-  imageUrl: string;
-  startDate: string;
-  description: string;
-  tagList: TagType[];
-};
-
-export type PlannedData = {
-  category: string;
-  getHomeResponseList: getHomeResponse[];
-};
-
-interface Props {
-  data: PlannedData;
+interface PlannedSectionProp {
+  category: CategoryBase<PlannedPerformance>;
 }
 
-function PlannedSection({ data }: Props) {
-  const tagMap: Record<TagType, 'Hot' | '단독판매'> = {
-    HOT: 'Hot',
-    단독판매: '단독판매',
-  };
+function PlannedSection({ category }: PlannedSectionProp) {
+  const performances = category?.getHomeResponseList ?? [];
 
   return (
     <section className={styles.sectionWrapper}>
-      <header className={sectionHeader}>{data.category}</header>
+      <header className={sectionHeader}>{category?.category}</header>
 
       <div className={styles.cardWrapper}>
-        {data.getHomeResponseList.map((item) => (
-          <div className={styles.cardContainer}>
-            <img src={planned_expected_first} />
+        {performances.map((planned) => (
+          <div className={styles.cardContainer} key={planned.id}>
+            <img src={planned.imageUrl} className={styles.img} />
             <div className={styles.textWrapper}>
-              <p className={styles.dateText}>{item.startDate}</p>
-              <p className={styles.titleText}>{item.title}</p>
-              <p className={styles.descriptionText}>{item.description}</p>
+              <p className={styles.dateText}>{planned.openDate}</p>
+              <p className={styles.titleText}>{planned.title}</p>
+              <p className={styles.descriptionText}>{planned.description}</p>
               <div className={styles.tagGroup}>
-                {item.tagList.map((tag) => (
-                  <Badge key={tag} type={tagMap[tag]} />
+                {planned.tagList.map((tag) => (
+                  <Badge key={tag} type={tag} />
                 ))}
               </div>
             </div>

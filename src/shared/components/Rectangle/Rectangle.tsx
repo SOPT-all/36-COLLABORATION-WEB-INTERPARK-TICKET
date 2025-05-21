@@ -1,7 +1,7 @@
 import { rectangle, paddedContainer } from './Rectangle.css';
 
 interface RectangleProps {
-  type: 'divider' | 'spacer' | 'spacerLarge' | 'spacerXLarge';
+  type: 'divider' | 'spacer' | 'spacerLarge' | 'spacerXLarge' | 'spacerGray20';
   hasPadding?: boolean;
 }
 
@@ -20,3 +20,4 @@ export const Rectangle95 = () => <Rectangle type="divider" />;
 export const Rectangle96 = () => <Rectangle type="spacerXLarge" />;
 export const Rectangle97 = () => <Rectangle type="spacerLarge" />;
 export const PaddedRectangle95 = () => <Rectangle type="divider" hasPadding />;
+export const HomeDivider = () => <Rectangle type="spacerGray20" />;
