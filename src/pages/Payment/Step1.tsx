@@ -31,6 +31,13 @@ export default function PaymentStep1() {
 
   const { setUserInfo, setTicketCount, setTotalPrice } = usePaymentStore();
 
+  // 임시 seatInfo (실제 좌석 선택 값으로 대체 가능)
+  const seatInfo: SeatInfo = {
+    position: { row: 'D', index: 8 },
+    grade: 'R',
+    price: 66000,
+  };
+
   const handleBack = () => {
     navigate(-1);
   };
