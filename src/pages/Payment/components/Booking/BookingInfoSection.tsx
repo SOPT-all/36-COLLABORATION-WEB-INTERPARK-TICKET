@@ -1,7 +1,14 @@
 import * as styles from './BookingInfoSection.css';
+import type { SeatInfo } from '@/pages/SeatSelect/api/types';
 import ChangeButton from '@/shared/components/ChangeButton/ChangeButton';
 
-export default function BookingInfoSection() {
+interface BookingInfoSectionProps {
+  seatInfo: SeatInfo;
+}
+
+export default function BookingInfoSection({
+  seatInfo,
+}: BookingInfoSectionProps) {
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>예매 정보</h2>
@@ -19,7 +26,10 @@ export default function BookingInfoSection() {
 
         <div className={styles.row}>
           <span className={styles.label}>좌석</span>
-          <span className={styles.value}>R석 D열 9</span>
+          <span className={styles.value}>
+            {seatInfo.grade}석 {seatInfo.position.row}열{' '}
+            {seatInfo.position.index + 1}
+          </span>
         </div>
       </div>
     </section>

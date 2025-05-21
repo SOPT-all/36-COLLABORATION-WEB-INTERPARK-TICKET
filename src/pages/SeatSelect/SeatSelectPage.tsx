@@ -73,7 +73,10 @@ const SeatSelectPage = () => {
         ],
       },
       {
-        onSuccess: () => navigate('/payment/step1'),
+        onSuccess: () =>
+          navigate('/payment/step1', {
+            state: { selectedSeatInfo },
+          }),
         onError: () => alert('좌석 선택에 실패했습니다.'),
       }
     );
