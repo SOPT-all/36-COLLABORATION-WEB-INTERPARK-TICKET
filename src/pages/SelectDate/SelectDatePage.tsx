@@ -16,7 +16,7 @@ function SelectDatePage() {
   const [performanceData, setPerformanceData] = useState<Performance | null>(
     null
   );
-  const [seatTypes, setSeatTypes] = useState<SeatGrades | null>(null);
+  const [seatTypes, setSeatTypes] = useState<SeatGrades[] | null>(null);
   const [authors, setAuthors] = useState('');
   const [time, setTime] = useState('');
   // API 연동
@@ -70,7 +70,7 @@ function SelectDatePage() {
               <DateReservationCard
                 performanceTime={time}
                 authors={authors}
-                seatTypes={seatTypes}
+                seatTypes={seatTypes || null}
               />
               <div className={styles.waitNoti}>
                 <img

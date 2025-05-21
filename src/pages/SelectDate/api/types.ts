@@ -13,7 +13,7 @@ export interface Performance {
 }
 
 // 좌석 등급 타입
-export interface SeatGrade {
+export interface SeatGrades {
   grade: string; // 좌석 등급 (예: "R", "S")
   price: number; // 가격
   seatCount: number; // 좌석 수
@@ -22,5 +22,5 @@ export interface SeatGrade {
 // API 응답 데이터 타입
 export interface DatePageResponse {
   performance: Performance; // 공연 정보
-  seatGrades: SeatGrade[]; // 좌석 등급 정보
+  seatGrades: SeatGrades[]; // 좌석 등급 정보
 }
