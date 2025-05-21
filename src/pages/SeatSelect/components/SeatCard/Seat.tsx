@@ -1,5 +1,5 @@
 import * as styles from './Seat.css';
-import type { SeatGrade } from '../../types/SeatData';
+import type { SeatGrade } from '../../api/types';
 
 type Props = {
   grade?: SeatGrade;

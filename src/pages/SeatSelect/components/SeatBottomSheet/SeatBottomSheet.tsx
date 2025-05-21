@@ -9,6 +9,7 @@ interface SeatBottomSheetProps {
   seatInfo?: string;
   price?: number;
   onRetryClick: () => void;
+  onNextClick: () => void;
 }
 
 const SeatBottomSheet = ({
@@ -17,6 +18,7 @@ const SeatBottomSheet = ({
   seatInfo,
   price,
   onRetryClick,
+  onNextClick,
 }: SeatBottomSheetProps) => {
   const isSeatSelected = !!seatInfo;
 
@@ -72,7 +74,9 @@ const SeatBottomSheet = ({
           <SmallButton variant="retry" onClick={onRetryClick}>
             재선택
           </SmallButton>
-          <SmallButton variant="next">다음</SmallButton>
+          <SmallButton variant="next" onClick={onNextClick}>
+            다음
+          </SmallButton>
         </div>
       </div>
     </div>
