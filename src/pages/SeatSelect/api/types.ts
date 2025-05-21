@@ -1,11 +1,11 @@
-import type { SeatData } from '../types/SeatData';
+import type { SeatData, SeatGrade } from '../types/SeatData';
 
 export type SeatDataResponse = {
-  seatData: SeatData[];
+  seats: SeatData[];
 };
 
 export interface SelectedSeat {
-  grade: string;
+  grade: SeatGrade;
   row: string;
   number: number;
 }

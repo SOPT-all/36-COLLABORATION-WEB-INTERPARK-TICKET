@@ -7,171 +7,9 @@ import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
 import Popup from './components/Popup/Popup';
 import SeatBottomSheet from './components/SeatBottomSheet/SeatBottomSheet';
+import { useSeatData } from './api/hooks';
 import type { SeatData, SeatGradeFilter, SeatPosition } from './types/SeatData';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
-
-const seatData: SeatData[] = [
-  {
-    grade: 'R',
-    price: 48000,
-    row: 'A',
-    availability: [
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      false,
-      true,
-    ],
-  },
-  {
-    grade: 'R',
-    price: 48000,
-    row: 'B',
-    availability: [
-      true,
-      true,
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      true,
-    ],
-  },
-  {
-    grade: 'R',
-    price: 48000,
-    row: 'C',
-    availability: [
-      false,
-      false,
-      false,
-      true,
-      true,
-      true,
-      false,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-    ],
-  },
-  {
-    grade: 'R',
-    price: 48000,
-    row: 'D',
-    availability: [
-      true,
-      false,
-      true,
-      true,
-      true,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-    ],
-  },
-  {
-    grade: 'S',
-    price: 30000,
-    row: 'F',
-    availability: [
-      true,
-      true,
-      true,
-      true,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      false,
-      false,
-      false,
-    ],
-  },
-  {
-    grade: 'S',
-    price: 30000,
-    row: 'G',
-    availability: [
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-    ],
-  },
-  {
-    grade: 'S',
-    price: 30000,
-    row: 'H',
-    availability: [
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-      true,
-      false,
-    ],
-  },
-  {
-    grade: 'S',
-    price: 30000,
-    row: 'I',
-    availability: [
-      true,
-      true,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      true,
-      true,
-      false,
-      false,
-      true,
-    ],
-  },
-];
 
 const SeatSelectPage = () => {
   const navigate = useNavigate();
@@ -184,11 +22,18 @@ const SeatSelectPage = () => {
   const [selectedSeatInfo, setSelectedSeatInfo] = useState<
     string | undefined
   >();
+
   const [selectedSeatPrice, setSelectedSeatPrice] = useState<
     number | undefined
   >();
 
   const [selectedSeat, setSelectedSeat] = useState<SeatPosition | null>(null);
+
+  const { data: seatResponse, isLoading, isError } = useSeatData();
+  if (isLoading) return <div>로딩중…</div>;
+  if (isError) return <div>좌석 정보를 불러올 수 없습니다.</div>;
+
+  const seatData: SeatData[] = seatResponse?.seats ?? [];
 
   const handleSelectSeat = (
     row: string,

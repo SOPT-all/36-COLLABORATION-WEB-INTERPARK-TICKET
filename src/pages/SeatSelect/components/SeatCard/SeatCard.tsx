@@ -29,7 +29,7 @@ const SeatCard = ({ seats, selectedGrade, selected, onSelectSeat }: Props) => {
 
       return (
         <SeatRow
-          key={row}
+          key={`${row}-${seat.grade}`}
           grade={seat.grade}
           rowLabel={row}
           availability={seat.availability}

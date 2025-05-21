@@ -34,9 +34,8 @@ const SeatRow = ({
         const seatGrade = available && !isFiltered ? grade : undefined;
 
         return (
-          <div className={aisle ? styles.spacer : undefined}>
+          <div key={index} className={aisle ? styles.spacer : undefined}>
             <Seat
-              key={index}
               grade={seatGrade}
               isInactive={isInactive}
               isSelected={isSelected}
