@@ -1,41 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+import { useDateData } from './api/hooks';
 import * as styles from './SelectDatePage.css';
+import { formatTime } from './utils/utils';
+import type { Performance, SeatGrades } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
 import CardContentInfo from '@/shared/components/CardContentInfo/CardContentInfo';
 import Calendar from '@/shared/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
 import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
-
 function SelectDatePage() {
+  const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
-  const performanceData = {
-    performanceTitle: '연극제목',
-    performanceLocation: '공연장 위치',
-    performanceImage:
-      'https://tkfile.yes24.com/upload2/PerfBlog/202502/20250206/20250206-52586.jpg',
-    performanceGenre: '장르',
-    runningTime: '시간',
-    ageLimit: 18,
-  };
-  const performanceTime = '2025년 4월 1일';
-  const authors = '작가 이름';
+  const [performanceData, setPerformanceData] = useState<Performance | null>(
+    null
+  );
+  const [seatTypes, setSeatTypes] = useState<SeatGrades[] | null>(null);
+  const [authors, setAuthors] = useState('');
+  const [time, setTime] = useState('');
+  // API 연동
+  const { data, isLoading, isError } = useDateData();
 
-  // 좌석 타입 정보
-  const seatTypes = [
-    { grade: 'VIP', seatCount: 50, price: 100000 },
-    { grade: '일반', seatCount: 100, price: 50000 },
-    { grade: '학생', seatCount: 150, price: 20000 },
-  ];
+  useEffect(() => {
+    if (data) {
+      setPerformanceData(data.performance);
+      setAuthors(data.performance.authors);
+      // 시간은 오전오후 구분해줘야해서 포맷팅하깅!
+      const formattedTime = formatTime(data.performance.performanceTime);
+      setTime(formattedTime);
+      setSeatTypes(data.seatGrades);
+    }
+  }, [data]);
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
+
   const handleSelectDate = (selected: boolean) => {
     setIsSelected(selected); // true로 바뀌는거면! 그러면 이제 예매박스 띄우기
   };
-
+  const handleBackClick = () => {
+    navigate('/');
+  };
   return (
     <div>
-      <SeatHeader title={''} />
+      <SeatHeader title={''} onBackClick={handleBackClick} />
       <main className={styles.containerWrapper}>
-        <CardContentInfo data={performanceData} />
+        <CardContentInfo data={performanceData || null} />
         <section className={styles.mainSection}>
           <div className={styles.monthArea}>
             <span className={styles.monthTxt}>2025.04</span>
@@ -50,9 +61,9 @@ function SelectDatePage() {
           {isSelected && (
             <div className={styles.showArea}>
               <DateReservationCard
-                performanceTime={performanceTime}
+                performanceTime={time}
                 authors={authors}
-                seatTypes={seatTypes}
+                seatTypes={seatTypes || null}
               />
               <div className={styles.waitNoti}>
                 <img

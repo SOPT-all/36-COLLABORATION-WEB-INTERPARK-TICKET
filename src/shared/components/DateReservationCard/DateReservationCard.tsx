@@ -10,7 +10,7 @@ interface SeatType {
 interface DateReservationCardProps {
   performanceTime: string;
   authors: string;
-  seatTypes: SeatType[];
+  seatTypes: SeatType[] | null;
 }
 
 const DateReservationCard = ({
@@ -18,6 +18,9 @@ const DateReservationCard = ({
   authors,
   seatTypes,
 }: DateReservationCardProps) => {
+  if (!seatTypes) {
+    return <div>공연 정보가 없습니다.</div>;
+  }
   return (
     <div className={styles.reservationCardWrapper}>
       <div className={styles.contentContainer}>
