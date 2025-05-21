@@ -41,19 +41,16 @@ export default function PaymentStep1() {
   const handleSubmit = () => {
     if (!isFormValid) return;
 
-    // 사용자 정보를 store에 저장
     setUserInfo({
       name,
       birth: birthdate,
       phoneNumber: phone,
-      email: additionalInfo || 'example@example.com', // 이메일은 필수가 아니므로 기본값 설정
+      email: additionalInfo || 'example@example.com', 
     });
 
-    // 티켓 수량 저장
     setTicketCount(quantity);
 
-    // 총 가격 계산 (티켓 가격 * 수량)
-    const ticketPrice = 66000; // 티켓 가격
+    const ticketPrice = 66000; 
     const totalPrice = ticketPrice * quantity;
     setTotalPrice(totalPrice);
 

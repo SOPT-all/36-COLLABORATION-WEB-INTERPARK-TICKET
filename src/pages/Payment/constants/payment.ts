@@ -22,7 +22,5 @@ export const createPayment = async (paymentData: PaymentRequest) => {
     body: paymentData,
   });
 
-  console.log('결제 전체 응답:', response);
-
   return response;
 }; 

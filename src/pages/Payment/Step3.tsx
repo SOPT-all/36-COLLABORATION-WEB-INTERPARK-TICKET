@@ -117,7 +117,6 @@ export default function PaymentStep3() {
     return price.toLocaleString() + '원';
   };
 
-  // 최종 결제 금액 계산
   const finalPrice = totalPrice - discountAmount - pointAmount;
 
   return (

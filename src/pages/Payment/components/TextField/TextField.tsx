@@ -23,7 +23,6 @@ export default function TextField({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     if (numbersOnly) {
-      // 숫자만 허용
       if (/^\d*$/.test(newValue)) {
         onChange(newValue);
       }

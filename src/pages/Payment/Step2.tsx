@@ -33,7 +33,6 @@ export default function PaymentStep2() {
   const handleSubmit = () => {
     if (!isAgreed) return;
 
-    // 배송 방법 저장 (현재는 "택배"로 고정)
     setDeliveryMethod("택배");
 
     window.scrollTo(0, 0);
