@@ -29,7 +29,9 @@ function SelectDatePage() {
     if (data) {
       setPerformanceData(data.performance);
       setAuthors(data.performance.authors);
-      setTime(data.performance.performanceTime);
+      // 시간은 오전오후 구분해줘야해서 포맷팅하깅!
+      const formattedTime = formatTime(data.performance.performanceTime);
+      setTime(formattedTime);
       setSeatTypes(data.seatGrades);
     }
   }, [data]);
@@ -37,6 +39,12 @@ function SelectDatePage() {
   if (isLoading) return <div>로딩 중...</div>;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
+  function formatTime(time: string): string {
+    const [hours, minutes] = time.split(':').map(Number);
+    const period = hours >= 12 ? '오후' : '오전';
+    const hour12 = hours % 12 || 12;
+    return `${period} ${hour12}:${minutes.toString().padStart(2, '0')}`;
+  }
   const handleSelectDate = (selected: boolean) => {
     setIsSelected(selected); // true로 바뀌는거면! 그러면 이제 예매박스 띄우기
   };
