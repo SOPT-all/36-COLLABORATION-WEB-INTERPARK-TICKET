@@ -14,11 +14,5 @@ export const useSeatData = () => {
 export const usePatchSeatData = () => {
   return useMutation({
     mutationFn: patchSelectedSeat,
-    onSuccess: () => {
-      console.log('좌석 선택 성공');
-    },
-    onError: () => {
-      console.log('좌석 선택 실패');
-    },
   });
 };
