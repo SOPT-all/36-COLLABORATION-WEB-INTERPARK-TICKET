@@ -1,15 +1,15 @@
 import * as styles from './SeatCard.css';
 import SeatRow from './SeatRow';
-import type { SeatData } from '../../types/SeatData';
+import type { SeatData, SeatGrade, SeatPosition } from '../../api/types';
 
 type Props = {
   seats: SeatData[];
-  selectedGrade: 'S' | 'R' | null;
-  selected: { row: string; index: number } | null;
+  selectedGrade: SeatGrade | null;
+  selected: SeatPosition | null;
   onSelectSeat: (
     row: string,
     index: number,
-    grade: 'S' | 'R',
+    grade: SeatGrade,
     price: number
   ) => void;
 };

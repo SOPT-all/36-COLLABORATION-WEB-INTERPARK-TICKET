@@ -1,13 +1,13 @@
 import Seat from './Seat';
 import * as styles from './SeatRow.css';
-import type { SeatGrade } from '../../types/SeatData';
+import type { SeatGrade, SeatPosition } from '../../api/types';
 type Props = {
   grade: SeatGrade;
   rowLabel: string;
   availability: boolean[];
-  selected: { row: string; index: number } | null;
+  selected: SeatPosition | null;
   onSelect: (row: string, index: number) => void;
-  selectedGrade: 'S' | 'R' | null;
+  selectedGrade: SeatGrade | null;
 };
 
 const SeatRow = ({
