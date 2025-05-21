@@ -68,13 +68,6 @@ export default function PaymentStep1() {
 
   const isFormValid = validateForm(name, birthdate, phone) && quantity > 0;
 
-  // 예시 seatInfo (실제 데이터로 대체 필요)
-  const seatInfo: SeatInfo = {
-    position: { row: 'A', index: 1 },
-    grade: 'R',
-    price: 66000,
-  };
-
   return (
     <>
       <PayHeader step={1} onBackClick={handleBack} onCloseClick={handleClose} />
