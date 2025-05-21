@@ -20,8 +20,6 @@ import {
   PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
 import type { SeatInfo } from '@/pages/SeatSelect/api/types';
-import { request, HTTPMethod } from '@/shared/network/request';
-import type { FetchPaymentMethodsResponse } from './banks.types';
 
 export default function PaymentStep1() {
   const { state } = useLocation();
@@ -154,10 +152,3 @@ export default function PaymentStep1() {
     </>
   );
 }
-
-export const fetchPaymentMethods = async () => {
-  return request<FetchPaymentMethodsResponse>({
-    method: HTTPMethod.GET,
-    url: '/api/v1/tickets/payment',
-  });
-};
