@@ -1,34 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import * as styles from './Genre.css';
-import { getHomeData } from '../../api/api';
 import CategoryTab from '../CategoryTab/CategoryTab';
-import type {
-  CategoryBase,
-  BasicPerformance,
-  HomeResponse,
-} from '../../api/types';
+import type { BasicPerformance, CategoryBase } from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
-import { QUERY_KEY } from '@/shared/constants/queryKey';
+interface GenreSectionProps {
+  category: CategoryBase<BasicPerformance>;
+}
 
-const GenreSection = () => {
+const GenreSection = ({ category }: GenreSectionProps) => {
+  const performances = category.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
-  const { data, isLoading, isError } = useQuery<HomeResponse>({
-    queryKey: [QUERY_KEY.HOME],
-    queryFn: getHomeData,
-  });
-
-  const GenreCategory = data?.find(
-    (category): category is CategoryBase<BasicPerformance> =>
-      category.category === '장르별 랭킹'
-  );
 
   const keywords = useMemo(() => {
-    return GenreCategory?.keywordList ?? [];
-  }, [GenreCategory]);
-
-  const performances = GenreCategory?.getHomeResponseList ?? [];
+    return category?.keywordList ?? [];
+  }, [category]);
 
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
@@ -40,13 +26,10 @@ const GenreSection = () => {
     setSelected(keyword);
   };
 
-  if (isLoading) return <div>로딩 중...</div>;
-  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
-
   return (
     <div>
       <div className={styles.genreSection}>
-        <h1 className={styles.genreSectionTitle}>{GenreCategory?.category}</h1>
+        <h1 className={styles.genreSectionTitle}>{category.category}</h1>
         <div className={styles.padd}>
           <CategoryTab
             keywords={keywords}

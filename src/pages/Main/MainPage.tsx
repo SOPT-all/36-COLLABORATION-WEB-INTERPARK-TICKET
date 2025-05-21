@@ -5,6 +5,15 @@ import KeyWordSection from './components/KeyWord/KeyWordSection';
 import NolPlaySection from './components/NOL PLAY/NolPlaySection';
 import PlannedSection from './components/Planned/PlannedSection';
 import DiscountSection from './components/Discount/Discout';
+import { useHomeData } from './api/hooks';
+import {
+  type BaseHome,
+  type BasicPerformance,
+  type Category,
+  type CategoryBase,
+  type DiscountPerformance,
+  type PlannedPerformance,
+} from './api/types';
 import Footer from '@/shared/components/Footer/Footer';
 import HomeHeader from '@/shared/components/Header/HomeHeader/HomeHeader';
 import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
@@ -14,6 +23,37 @@ import adBanner from '@/shared/assets/icon/ad_banner.svg';
 import bar_navigation from '@/shared/assets/icon/bar_navigation.svg';
 
 function MainPage() {
+  const { data, isLoading, isError } = useHomeData();
+
+  if (isLoading) return <div>로딩 중...</div>;
+  if (isError || !data) return <div>에러 발생!</div>;
+
+  function findCategory<T extends BaseHome>(
+    data: Category[],
+    categoryName: string
+  ): CategoryBase<T> | undefined {
+    return data.find(
+      (category): category is CategoryBase<T> =>
+        category.category === categoryName
+    );
+  }
+
+  const GenreCategory = findCategory<BasicPerformance>(data, '장르별 랭킹');
+  const disCountCategory = findCategory<DiscountPerformance>(
+    data,
+    '할인 중인 공연은 어때요?'
+  );
+  const MDpickCategory = findCategory<BasicPerformance>(data, 'MD PICK!');
+  const AboutKewordCategory = findCategory<BasicPerformance>(
+    data,
+    '이런 키워드는 어때요?'
+  );
+  const NolPlayCategory = findCategory<BasicPerformance>(data, 'NOL PLAY');
+  const plannedCategory = findCategory<PlannedPerformance>(
+    data,
+    '곧 오픈하는 공연'
+  );
+
   return (
     <div>
       <HomeHeader />
@@ -30,27 +70,29 @@ function MainPage() {
         <HomeDivider />
 
         {/* 장르별 랭킹 */}
-        <GenreSection />
+        {GenreCategory && <GenreSection category={GenreCategory} />}
         <HomeDivider />
 
         {/* 할인 중 공연 */}
-        <DiscountSection />
+        {disCountCategory && <DiscountSection category={disCountCategory} />}
         <HomeDivider />
 
         {/* MD PICK */}
-        <MdPick />
+        {MDpickCategory && <MdPick category={MDpickCategory} />}
         <HomeDivider />
 
         {/* 이런 키워드 어때요? */}
-        <KeyWordSection />
+        {AboutKewordCategory && (
+          <KeyWordSection category={AboutKewordCategory} />
+        )}
         <HomeDivider />
 
         {/* NOL PLAY */}
-        <NolPlaySection />
+        {NolPlayCategory && <NolPlaySection category={NolPlayCategory} />}
         <img src={adBanner} />
 
         {/* 곧 오픈 공연 */}
-        <PlannedSection />
+        {plannedCategory && <PlannedSection category={plannedCategory} />}
       </main>
 
       <footer className={styles.footerWrapper}>

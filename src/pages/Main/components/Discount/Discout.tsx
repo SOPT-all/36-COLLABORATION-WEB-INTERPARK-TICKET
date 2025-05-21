@@ -1,34 +1,17 @@
-import { useQuery } from '@tanstack/react-query';
-import { getHomeData } from '../../api/api';
 import * as styles from './DiscountCard.css';
 import DiscountCard from './DiscoutCard';
-import type {
-  HomeResponse,
-  CategoryBase,
-  DiscountPerformance,
-} from '../../api/types';
-import { QUERY_KEY } from '@/shared/constants/queryKey';
+import type { CategoryBase, DiscountPerformance } from '../../api/types';
 import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
+interface DiscountSectionProp {
+  category: CategoryBase<DiscountPerformance>;
+}
 
-const DiscountSection = () => {
-  const { data, isLoading, isError } = useQuery<HomeResponse>({
-    queryKey: [QUERY_KEY.HOME],
-    queryFn: getHomeData,
-  });
-
-  const disCountCategory = data?.find(
-    (category): category is CategoryBase<DiscountPerformance> =>
-      category.category === '할인 중인 공연은 어때요?'
-  );
-
-  const performances = disCountCategory?.getHomeResponseList ?? [];
-
-  if (isLoading) return <div>로딩 중...</div>;
-  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
+const DiscountSection = ({ category }: DiscountSectionProp) => {
+  const performances = category?.getHomeResponseList ?? [];
 
   return (
     <div className={styles.discountSection}>
-      <h1 className={styles.sectionTitle}>{disCountCategory?.category}</h1>
+      <h1 className={styles.sectionTitle}>{category.category}</h1>
       <div className={styles.scrollArea}>
         {performances.map((discountData) => (
           <DiscountCard

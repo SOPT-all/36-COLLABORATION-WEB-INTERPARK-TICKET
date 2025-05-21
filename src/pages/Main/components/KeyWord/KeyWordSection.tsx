@@ -1,34 +1,21 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
 import * as styles from './KeyWordSection.css';
 import { sectionHeader } from '../../MainPage.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
-import { getHomeData } from '../../api/api';
-import type {
-  BasicPerformance,
-  CategoryBase,
-  HomeResponse,
-} from '../../api/types';
+import type { BasicPerformance, CategoryBase } from '../../api/types';
 import InfoCard from '@/shared/components/main/Perform/InfoCard';
-import { QUERY_KEY } from '@/shared/constants/queryKey';
 
-function KeyWordSection() {
+interface KeyWordSectionProps {
+  category: CategoryBase<BasicPerformance>;
+}
+
+function KeyWordSection({ category }: KeyWordSectionProps) {
+  const performances = category?.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
-  const { data, isLoading, isError } = useQuery<HomeResponse>({
-    queryKey: [QUERY_KEY.HOME],
-    queryFn: getHomeData,
-  });
-
-  const AboutKewordCategory = data?.find(
-    (category): category is CategoryBase<BasicPerformance> =>
-      category.category === '이런 키워드는 어때요?'
-  );
-
-  const performances = AboutKewordCategory?.getHomeResponseList ?? [];
 
   const keywords = useMemo(() => {
-    return AboutKewordCategory?.keywordList ?? [];
-  }, [AboutKewordCategory]);
+    return category?.keywordList ?? [];
+  }, [category]);
 
   useEffect(() => {
     if (keywords.length > 0 && selected === '') {
@@ -40,12 +27,9 @@ function KeyWordSection() {
     setSelected(keyword);
   };
 
-  if (isLoading) return <div>로딩 중...</div>;
-  if (isError) return <div>데이터를 불러오지 못했어요.</div>;
-
   return (
     <section className={styles.sectionWrapper}>
-      <header className={sectionHeader}>{AboutKewordCategory?.category}</header>
+      <header className={sectionHeader}>{category?.category}</header>
       <div className={styles.keywordWrapper}>
         <CategoryTab
           keywords={keywords}
