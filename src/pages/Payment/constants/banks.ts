@@ -20,6 +20,6 @@ export const fetchPaymentMethods = async (): Promise<PaymentMethod[]> => {
     method: HTTPMethod.GET,
     url: '/api/v1/tickets/payment',
   });
-  console.log(data.paymentMethodList); 
+  console.log(data.paymentMethodList);
   return data.paymentMethodList;
 };

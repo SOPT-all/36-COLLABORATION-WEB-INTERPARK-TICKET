@@ -11,9 +11,9 @@ import PhoneTextField from './components/TextField/PhoneTextField';
 import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/PriceQuantityCard';
 import ListInfo from './components/Dropdown/ListInfomation/ListInfo';
 import { validateForm } from './utils/validateForm';
+import { usePaymentStore } from './store/paymentStore';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
-import { usePaymentStore } from './store/paymentStore';
 import {
   Rectangle94,
   Rectangle95,
@@ -45,12 +45,12 @@ export default function PaymentStep1() {
       name,
       birth: birthdate,
       phoneNumber: phone,
-      email: additionalInfo || 'example@example.com', 
+      email: additionalInfo || 'example@example.com',
     });
 
     setTicketCount(quantity);
 
-    const ticketPrice = 66000; 
+    const ticketPrice = 66000;
     const totalPrice = ticketPrice * quantity;
     setTotalPrice(totalPrice);
 

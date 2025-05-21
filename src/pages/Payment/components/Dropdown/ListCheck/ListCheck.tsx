@@ -18,7 +18,6 @@ export default function ListCheck({
   onChange,
   onArrowClick,
 }: ListCheckProps) {
-
   const [isOpen, setIsOpen] = useState(false);
 
   const handleCheckClick = () => {

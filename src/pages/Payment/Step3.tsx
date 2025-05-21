@@ -24,7 +24,9 @@ import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
-  const [selectedPayment, setSelectedPayment] = useState<'noll' | 'other' | null>(null);
+  const [selectedPayment, setSelectedPayment] = useState<
+    'noll' | 'other' | null
+  >(null);
   const [isOtherMethodOpen, setIsOtherMethodOpen] = useState(false);
   const [isBankOpen, setIsBankOpen] = useState(false);
   const [selectedBank, setSelectedBank] = useState<string>('');
@@ -63,11 +65,11 @@ export default function PaymentStep3() {
     setSelectedPayment(payment);
     if (payment === 'other') {
       setIsOtherMethodOpen(true);
-      setPaymentMethod(''); 
+      setPaymentMethod('');
     } else {
       setIsOtherMethodOpen(false);
       setIsBankOpen(false);
-      setPaymentMethod(''); 
+      setPaymentMethod('');
     }
   };
 
@@ -84,7 +86,7 @@ export default function PaymentStep3() {
 
   const handleBankChange = (bank: string) => {
     setSelectedBank(bank);
-    setPaymentMethod(bank); 
+    setPaymentMethod(bank);
   };
 
   const handleReceiptNumberChange = (value: string) => {
@@ -102,12 +104,14 @@ export default function PaymentStep3() {
         totalPrice: finalPrice,
         deliveryMethod,
         userInfo,
-        paymentMethod
+        paymentMethod,
       };
       const response = await createPayment(paymentData);
       console.log('결제 응답:', response);
     } catch (err) {
-      setError(err instanceof Error ? err.message : '결제 처리 중 오류가 발생했습니다.');
+      setError(
+        err instanceof Error ? err.message : '결제 처리 중 오류가 발생했습니다.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -177,7 +181,9 @@ export default function PaymentStep3() {
           <Rectangle97 />
         </div>
         <div className={styles.centerContainer}>
-          <div className={styles.methodContainer + ' ' + styles.methodTitleSpacing}>
+          <div
+            className={styles.methodContainer + ' ' + styles.methodTitleSpacing}
+          >
             <InfoRowTitle text="결제수단" />
           </div>
         </div>
@@ -269,8 +275,8 @@ export default function PaymentStep3() {
           onChange={() => setIsAgreed(!isAgreed)}
         />
         <div className={styles.submitButtonContainer}>
-          <LargeButton 
-            onClick={handleSubmit} 
+          <LargeButton
+            onClick={handleSubmit}
             isActive={isAgreed && !isSubmitting && !!userInfo?.email}
             disabled={isSubmitting || !isAgreed || !userInfo?.email}
           >

@@ -34,13 +34,14 @@ export const usePaymentStore = create<PaymentState>((set) => ({
   setPaymentMethod: (method) => set({ paymentMethod: method }),
   setDiscountAmount: (amount) => set({ discountAmount: amount }),
   setPointAmount: (amount) => set({ pointAmount: amount }),
-  resetPayment: () => set({
-    ticketCount: 0,
-    totalPrice: 0,
-    deliveryMethod: '',
-    userInfo: null,
-    paymentMethod: '',
-    discountAmount: -33000,
-    pointAmount: 0,
-  }),
-})); 
+  resetPayment: () =>
+    set({
+      ticketCount: 0,
+      totalPrice: 0,
+      deliveryMethod: '',
+      userInfo: null,
+      paymentMethod: '',
+      discountAmount: -33000,
+      pointAmount: 0,
+    }),
+}));

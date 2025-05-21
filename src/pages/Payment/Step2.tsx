@@ -33,7 +33,7 @@ export default function PaymentStep2() {
   const handleSubmit = () => {
     if (!isAgreed) return;
 
-    setDeliveryMethod("택배");
+    setDeliveryMethod('택배');
 
     window.scrollTo(0, 0);
     navigate('/payment/step3');
@@ -85,7 +85,10 @@ export default function PaymentStep2() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <LargeButton onClick={handleSubmit} isActive={isAgreed && !!userInfo?.email}>
+          <LargeButton
+            onClick={handleSubmit}
+            isActive={isAgreed && !!userInfo?.email}
+          >
             다음
           </LargeButton>
         </div>

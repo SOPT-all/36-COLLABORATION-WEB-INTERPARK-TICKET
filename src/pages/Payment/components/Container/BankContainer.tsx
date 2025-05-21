@@ -19,7 +19,11 @@ export default function BankContainer({ onSelect }: BankContainerProps) {
         const paymentMethods = await fetchPaymentMethods();
         setBanks(paymentMethods);
       } catch (err) {
-        setError(err instanceof Error ? err.message : '은행 목록을 불러오는데 실패했습니다.');
+        setError(
+          err instanceof Error
+            ? err.message
+            : '은행 목록을 불러오는데 실패했습니다.'
+        );
       } finally {
         setIsLoading(false);
       }
