@@ -20,12 +20,13 @@ import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
+import Spinner from '@/shared/components/Spinner/Spinner';
 import NavBar from '@/shared/components/main/NavBar/NavBar';
 
 function MainPage() {
   const { data, isLoading, isError } = useHomeData();
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Spinner />;
   if (isError || !data) return <div>에러 발생!</div>;
 
   function findCategory<T extends BaseHome>(

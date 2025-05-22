@@ -15,3 +15,11 @@ export const HeaderWrapper = style({
   top: 0,
   zIndex: 1,
 });
+
+export const BackBtn = style({
+  cursor: 'pointer',
+});
+
+export const CloseBtn = style({
+  cursor: 'pointer',
+});

@@ -10,6 +10,7 @@ import Calendar from '@/shared/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
 import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
+import Spinner from '@/shared/components/Spinner/Spinner';
 function SelectDatePage() {
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
@@ -33,7 +34,7 @@ function SelectDatePage() {
     }
   }, [data]);
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Spinner />;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   const handleSelectDate = (selected: boolean) => {

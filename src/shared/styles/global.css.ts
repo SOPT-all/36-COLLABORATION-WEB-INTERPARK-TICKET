@@ -13,7 +13,6 @@ globalStyle('html, body', {
       overscrollBehaviorY: 'none',
       touchAction: 'manipulation',
 
-      backgroundColor: vars.color.gray10,
       fontFamily: vars.font.family.pretendard,
       userSelect: 'none',
       WebkitUserSelect: 'none',
@@ -30,6 +29,11 @@ globalStyle('body', {
       paddingBottom: 'env(safe-area-inset-bottom)',
     },
   },
+});
+
+globalStyle('img, svg', {
+  userSelect: 'none',
+  ...({ WebkitUserDrag: 'none' } as any),
 });
 
 globalStyle('#root', {

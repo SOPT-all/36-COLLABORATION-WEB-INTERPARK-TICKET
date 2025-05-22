@@ -1,6 +1,27 @@
-import { style } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
+
+const fadeIn = keyframes({
+  '0%': { opacity: 0, transform: 'scale(0.9)' },
+  '100%': { opacity: 1, transform: 'scale(1)' },
+});
+
+const fadeOut = keyframes({
+  '0%': { opacity: 1, transform: 'scale(1)' },
+  '100%': { opacity: 0, transform: 'scale(0.9)' },
+});
+
+export const popupAnimation = styleVariants({
+  open: {
+    animation: `${fadeIn} 0.3s ease-in-out`,
+    willChange: 'transform, opacity',
+  },
+  close: {
+    animation: `${fadeOut} 0.2s ease-in-out forwards`,
+    willChange: 'transform, opacity',
+  },
+});
 
 export const popArea = style({
   position: 'fixed',
