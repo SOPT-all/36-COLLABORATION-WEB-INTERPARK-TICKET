@@ -29,6 +29,8 @@ export const categoryItem = style({
 
 export const icon = style({
   cursor: 'pointer',
+  width: '3.6rem',
+  height: '3.6rem',
 });
 
 export const sectionHeader = style({
