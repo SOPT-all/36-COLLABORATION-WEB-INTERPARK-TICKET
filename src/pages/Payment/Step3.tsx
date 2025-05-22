@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
@@ -114,8 +115,10 @@ export default function PaymentStep3() {
     createPaymentMutation.mutate(paymentData, {
       onSuccess: (response) => {
         console.log('결제 응답:', response);
-        alert(`${userName}님, 예매가 완료되었습니다`);
-        navigate('/');
+        toast.success(`${userName}님, 예매가 완료되었습니다`);
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
       },
       onError: (err) => {
         setError(
