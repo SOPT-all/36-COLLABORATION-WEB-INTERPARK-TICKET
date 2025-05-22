@@ -55,8 +55,12 @@ export default function PaymentStep3() {
     }
   }, [userInfo, deliveryMethod, storeTicketCount, navigate]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleBack = () => {
-    navigate('/seat-select');
+    navigate('/payment/step2');
   };
 
   const handleClose = () => {

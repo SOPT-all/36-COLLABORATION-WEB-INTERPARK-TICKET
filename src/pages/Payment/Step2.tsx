@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
@@ -38,6 +38,10 @@ export default function PaymentStep2() {
     window.scrollTo(0, 0);
     navigate('/payment/step3');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

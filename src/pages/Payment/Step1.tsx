@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
 import * as ListInfoStyles from './components/Dropdown/ListInfomation/ListInfo.css';
@@ -33,10 +33,17 @@ export default function PaymentStep1() {
 
   const { setUserInfo, setTicketCount, setTotalPrice } = usePaymentStore();
 
-  if (!selectedSeatInfo) {
-    navigate('/seat-select');
-    return null;
-  }
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedSeatInfo) {
+      navigate('/seat-select');
+    }
+  }, [selectedSeatInfo, navigate]);
+
+  if (!selectedSeatInfo) return null;
 
   const seatInfo = selectedSeatInfo;
 
