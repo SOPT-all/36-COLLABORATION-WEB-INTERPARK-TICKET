@@ -1,10 +1,11 @@
 import * as styles from './Badge.css';
+import type { tagType } from '@/pages/Main/api/types';
 
-interface Props {
-  type: 'Hot' | '단독판매';
+interface BadgeProps {
+  type: tagType;
 }
 
-const Badge = ({ type }: Props) => {
+const Badge = ({ type }: BadgeProps) => {
   return <span className={styles.badgeWrapper({ type })}>{type}</span>;
 };
 

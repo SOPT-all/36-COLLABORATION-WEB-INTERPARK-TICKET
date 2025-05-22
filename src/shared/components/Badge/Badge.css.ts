@@ -10,7 +10,7 @@ export const badgeWrapper = recipe({
   },
   variants: {
     type: {
-      Hot: {
+      HOT: {
         color: vars.color.red30,
         backgroundColor: vars.color.red10,
       },
@@ -21,6 +21,6 @@ export const badgeWrapper = recipe({
     },
   },
   defaultVariants: {
-    type: 'Hot',
+    type: 'HOT',
   },
 });

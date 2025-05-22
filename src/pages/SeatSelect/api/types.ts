@@ -1,11 +1,26 @@
-import type { SeatData } from '../types/SeatData';
+export type SeatGrade = 'R' | 'S';
 
-export type SeatDataResponse = {
-  seatData: SeatData[];
+export type SeatData = {
+  grade: SeatGrade;
+  price: number;
+  row: string;
+  availability: boolean[];
 };
 
+export type SeatPosition = { row: string; index: number };
+
+export interface SeatInfo {
+  position: SeatPosition;
+  grade: SeatGrade;
+  price: number;
+}
+
+export interface SeatDataResponse {
+  seats: SeatData[];
+}
+
 export interface SelectedSeat {
-  grade: string;
+  grade: SeatGrade;
   row: string;
   number: number;
 }
@@ -14,4 +29,6 @@ export interface PatchSeatRequest {
   seats: SelectedSeat[];
 }
 
-export type PatchSeatResponse = SeatData[];
+export interface PatchSeatResponse {
+  seats: SelectedSeat[];
+}

@@ -5,7 +5,6 @@ import { fontStyle } from '@/shared/styles/fontStyle';
 export const button = style({
   display: 'flex',
   width: '33.8rem',
-  height: '4.4rem',
   padding: '1.2rem 9.4rem',
   justifyContent: 'center',
   alignItems: 'center',

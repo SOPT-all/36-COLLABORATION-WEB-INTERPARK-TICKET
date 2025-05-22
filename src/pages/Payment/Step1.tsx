@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
 import * as ListInfoStyles from './components/Dropdown/ListInfomation/ListInfo.css';
 import TicketPriceInfo from './components/TicketPriceInfo/TicketPriceInfo';
@@ -20,6 +20,9 @@ import {
 } from '@/shared/components/Rectangle/Rectangle';
 
 export default function PaymentStep1() {
+  const { state } = useLocation();
+  const selectedSeatInfo = state?.selectedSeatInfo;
+
   const navigate = useNavigate();
   const [name, setName] = useState('');
   const [birthdate, setBirthdate] = useState('');
@@ -49,7 +52,7 @@ export default function PaymentStep1() {
       <main className={styles.mainContent}>
         <div>
           <div className={styles.page}>
-            <BookingInfoSection />
+            <BookingInfoSection seatInfo={selectedSeatInfo} />
           </div>
           <Rectangle94 />
 

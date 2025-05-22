@@ -1,35 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import * as styles from './NolPlaySection.css';
 import { sectionHeader } from '../../MainPage.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
-import nolplay_first from '@/shared/assets/icon/nolplay_first.svg';
-import nolplay_video_first from '@/shared/assets/icon/nolplay_video_first.svg';
+import type { CategoryBase, BasicPerformance } from '../../api/types';
 import left_arrow from '@/shared/assets/icon/ic_arrow_left_gray70_16.svg';
 import right_arrow from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 
-export type Performance = {
-  id: number;
-  title: string;
-  imageUrl: string;
-};
-
-export type NolPlayData = {
-  category: string;
-  keywordList: string[];
-  performanceList: Performance[];
-};
-
-interface Props {
-  data: NolPlayData;
+const CARD_WIDTH_REM = 28.7;
+interface NolPlaySectionProps {
+  category: CategoryBase<BasicPerformance>;
 }
 
-const CARD_WIDTH_REM = 28.7;
+const NolPlaySection = ({ category }: NolPlaySectionProps) => {
+  const performances = category?.getHomeResponseList ?? [];
+  const [selected, setSelected] = useState<string>('');
 
-const NolPlaySection = ({ data }: Props) => {
-  const [selectedKeyword, setSelectedKeyword] = useState(data.keywordList[0]);
+  const keywords = useMemo(() => {
+    return category?.keywordList ?? [];
+  }, [category]);
+
   const [currentPage, setCurrentPage] = useState(0);
-
-  const totalCards = data.performanceList.length;
+  const totalCards = performances.length;
   const maxPage = Math.max(0, Math.ceil(totalCards) - 1);
 
   const getOffset = (page: number): number => {
@@ -42,14 +33,24 @@ const NolPlaySection = ({ data }: Props) => {
     );
   };
 
+  useEffect(() => {
+    if (keywords.length > 0 && selected === '') {
+      setSelected(keywords[0]);
+    }
+  }, [keywords, selected]);
+
+  const handleSelect = (keyword: string) => {
+    setSelected(keyword);
+  };
+
   return (
     <section className={styles.sectionWrapper}>
-      <header className={sectionHeader}>{data.category}</header>
+      <header className={sectionHeader}>{category?.category}</header>
       <div className={styles.keywordWrapper}>
         <CategoryTab
-          keywords={data.keywordList}
-          selected={selectedKeyword}
-          onSelect={setSelectedKeyword}
+          keywords={keywords}
+          selected={selected}
+          onSelect={handleSelect}
         />
       </div>
 
@@ -60,12 +61,14 @@ const NolPlaySection = ({ data }: Props) => {
             transform: `translateX(-${getOffset(currentPage)}rem)`,
           }}
         >
-          {data.performanceList.map((item) => (
-            <div className={styles.cardContainer} key={item.id}>
-              <img src={nolplay_video_first} />
+          {performances.map((NOL) => (
+            <div className={styles.cardContainer} key={NOL.id}>
+              <img src={NOL.imageUrl} />
               <div className={styles.bottomCard}>
-                <img src={nolplay_first} />
-                <p className={styles.bottomCardText}>{item.title}</p>
+                <img src={NOL.imageUrl} className={styles.smallImg} />
+                <div className={styles.textWrapper}>
+                  <p className={styles.bottomCardText}>{NOL.title}</p>
+                </div>
               </div>
             </div>
           ))}

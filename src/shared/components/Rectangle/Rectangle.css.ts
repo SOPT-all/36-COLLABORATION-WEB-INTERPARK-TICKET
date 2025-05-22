@@ -34,6 +34,10 @@ export const rectangle = recipe({
         height: '3rem',
         background: vars.color.white,
       },
+      spacerGray20: {
+        height: '0.8rem',
+        background: vars.color.gray20,
+      },
     },
     padding: {
       none: {},

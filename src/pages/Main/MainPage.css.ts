@@ -15,6 +15,7 @@ export const categoryGrid = style({
   gridTemplateColumns: 'repeat(5, 1fr)',
   gap: '1.6rem',
   padding: '0 1.9rem',
+  marginBottom: '3rem',
 });
 
 export const categoryItem = style({
@@ -34,4 +35,8 @@ export const sectionHeader = style({
   ...fontStyle('h5_sb_20'),
   color: vars.color.black,
   padding: '3rem 0 2rem 0',
+});
+
+export const footerWrapper = style({
+  marginTop: '6rem',
 });
