@@ -29,7 +29,7 @@ const DiscountSection = ({ category }: DiscountSectionProp) => {
             price={discountData.price}
             imageUrl={discountData.imageUrl}
             location={discountData.location}
-            openDate={discountData.openDate}
+            startDate={discountData.startDate}
             endDate={discountData.endDate}
             description={discountData.description}
           />

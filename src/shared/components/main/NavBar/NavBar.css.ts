@@ -7,10 +7,11 @@ export const navWrapper = style({
   gap: '5.3rem',
   width: '37.5rem',
   padding: '0.85rem 3.8rem',
+  backgroundColor: vars.color.white,
   justifyContent: 'center',
   position: 'fixed',
-  top: 0,
-  zIndex: 1,
+  bottom: 0,
+  zIndex: 20,
 });
 
 export const navItem = style({
