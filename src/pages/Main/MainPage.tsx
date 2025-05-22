@@ -39,11 +39,20 @@ function MainPage() {
   }
 
   const GenreCategory = findCategory<BasicPerformance>(data, '장르별 랭킹');
-  const disCountCategory = findCategory<DiscountPerformance>(data,'할인 중인 공연은 어때요?');
+  const disCountCategory = findCategory<DiscountPerformance>(
+    data,
+    '할인 중인 공연은 어때요?'
+  );
   const MDpickCategory = findCategory<BasicPerformance>(data, 'MD PICK!');
-  const AboutKewordCategory = findCategory<BasicPerformance>(data,'이런 키워드는 어때요?');
+  const AboutKewordCategory = findCategory<BasicPerformance>(
+    data,
+    '이런 키워드는 어때요?'
+  );
   const NolPlayCategory = findCategory<BasicPerformance>(data, 'NOL PLAY');
-  const plannedCategory = findCategory<PlannedPerformance>(data,'곧 오픈하는 공연');
+  const plannedCategory = findCategory<PlannedPerformance>(
+    data,
+    '곧 오픈하는 공연'
+  );
 
   return (
     <div>
@@ -83,7 +92,7 @@ function MainPage() {
       <footer className={styles.footerWrapper}>
         <Footer />
       </footer>
-      
+
       <NavBar />
     </div>
   );
