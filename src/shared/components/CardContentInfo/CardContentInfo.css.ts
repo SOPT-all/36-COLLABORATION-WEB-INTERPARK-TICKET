@@ -4,7 +4,7 @@ import { vars } from '@/shared/styles/tokens.css';
 
 export const cardContentInfo = style({
   display: 'flex',
-  width: '33.9rem',
+  width: '34.55rem',
   height: '11rem',
   padding: '1rem 1.2rem',
   borderRadius: '0.6rem',
