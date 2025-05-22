@@ -1,7 +1,7 @@
 import { type ChangeEvent } from 'react';
 import clsx from 'clsx';
 import * as styles from './TextField.css';
-import { useFocusInput } from '../../hooks/useFocusInput';
+import { useFocusInput } from './hooks/useFocusInput';
 
 interface TextFieldProps {
   placeholder: string;
@@ -23,7 +23,6 @@ export default function TextField({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     if (numbersOnly) {
-      // 숫자만 허용
       if (/^\d*$/.test(newValue)) {
         onChange(newValue);
       }

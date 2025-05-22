@@ -27,6 +27,7 @@ export const btnSelected = style({
 export const btnLabel = style({
   ...fontStyle('b9_sb_14'),
   color: vars.color.gray80,
+  whiteSpace: 'nowrap',
 });
 
 export const btnIcon = style({

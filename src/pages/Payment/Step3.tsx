@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
 import VectorDivider from './components/VectorDivider/VectorDivider';
@@ -19,9 +19,12 @@ import {
   Rectangle97,
 } from '@/shared/components/Rectangle/Rectangle';
 import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import { useCreatePayment } from '@/pages/Payment/api/payment.hooks';
+import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
+  useLocation();
   const [selectedPayment, setSelectedPayment] = useState<
     'noll' | 'other' | null
   >(null);
@@ -31,6 +34,30 @@ export default function PaymentStep3() {
   const [receiptNumber, setReceiptNumber] = useState('');
   const [isAgreed, setIsAgreed] = useState(false);
   const [isReceiptChecked, setIsReceiptChecked] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [, setError] = useState<string | null>(null);
+
+  const {
+    ticketCount: storeTicketCount,
+    totalPrice: storeTotalPrice,
+    deliveryMethod,
+    userInfo,
+    paymentMethod,
+    pointAmount,
+    setPaymentMethod,
+  } = usePaymentStore();
+
+  const createPaymentMutation = useCreatePayment();
+
+  useEffect(() => {
+    if (!userInfo || !deliveryMethod || storeTicketCount === 0) {
+      navigate('/payment/step2');
+    }
+  }, [userInfo, deliveryMethod, storeTicketCount, navigate]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleBack = () => {
     navigate('/payment/step2');
@@ -44,9 +71,11 @@ export default function PaymentStep3() {
     setSelectedPayment(payment);
     if (payment === 'other') {
       setIsOtherMethodOpen(true);
+      setPaymentMethod('');
     } else {
       setIsOtherMethodOpen(false);
       setIsBankOpen(false);
+      setPaymentMethod('');
     }
   };
 
@@ -63,19 +92,54 @@ export default function PaymentStep3() {
 
   const handleBankChange = (bank: string) => {
     setSelectedBank(bank);
+    setPaymentMethod(bank);
   };
 
   const handleReceiptNumberChange = (value: string) => {
-    // 숫자만 입력 가능하도록 처리
     const numbersOnly = value.replace(/[^0-9]/g, '');
     setReceiptNumber(numbersOnly);
   };
 
-  const handleSubmit = () => {
-    if (!isAgreed || !selectedPayment) return;
-    // TODO: 결제 처리 로직
-    navigate('/payment/complete');
+  const handleSubmit = async () => {
+    if (!isAgreed || !userInfo || !userInfo.email || !paymentMethod) return;
+    setIsSubmitting(true);
+    setError(null);
+    const paymentData = {
+      ticketCount: ticketCount,
+      totalPrice: finalPrice,
+      deliveryMethod,
+      userInfo,
+      paymentMethod,
+    };
+    createPaymentMutation.mutate(paymentData, {
+      onSuccess: (response) => {
+        console.log('결제 응답:', response);
+      },
+      onError: (err) => {
+        setError(
+          err instanceof Error
+            ? err.message
+            : '결제 처리 중 오류가 발생했습니다.'
+        );
+      },
+      onSettled: () => {
+        setIsSubmitting(false);
+      },
+    });
   };
+
+  const formatPrice = (price: number) => {
+    return price.toLocaleString() + '원';
+  };
+
+  const ticketCount = storeTicketCount;
+  const localTotalPrice = Number(localStorage.getItem('totalPrice')) || 0;
+  const ticketPrice = storeTotalPrice || localTotalPrice;
+  const bookingFee = 2000;
+  const deliveryFee = 0;
+  const discount = -33000;
+  const finalPrice =
+    ticketPrice + bookingFee + deliveryFee + discount + pointAmount;
 
   return (
     <>
@@ -83,24 +147,26 @@ export default function PaymentStep3() {
       <main className={styles.mainContent}>
         <Rectangle97 />
         <div className={styles.sectionContainer}>
-          <InfoRowTitle text="결제예정금액" />
+          <div className={styles.methodTitleSpacing}>
+            <InfoRowTitle text="결제예정금액" />
+          </div>
           <VectorDivider />
           <Rectangle97 />
           <InfoPrice
             label="티켓 금액"
-            value="66,000원"
+            value={formatPrice(ticketPrice)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.black}
           />
           <InfoPrice
             label="예매 수수료"
-            value="2000원"
+            value={formatPrice(bookingFee)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.black}
           />
           <InfoPrice
             label="배송료"
-            value="0원"
+            value={formatPrice(deliveryFee)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.black}
           />
@@ -109,13 +175,13 @@ export default function PaymentStep3() {
         <div className={styles.sectionContainer}>
           <InfoPrice
             label="할인"
-            value="-33,000원"
+            value={formatPrice(discount)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.blue100}
           />
           <InfoPrice
             label="포인트"
-            value="0원"
+            value={formatPrice(pointAmount)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.blue100}
           />
@@ -124,7 +190,7 @@ export default function PaymentStep3() {
           <Rectangle97 />
           <InfoPrice
             label="총 결제 금액"
-            value="35,000원"
+            value={formatPrice(finalPrice)}
             labelColor={vars.color.black}
             valueColor={vars.color.blue100}
           />
@@ -133,7 +199,9 @@ export default function PaymentStep3() {
           <Rectangle97 />
         </div>
         <div className={styles.centerContainer}>
-          <div className={styles.methodContainer}>
+          <div
+            className={styles.methodContainer + ' ' + styles.methodTitleSpacing}
+          >
             <InfoRowTitle text="결제수단" />
           </div>
         </div>
@@ -227,9 +295,10 @@ export default function PaymentStep3() {
         <div className={styles.submitButtonContainer}>
           <LargeButton
             onClick={handleSubmit}
-            isActive={isAgreed && selectedPayment !== null}
+            isActive={isAgreed && !isSubmitting && !!userInfo?.email}
+            disabled={isSubmitting || !isAgreed || !userInfo?.email}
           >
-            결제
+            {isSubmitting ? '처리 중...' : '결제'}
           </LargeButton>
         </div>
       </main>
