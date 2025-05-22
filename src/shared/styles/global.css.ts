@@ -32,6 +32,11 @@ globalStyle('body', {
   },
 });
 
+globalStyle('img, svg', {
+  userSelect: 'none',
+  ...({ WebkitUserDrag: 'none' } as any),
+});
+
 globalStyle('#root', {
   '@layer': {
     [layers.components]: {
