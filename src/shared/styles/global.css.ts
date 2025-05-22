@@ -6,7 +6,7 @@ globalStyle('html, body', {
   '@layer': {
     [layers.reset]: {
       width: '100vw',
-      height: '100vh',
+      minHeight: '100vh',
       margin: 0,
 
       overflowX: 'hidden',
