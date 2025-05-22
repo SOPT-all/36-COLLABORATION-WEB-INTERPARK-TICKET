@@ -8,7 +8,7 @@ interface Props {
 const SeatHeader = ({ title, onBackClick }: Props) => {
   return (
     <header className={styles.HeaderWrapper}>
-      <button onClick={onBackClick}>
+      <button className={styles.BackBtn} onClick={onBackClick}>
         <img src={BackIcon} alt="뒤로가기" />
       </button>
       <div className={styles.HeaderTxt}>{title}</div>
