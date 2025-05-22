@@ -12,7 +12,7 @@ const DiscountCard = ({
   price,
   imageUrl,
   location,
-  openDate,
+  startDate,
   endDate,
   description,
   onClick,
@@ -25,7 +25,7 @@ const DiscountCard = ({
         <h3 className={styles.discoutTitle}>{title}</h3>
         <p className={styles.locationtxt}>{location}</p>
         <p className={styles.dateTxt}>
-          {openDate} ~ {endDate}
+          {startDate} ~ {endDate}
         </p>
         <p className={styles.descriptionTxt}>{description}</p>
         <div className={styles.priceDisplay}>

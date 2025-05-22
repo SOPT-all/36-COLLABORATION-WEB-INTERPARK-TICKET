@@ -39,4 +39,5 @@ export const sectionHeader = style({
 
 export const footerWrapper = style({
   marginTop: '6rem',
+  paddingBottom: '6rem',
 });
