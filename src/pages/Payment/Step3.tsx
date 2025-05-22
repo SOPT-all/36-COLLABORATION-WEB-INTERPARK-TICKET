@@ -24,8 +24,7 @@ import { usePaymentStore } from '@/pages/Payment/store/paymentStore';
 
 export default function PaymentStep3() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { seatInfo, ticketPrice: stateTicketPrice } = location.state || {};
+  useLocation();
   const [selectedPayment, setSelectedPayment] = useState<
     'noll' | 'other' | null
   >(null);
@@ -39,11 +38,11 @@ export default function PaymentStep3() {
   const [, setError] = useState<string | null>(null);
 
   const {
-    ticketCount,
+    ticketCount: storeTicketCount,
+    totalPrice: storeTotalPrice,
     deliveryMethod,
     userInfo,
     paymentMethod,
-    discountAmount,
     pointAmount,
     setPaymentMethod,
   } = usePaymentStore();
@@ -51,13 +50,13 @@ export default function PaymentStep3() {
   const createPaymentMutation = useCreatePayment();
 
   useEffect(() => {
-    if (!userInfo || !deliveryMethod || ticketCount === 0) {
+    if (!userInfo || !deliveryMethod || storeTicketCount === 0) {
       navigate('/payment/step2');
     }
-  }, [userInfo, deliveryMethod, ticketCount, navigate]);
+  }, [userInfo, deliveryMethod, storeTicketCount, navigate]);
 
   const handleBack = () => {
-    navigate('/payment/step2');
+    navigate('/seat-select');
   };
 
   const handleClose = () => {
@@ -102,7 +101,7 @@ export default function PaymentStep3() {
     setIsSubmitting(true);
     setError(null);
     const paymentData = {
-      ticketCount: ticketCountFromState,
+      ticketCount: ticketCount,
       totalPrice: finalPrice,
       deliveryMethod,
       userInfo,
@@ -129,10 +128,14 @@ export default function PaymentStep3() {
     return price.toLocaleString() + '원';
   };
 
-  const ticketCountFromState = seatInfo?.quantity || ticketCount;
-  const ticketPrice = stateTicketPrice || 66000;
-  const totalPrice = ticketPrice * ticketCountFromState;
-  const finalPrice = totalPrice - discountAmount - pointAmount;
+  const ticketCount = storeTicketCount;
+  const localTotalPrice = Number(localStorage.getItem('totalPrice')) || 0;
+  const ticketPrice = storeTotalPrice || localTotalPrice;
+  const bookingFee = 2000;
+  const deliveryFee = 0;
+  const discount = -33000;
+  const finalPrice =
+    ticketPrice + bookingFee + deliveryFee + discount + pointAmount;
 
   return (
     <>
@@ -147,19 +150,19 @@ export default function PaymentStep3() {
           <Rectangle97 />
           <InfoPrice
             label="티켓 금액"
-            value={formatPrice(totalPrice)}
+            value={formatPrice(ticketPrice)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.black}
           />
           <InfoPrice
             label="예매 수수료"
-            value="2,000원"
+            value={formatPrice(bookingFee)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.black}
           />
           <InfoPrice
             label="배송료"
-            value="0원"
+            value={formatPrice(deliveryFee)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.black}
           />
@@ -168,13 +171,13 @@ export default function PaymentStep3() {
         <div className={styles.sectionContainer}>
           <InfoPrice
             label="할인"
-            value={formatPrice(-discountAmount)}
+            value={formatPrice(discount)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.blue100}
           />
           <InfoPrice
             label="포인트"
-            value={formatPrice(-pointAmount)}
+            value={formatPrice(pointAmount)}
             labelColor={vars.color.gray60}
             valueColor={vars.color.blue100}
           />

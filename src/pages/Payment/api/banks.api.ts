@@ -1,5 +1,5 @@
-import { request, HTTPMethod } from '@/shared/network/request';
 import type { FetchPaymentMethodsResponse } from './banks.types';
+import { request, HTTPMethod } from '@/shared/network/request';
 
 export const fetchPaymentMethods = async () => {
   return request<FetchPaymentMethodsResponse>({

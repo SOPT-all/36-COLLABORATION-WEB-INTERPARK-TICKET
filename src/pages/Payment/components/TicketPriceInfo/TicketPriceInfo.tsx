@@ -6,7 +6,7 @@ export default function TicketPriceInfo() {
   return (
     <div className={styles.ticketPriceWrapper}>
       <div className={styles.titleWrapper}>
-      <InfoRowLabel text="티켓 가격 정보" />
+        <InfoRowLabel text="티켓 가격 정보" />
       </div>
       <VectorDivider variant="gray90" />
     </div>

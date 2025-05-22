@@ -19,7 +19,6 @@ import {
   Rectangle95,
   PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
-import type { SeatInfo } from '@/pages/SeatSelect/api/types';
 
 export default function PaymentStep1() {
   const { state } = useLocation();
@@ -34,20 +33,24 @@ export default function PaymentStep1() {
 
   const { setUserInfo, setTicketCount, setTotalPrice } = usePaymentStore();
 
-  // 임시 seatInfo (실제 좌석 선택 값으로 대체 가능)
-  const seatInfo: SeatInfo = {
-    position: { row: 'D', index: 8 },
-    grade: 'R',
-    price: 66000,
-  };
+  if (!selectedSeatInfo) {
+    navigate('/seat-select');
+    return null;
+  }
+
+  const seatInfo = selectedSeatInfo;
 
   const handleBack = () => {
-    navigate(-1);
+    navigate('/seat-select');
   };
 
   const handleClose = () => {
     navigate('/');
   };
+
+  function validateEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
 
   const handleSubmit = () => {
     if (!isFormValid) return;
@@ -56,12 +59,12 @@ export default function PaymentStep1() {
       name,
       birth: birthdate,
       phoneNumber: phone,
-      email: additionalInfo || 'example@example.com',
+      email: additionalInfo,
     });
 
     setTicketCount(quantity);
 
-    const ticketPrice = 66000;
+    const ticketPrice = selectedSeatInfo?.price ?? 0;
     const totalPrice = ticketPrice * quantity;
     setTotalPrice(totalPrice);
 
@@ -69,7 +72,11 @@ export default function PaymentStep1() {
     navigate('/payment/step2');
   };
 
-  const isFormValid = validateForm(name, birthdate, phone) && quantity > 0;
+  const isFormValid =
+    validateForm(name, birthdate, phone) &&
+    quantity > 0 &&
+    !!additionalInfo &&
+    validateEmail(additionalInfo);
 
   return (
     <>
