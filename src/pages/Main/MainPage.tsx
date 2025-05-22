@@ -21,11 +21,12 @@ import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
 import bar_navigation from '@/shared/assets/icon/bar_navigation.svg';
+import Spinner from '@/shared/components/Spinner/Spinner';
 
 function MainPage() {
   const { data, isLoading, isError } = useHomeData();
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Spinner />;
   if (isError || !data) return <div>에러 발생!</div>;
 
   function findCategory<T extends BaseHome>(
