@@ -46,7 +46,10 @@ const SeatSelectPage = () => {
     });
   };
 
-  const handleRetryClick = () => setSelectedSeatInfo(null);
+  const handleRetryClick = () => {
+    setSelectedSeatInfo(null);
+    setSelectedSeatType(null);
+  };
 
   const handleSeatTypeClick = (type: SeatGrade) => {
     setSelectedSeatType((prev) => (prev === type ? null : type));
