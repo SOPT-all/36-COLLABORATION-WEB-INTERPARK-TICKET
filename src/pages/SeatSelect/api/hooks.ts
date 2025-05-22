@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { getSeatData, patchSelectedSeat } from './api';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 
@@ -12,7 +12,11 @@ export const useSeatData = () => {
 
 // 좌석 선택
 export const usePatchSeatData = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: patchSelectedSeat,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY.SEAT_STATUS] });
+    },
   });
 };
