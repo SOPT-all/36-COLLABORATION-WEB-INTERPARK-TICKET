@@ -38,7 +38,7 @@ const DateReservationCard = ({
 
         {seatTypes.map(({ grade, seatCount, price }) => (
           <div key={grade} className={styles.seatInfoContainer}>
-            <span className={styles.gradeText}>{grade}</span>
+            <span className={styles.gradeText}>{grade}석</span>
             <div className={styles.seatContentContainer}>
               <span className={styles.seatCountText}>{seatCount}석</span>
               <span className={styles.priceText}>
