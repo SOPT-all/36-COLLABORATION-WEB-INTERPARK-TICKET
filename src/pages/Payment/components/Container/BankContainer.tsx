@@ -5,7 +5,7 @@ import type { PaymentMethod } from '@/pages/Payment/api/banks.types';
 import { useBanks } from '@/pages/Payment/api/banks.hooks';
 import { QUERY_KEY } from '@/shared/constants/queryKey';
 import { fetchPaymentMethods } from '@/pages/Payment/api/banks.api';
-
+import Spinner from '@/shared/components/Spinner/Spinner';
 interface BankContainerProps {
   onSelect?: (bank: string) => void;
 }
@@ -42,7 +42,7 @@ export default function BankContainer({ onSelect }: BankContainerProps) {
   }, [queryClient]);
 
   if (isLoading) {
-    return <div>로딩 중...</div>;
+    return <Spinner />;
   }
 
   if (error) {
