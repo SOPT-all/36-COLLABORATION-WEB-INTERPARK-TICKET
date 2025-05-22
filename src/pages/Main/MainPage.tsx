@@ -20,7 +20,7 @@ import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
-import bar_navigation from '@/shared/assets/icon/bar_navigation.svg';
+import NavBar from '@/shared/components/main/NavBar/NavBar';
 
 function MainPage() {
   const { data, isLoading, isError } = useHomeData();
@@ -39,20 +39,11 @@ function MainPage() {
   }
 
   const GenreCategory = findCategory<BasicPerformance>(data, '장르별 랭킹');
-  const disCountCategory = findCategory<DiscountPerformance>(
-    data,
-    '할인 중인 공연은 어때요?'
-  );
+  const disCountCategory = findCategory<DiscountPerformance>(data,'할인 중인 공연은 어때요?');
   const MDpickCategory = findCategory<BasicPerformance>(data, 'MD PICK!');
-  const AboutKewordCategory = findCategory<BasicPerformance>(
-    data,
-    '이런 키워드는 어때요?'
-  );
+  const AboutKewordCategory = findCategory<BasicPerformance>(data,'이런 키워드는 어때요?');
   const NolPlayCategory = findCategory<BasicPerformance>(data, 'NOL PLAY');
-  const plannedCategory = findCategory<PlannedPerformance>(
-    data,
-    '곧 오픈하는 공연'
-  );
+  const plannedCategory = findCategory<PlannedPerformance>(data,'곧 오픈하는 공연');
 
   return (
     <div>
@@ -69,36 +60,31 @@ function MainPage() {
         </div>
         <HomeDivider />
 
-        {/* 장르별 랭킹 */}
         {GenreCategory && <GenreSection category={GenreCategory} />}
         <HomeDivider />
 
-        {/* 할인 중 공연 */}
         {disCountCategory && <DiscountSection category={disCountCategory} />}
         <HomeDivider />
 
-        {/* MD PICK */}
         {MDpickCategory && <MdPick category={MDpickCategory} />}
         <HomeDivider />
 
-        {/* 이런 키워드 어때요? */}
         {AboutKewordCategory && (
           <KeyWordSection category={AboutKewordCategory} />
         )}
         <HomeDivider />
 
-        {/* NOL PLAY */}
         {NolPlayCategory && <NolPlaySection category={NolPlayCategory} />}
         <img src={adBanner} />
 
-        {/* 곧 오픈 공연 */}
         {plannedCategory && <PlannedSection category={plannedCategory} />}
       </main>
 
       <footer className={styles.footerWrapper}>
         <Footer />
-        <img src={bar_navigation} />
       </footer>
+      
+      <NavBar />
     </div>
   );
 }
