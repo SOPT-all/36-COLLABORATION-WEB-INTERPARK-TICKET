@@ -36,7 +36,7 @@ export default function PaymentStep3() {
   const [isReceiptChecked, setIsReceiptChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [, setError] = useState<string | null>(null);
-
+  const userName = localStorage.getItem('userName');
   const {
     ticketCount: storeTicketCount,
     totalPrice: storeTotalPrice,
@@ -114,6 +114,8 @@ export default function PaymentStep3() {
     createPaymentMutation.mutate(paymentData, {
       onSuccess: (response) => {
         console.log('결제 응답:', response);
+        alert(`${userName}님, 예매가 완료되었습니다`);
+        navigate('/');
       },
       onError: (err) => {
         setError(
