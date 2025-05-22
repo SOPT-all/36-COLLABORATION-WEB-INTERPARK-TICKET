@@ -75,6 +75,8 @@ export default function PaymentStep1() {
     const totalPrice = ticketPrice * quantity;
     setTotalPrice(totalPrice);
 
+    localStorage.setItem('userName', name);
+
     window.scrollTo(0, 0);
     navigate('/payment/step2');
   };

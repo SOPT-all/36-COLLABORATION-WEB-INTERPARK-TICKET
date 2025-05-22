@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useNavigate, useLocation } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
@@ -36,7 +37,7 @@ export default function PaymentStep3() {
   const [isReceiptChecked, setIsReceiptChecked] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [, setError] = useState<string | null>(null);
-
+  const userName = localStorage.getItem('userName');
   const {
     ticketCount: storeTicketCount,
     totalPrice: storeTotalPrice,
@@ -114,6 +115,10 @@ export default function PaymentStep3() {
     createPaymentMutation.mutate(paymentData, {
       onSuccess: (response) => {
         console.log('결제 응답:', response);
+        toast.success(`${userName}님, 예매가 완료되었습니다`);
+        setTimeout(() => {
+          navigate('/');
+        }, 1500);
       },
       onError: (err) => {
         setError(

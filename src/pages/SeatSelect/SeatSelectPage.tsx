@@ -10,7 +10,7 @@ import SeatBottomSheet from './components/SeatBottomSheet/SeatBottomSheet';
 import { usePatchSeatData, useSeatData } from './api/hooks';
 import type { SeatData, SeatGrade, SeatInfo } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
-
+import Spinner from '@/shared/components/Spinner/Spinner';
 const LazyPopup = React.lazy(() => import('./components/Popup/Popup'));
 
 const SeatSelectPage = () => {
@@ -127,7 +127,7 @@ const SeatSelectPage = () => {
         />
 
         {showPopup && (
-          <Suspense fallback={<div>로딩 중…</div>}>
+          <Suspense fallback={<Spinner />}>
             <LazyPopup onClose={handleWaitIconClick} />
           </Suspense>
         )}
