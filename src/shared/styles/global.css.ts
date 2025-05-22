@@ -13,7 +13,6 @@ globalStyle('html, body', {
       overscrollBehaviorY: 'none',
       touchAction: 'manipulation',
 
-      backgroundColor: vars.color.gray10,
       fontFamily: vars.font.family.pretendard,
       userSelect: 'none',
       WebkitUserSelect: 'none',
