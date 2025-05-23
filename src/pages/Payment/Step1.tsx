@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import BookingInfoSection from './components/Booking/BookingInfoSection';
 import * as ListInfoStyles from './components/Dropdown/ListInfomation/ListInfo.css';
@@ -11,7 +11,8 @@ import PhoneTextField from './components/TextField/PhoneTextField';
 import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/PriceQuantityCard';
 import ListInfo from './components/Dropdown/ListInfomation/ListInfo';
 import { validateForm } from './utils/validateForm';
-import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import { usePaymentStore } from './store/paymentStore';
+import LargeButton from '@/pages/Payment/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import {
   Rectangle94,
@@ -30,21 +31,61 @@ export default function PaymentStep1() {
   const [additionalInfo, setAdditionalInfo] = useState('');
   const [quantity, setQuantity] = useState(1);
 
+  const { setUserInfo, setTicketCount, setTotalPrice } = usePaymentStore();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (!selectedSeatInfo) {
+      navigate('/seat-select');
+    }
+  }, [selectedSeatInfo, navigate]);
+
+  if (!selectedSeatInfo) return null;
+
+  const seatInfo = selectedSeatInfo;
+
   const handleBack = () => {
-    navigate(-1);
+    navigate('/seat-select');
   };
 
   const handleClose = () => {
     navigate('/');
   };
 
+  function validateEmail(email: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
   const handleSubmit = () => {
     if (!isFormValid) return;
+
+    setUserInfo({
+      name,
+      birth: birthdate,
+      phoneNumber: phone,
+      email: additionalInfo,
+    });
+
+    setTicketCount(quantity);
+
+    const ticketPrice = selectedSeatInfo?.price ?? 0;
+    const totalPrice = ticketPrice * quantity;
+    setTotalPrice(totalPrice);
+
+    localStorage.setItem('userName', name);
+
     window.scrollTo(0, 0);
     navigate('/payment/step2');
   };
 
-  const isFormValid = validateForm(name, birthdate, phone) && quantity > 0;
+  const isFormValid =
+    validateForm(name, birthdate, phone) &&
+    quantity > 0 &&
+    !!additionalInfo &&
+    validateEmail(additionalInfo);
 
   return (
     <>
@@ -52,7 +93,7 @@ export default function PaymentStep1() {
       <main className={styles.mainContent}>
         <div>
           <div className={styles.page}>
-            <BookingInfoSection seatInfo={selectedSeatInfo} />
+            <BookingInfoSection seatInfo={seatInfo} />
           </div>
           <Rectangle94 />
 

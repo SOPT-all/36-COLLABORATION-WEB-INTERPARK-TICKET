@@ -5,11 +5,12 @@ import * as styles from './SelectDatePage.css';
 import { formatTime } from './utils/utils';
 import type { Performance, SeatGrades } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
-import CardContentInfo from '@/shared/components/CardContentInfo/CardContentInfo';
-import Calendar from '@/shared/components/Calendar/Calendar';
+import CardContentInfo from '@/pages/SelectDate/components/CardContentInfo/CardContentInfo';
+import Calendar from '@/pages/SelectDate/components/Calendar/Calendar';
 import RightIcon from '@/shared/assets/icon/ic_arrow_right_gray70_16.svg';
 import TimerIcon from '@/shared/assets/icon/ic_ wait_blue70_36.svg';
-import DateReservationCard from '@/shared/components/DateReservationCard/DateReservationCard';
+import DateReservationCard from '@/pages/SelectDate/components/DateReservationCard/DateReservationCard';
+import Spinner from '@/shared/components/Spinner/Spinner';
 function SelectDatePage() {
   const navigate = useNavigate();
   const [isSelected, setIsSelected] = useState(false);
@@ -33,7 +34,7 @@ function SelectDatePage() {
     }
   }, [data]);
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Spinner />;
   if (isError) return <div>데이터를 불러오지 못했어요.</div>;
 
   const handleSelectDate = (selected: boolean) => {

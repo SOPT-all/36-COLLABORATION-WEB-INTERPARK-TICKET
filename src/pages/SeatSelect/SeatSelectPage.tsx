@@ -1,15 +1,17 @@
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
+import React from 'react';
 import ic_wait_blue70_36 from '@assets/icon/ic_ wait_blue70_36.svg';
 import { useNavigate } from 'react-router';
 import SeatCard from './components/SeatCard/SeatCard';
 import SeatSelectChip from './components/SeatSelectChip/SeatSelectChip';
 import StageText from './components/StageText/StageText';
 import * as styles from './SeatSelectPage.css';
-import Popup from './components/Popup/Popup';
 import SeatBottomSheet from './components/SeatBottomSheet/SeatBottomSheet';
 import { usePatchSeatData, useSeatData } from './api/hooks';
 import type { SeatData, SeatGrade, SeatInfo } from './api/types';
 import SeatHeader from '@/shared/components/Header/SeatHeader/SeatHeader';
+import Spinner from '@/shared/components/Spinner/Spinner';
+const LazyPopup = React.lazy(() => import('./components/Popup/Popup'));
 
 const SeatSelectPage = () => {
   const navigate = useNavigate();
@@ -46,7 +48,10 @@ const SeatSelectPage = () => {
     });
   };
 
-  const handleRetryClick = () => setSelectedSeatInfo(null);
+  const handleRetryClick = () => {
+    setSelectedSeatInfo(null);
+    setSelectedSeatType(null);
+  };
 
   const handleSeatTypeClick = (type: SeatGrade) => {
     setSelectedSeatType((prev) => (prev === type ? null : type));
@@ -68,7 +73,7 @@ const SeatSelectPage = () => {
           {
             grade: selectedSeatInfo.grade,
             row: selectedSeatInfo.position.row,
-            number: selectedSeatInfo.position.index + 1,
+            number: selectedSeatInfo.position.index,
           },
         ],
       },
@@ -121,7 +126,11 @@ const SeatSelectPage = () => {
           onNextClick={handleNextClick}
         />
 
-        {showPopup && <Popup onClose={handleWaitIconClick} />}
+        {showPopup && (
+          <Suspense fallback={<Spinner />}>
+            <LazyPopup onClose={handleWaitIconClick} />
+          </Suspense>
+        )}
       </main>
     </div>
   );

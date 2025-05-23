@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import * as styles from './Payment.css';
 import InfoRowTitle from './components/InfoRowTitle/InfoRowTitle';
@@ -6,6 +6,7 @@ import ListPoint from './components/Dropdown/ListPoint/ListPoint';
 import VectorDivider from './components/VectorDivider/VectorDivider';
 import CouponCard from './components/CouponCard/CouponCard';
 import CustomCheckbox from './components/CustomCheckbox/CustomCheckbox';
+import { usePaymentStore } from './store/paymentStore';
 import {
   Rectangle94,
   Rectangle95,
@@ -13,12 +14,13 @@ import {
   Rectangle97,
   PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
-import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import LargeButton from '@/pages/Payment/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 
 export default function PaymentStep2() {
   const navigate = useNavigate();
   const [isAgreed, setIsAgreed] = useState(false);
+  const { setDeliveryMethod, userInfo } = usePaymentStore();
 
   const handleBack = () => {
     navigate('/payment/step1');
@@ -29,9 +31,17 @@ export default function PaymentStep2() {
   };
 
   const handleSubmit = () => {
+    if (!isAgreed) return;
+
+    setDeliveryMethod('택배');
+
     window.scrollTo(0, 0);
     navigate('/payment/step3');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -41,10 +51,12 @@ export default function PaymentStep2() {
         <Rectangle95 />
         <Rectangle97 />
         <div className={styles.sectionContainer}>
-          <InfoRowTitle
-            text="포인트"
-            subText="한 종류의 포인트만 사용 가능합니다."
-          />
+          <div className={styles.methodTitleSpacing}>
+            <InfoRowTitle
+              text="포인트"
+              subText="한 종류의 포인트만 사용 가능합니다."
+            />
+          </div>
           <VectorDivider />
           <ListPoint pointTitle="i포인트" pointValue="0" />
           <PaddedRectangle95 />
@@ -56,7 +68,9 @@ export default function PaymentStep2() {
         <Rectangle94 />
         <Rectangle97 />
         <div className={styles.sectionContainer}>
-          <InfoRowTitle text="예매권" />
+          <div className={styles.methodTitleSpacing}>
+            <InfoRowTitle text="예매권" />
+          </div>
           <VectorDivider />
           <ListPoint pointTitle="예매권 사용" pointValue="0" />
         </div>
@@ -75,7 +89,10 @@ export default function PaymentStep2() {
         </div>
 
         <div className={styles.buttonContainer}>
-          <LargeButton onClick={handleSubmit} isActive={isAgreed}>
+          <LargeButton
+            onClick={handleSubmit}
+            isActive={isAgreed && !!userInfo?.email}
+          >
             다음
           </LargeButton>
         </div>

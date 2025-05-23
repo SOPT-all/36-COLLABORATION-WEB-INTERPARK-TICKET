@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import * as styles from './SeatBottomSheet.css';
 import ChangeButton from '@/shared/components/ChangeButton/ChangeButton';
-import SmallButton from '@/shared/components/SmallButton/SmallButton';
+import SmallButton from '@/pages/SeatSelect/components/SeatBottomSheet/SmallButton';
 
 interface SeatBottomSheetProps {
   placeInfo: string;

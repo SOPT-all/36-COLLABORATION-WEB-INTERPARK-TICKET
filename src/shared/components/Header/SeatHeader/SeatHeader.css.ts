@@ -24,3 +24,7 @@ export const HeaderTxt = style({
   color: vars.color.white,
   textAlign: 'center',
 });
+
+export const BackBtn = style({
+  cursor: 'pointer',
+});

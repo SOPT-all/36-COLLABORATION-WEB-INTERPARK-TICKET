@@ -1,13 +1,13 @@
-import camping from '@/shared/assets/icon/category_camping.svg';
-import classic from '@/shared/assets/icon/category_classic.svg';
-import concert from '@/shared/assets/icon/category_concert.svg';
-import display from '@/shared/assets/icon/category_display.svg';
-import family from '@/shared/assets/icon/category_family.svg';
-import musical from '@/shared/assets/icon/category_musical.svg';
-import nolcard from '@/shared/assets/icon/category_nolcard.svg';
-import sport from '@/shared/assets/icon/category_sport.svg';
-import theater from '@/shared/assets/icon/category_theater.svg';
-import toping from '@/shared/assets/icon/category_topping.svg';
+import camping from '@/shared/assets/image/category_camping.png';
+import classic from '@/shared/assets/image/category_classic.png';
+import concert from '@/shared/assets/image/category_concert.png';
+import display from '@/shared/assets/image/category_display.png';
+import family from '@/shared/assets/image/category_family.png';
+import musical from '@/shared/assets/image/category_musical.png';
+import nolcard from '@/shared/assets/image/category_nolcard.png';
+import sport from '@/shared/assets/image/category_sports.png';
+import theater from '@/shared/assets/image/category_theater.png';
+import toping from '@/shared/assets/image/category_topping.png';
 
 export interface CategoryItem {
   id: string;

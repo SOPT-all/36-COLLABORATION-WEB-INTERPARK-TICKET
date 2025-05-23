@@ -20,12 +20,13 @@ import MainBanner from '@/shared/assets/icon/home_card_banner.svg';
 import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
-import bar_navigation from '@/shared/assets/icon/bar_navigation.svg';
+import Spinner from '@/shared/components/Spinner/Spinner';
+import NavBar from '@/pages/Main/components/NavBar/NavBar';
 
 function MainPage() {
   const { data, isLoading, isError } = useHomeData();
 
-  if (isLoading) return <div>로딩 중...</div>;
+  if (isLoading) return <Spinner />;
   if (isError || !data) return <div>에러 발생!</div>;
 
   function findCategory<T extends BaseHome>(
@@ -69,36 +70,31 @@ function MainPage() {
         </div>
         <HomeDivider />
 
-        {/* 장르별 랭킹 */}
         {GenreCategory && <GenreSection category={GenreCategory} />}
         <HomeDivider />
 
-        {/* 할인 중 공연 */}
         {disCountCategory && <DiscountSection category={disCountCategory} />}
         <HomeDivider />
 
-        {/* MD PICK */}
         {MDpickCategory && <MdPick category={MDpickCategory} />}
         <HomeDivider />
 
-        {/* 이런 키워드 어때요? */}
         {AboutKewordCategory && (
           <KeyWordSection category={AboutKewordCategory} />
         )}
         <HomeDivider />
 
-        {/* NOL PLAY */}
         {NolPlayCategory && <NolPlaySection category={NolPlayCategory} />}
         <img src={adBanner} />
 
-        {/* 곧 오픈 공연 */}
         {plannedCategory && <PlannedSection category={plannedCategory} />}
       </main>
 
       <footer className={styles.footerWrapper}>
         <Footer />
-        <img src={bar_navigation} />
       </footer>
+
+      <NavBar />
     </div>
   );
 }

@@ -1,10 +1,24 @@
+import { useState } from 'react';
 import PopIcon from '@assets/icon/ic_wait_blue70_56.svg';
+import clsx from 'clsx';
 import * as styles from './Popup.css';
 
 const PopUp = ({ onClose }: { onClose: () => void }) => {
+  const [isOpen, setIsOpen] = useState(true);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(onClose, 300);
+  };
+
   return (
     <div className={styles.popArea}>
-      <div className={styles.popContents}>
+      <div
+        className={clsx(
+          styles.popContents,
+          styles.popupAnimation[isOpen ? 'open' : 'close']
+        )}
+      >
         <div className={styles.popIcon}>
           <img src={PopIcon} alt="팝업_아이콘" />
         </div>
@@ -20,7 +34,7 @@ const PopUp = ({ onClose }: { onClose: () => void }) => {
           <span>예매 기회를 제공하는 서비스입니다.</span>
         </p>
 
-        <button className={styles.popBtn} onClick={onClose}>
+        <button className={styles.popBtn} onClick={handleClose}>
           확인
         </button>
       </div>
