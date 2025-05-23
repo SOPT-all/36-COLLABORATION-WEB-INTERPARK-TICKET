@@ -40,7 +40,7 @@ export default function TextField({
     >
       <input
         className={clsx(styles.input, value && styles.inputHasText)}
-        type="text"
+        type={numbersOnly ? "tel" : "text"}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
