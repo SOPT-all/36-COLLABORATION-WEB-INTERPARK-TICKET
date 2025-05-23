@@ -2,10 +2,10 @@ import { keyframes, style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 
 const pulse = keyframes({
-  "0%": { opacity: 1 },
-  "30%": { opacity: 0.2 },  
-  "70%": { opacity: 0.2 },
-  "100%": { opacity: 1 },
+  '0%': { opacity: 1 },
+  '30%': { opacity: 0.2 },
+  '70%': { opacity: 0.2 },
+  '100%': { opacity: 1 },
 });
 
 export const InfoCardBox = style({
@@ -56,6 +56,3 @@ export const pad_45 = style({
   width: '100%',
   animation: `${pulse} 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite`,
 });
-
-
-

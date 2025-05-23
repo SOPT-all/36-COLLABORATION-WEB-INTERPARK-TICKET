@@ -26,8 +26,8 @@ import NavBar from '@/pages/Main/components/NavBar/NavBar';
 function MainPage() {
   const { data, isLoading, isError } = useHomeData();
 
-  if (isLoading) return <Spinner />
-  if (isError || !data) return <div>에러 발생!</div>
+  if (isLoading) return <Spinner />;
+  if (isError || !data) return <div>에러 발생!</div>;
 
   function findCategory<T extends BaseHome>(
     data: Category[],
