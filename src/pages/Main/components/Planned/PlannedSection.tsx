@@ -1,8 +1,8 @@
 import * as styles from './PlannedSection.css';
 import { sectionHeader } from '../../MainPage.css';
 import type { CategoryBase, PlannedPerformance } from '../../api/types';
-import Badge from '@/shared/components/Badge/Badge';
-import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
+import Badge from '@/pages/Main/components/Planned/Badge/Badge';
+import HomeAddButton from '@/pages/Main/components/HomeMoreButton/HomeMoreButton';
 
 interface PlannedSectionProp {
   category: CategoryBase<PlannedPerformance>;

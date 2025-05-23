@@ -1,6 +1,6 @@
 import * as styles from './DiscountCard.css';
 import type { DiscountPerformance } from '../../api/types';
-import TimeDeal from '@/shared/components/TimeDeal/TimeDeal';
+import TimeDeal from '@/pages/Main/components/TimeDeal/TimeDeal';
 
 interface DiscountCardProps extends DiscountPerformance {
   onClick?: () => void;

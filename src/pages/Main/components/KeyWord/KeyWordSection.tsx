@@ -3,7 +3,7 @@ import * as styles from './KeyWordSection.css';
 import { sectionHeader } from '../../MainPage.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import type { BasicPerformance, CategoryBase } from '../../api/types';
-import InfoCard from '@/shared/components/main/Perform/InfoCard';
+import InfoCard from '@/pages/Main/components/InfoCard/InfoCard';
 
 interface KeyWordSectionProps {
   category: CategoryBase<BasicPerformance>;

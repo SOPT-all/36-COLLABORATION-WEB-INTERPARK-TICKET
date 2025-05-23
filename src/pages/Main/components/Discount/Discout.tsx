@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router';
 import * as styles from './DiscountCard.css';
 import DiscountCard from './DiscoutCard';
 import type { CategoryBase, DiscountPerformance } from '../../api/types';
-import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
+import HomeAddButton from '@/pages/Main/components/HomeMoreButton/HomeMoreButton';
 interface DiscountSectionProp {
   category: CategoryBase<DiscountPerformance>;
 }

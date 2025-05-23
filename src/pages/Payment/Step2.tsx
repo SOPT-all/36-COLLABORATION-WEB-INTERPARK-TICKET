@@ -14,7 +14,7 @@ import {
   Rectangle97,
   PaddedRectangle95,
 } from '@/shared/components/Rectangle/Rectangle';
-import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import LargeButton from '@/pages/Payment/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 
 export default function PaymentStep2() {

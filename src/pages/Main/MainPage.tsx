@@ -21,7 +21,7 @@ import { CATEGORY_ITEMS } from '@/shared/constants/Categories';
 import { HomeDivider } from '@/shared/components/Rectangle/Rectangle';
 import adBanner from '@/shared/assets/icon/ad_banner.svg';
 import Spinner from '@/shared/components/Spinner/Spinner';
-import NavBar from '@/shared/components/main/NavBar/NavBar';
+import NavBar from '@/pages/Main/components/NavBar/NavBar';
 
 function MainPage() {
   const { data, isLoading, isError } = useHomeData();
