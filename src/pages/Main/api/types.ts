@@ -19,6 +19,7 @@ export interface DiscountPerformance extends BaseHome {
   price: number;
   description: string;
   startDate: string;
+  dealTime: number;
 }
 
 export type tagType = 'HOT' | '단독판매';

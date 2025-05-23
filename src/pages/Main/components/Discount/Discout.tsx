@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import * as styles from './DiscountCard.css';
 import DiscountCard from './DiscoutCard';
@@ -14,12 +15,24 @@ const DiscountSection = ({ category }: DiscountSectionProp) => {
   const handleClick = (performance: DiscountPerformance) => {
     navigate('/date-select', { state: performance });
   };
+  const initialDealTimes = [20000, 50000, 7000, 800, 1200, 150];
 
+  const [times, setTimes] = useState<number[]>(initialDealTimes);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimes((prevTimes) =>
+        prevTimes.map((time) => (time > 0 ? time - 1 : 0))
+      );
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className={styles.discountSection}>
       <h1 className={styles.sectionTitle}>{category.category}</h1>
       <div className={styles.scrollArea}>
-        {performances.map((discountData) => (
+        {performances.map((discountData, index) => (
           <DiscountCard
             onClick={() => handleClick(discountData)}
             key={discountData.id}
@@ -32,6 +45,7 @@ const DiscountSection = ({ category }: DiscountSectionProp) => {
             startDate={discountData.startDate}
             endDate={discountData.endDate}
             description={discountData.description}
+            dealTime={times[index]}
           />
         ))}
       </div>

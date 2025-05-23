@@ -15,13 +15,14 @@ const DiscountCard = ({
   startDate,
   endDate,
   description,
+  dealTime,
   onClick,
 }: DiscountCardProps) => {
   return (
     <div className={styles.discountCard} onClick={onClick}>
       <img src={imageUrl} className={styles.cardImg} alt={title} />
       <div className={styles.cardContent}>
-        <TimeDeal text="타임딜" time="17:26:38" />
+        <TimeDeal text="타임딜" time={dealTime} />
         <h3 className={styles.discoutTitle}>{title}</h3>
         <p className={styles.locationtxt}>{location}</p>
         <p className={styles.dateTxt}>
