@@ -46,6 +46,10 @@ export const cardContainer = style({
   cursor: 'pointer',
 });
 
+export const Img = style({
+  borderRadius: '1rem 1rem 0rem 0rem',
+});
+
 export const smallImg = style({
   width: '4.8rem',
   height: '6.2rem',
