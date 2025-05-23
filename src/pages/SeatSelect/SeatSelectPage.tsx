@@ -73,7 +73,7 @@ const SeatSelectPage = () => {
           {
             grade: selectedSeatInfo.grade,
             row: selectedSeatInfo.position.row,
-            number: selectedSeatInfo.position.index + 1,
+            number: selectedSeatInfo.position.index,
           },
         ],
       },

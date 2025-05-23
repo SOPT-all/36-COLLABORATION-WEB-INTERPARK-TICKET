@@ -14,7 +14,7 @@ export const getSeatData = () => {
 
 export const patchSelectedSeat = (data: PatchSeatRequest) => {
   return request<PatchSeatResponse>({
-    method: HTTPMethod.POST,
+    method: HTTPMethod.PATCH,
     url: '/api/v1/tickets/seat',
     body: data,
   });

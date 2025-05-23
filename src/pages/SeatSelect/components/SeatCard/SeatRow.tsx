@@ -23,7 +23,8 @@ const SeatRow = ({
   return (
     <div className={styles.seatRow}>
       <span className={styles.rowLabel}>{rowLabel}</span>
-      {availability.map((available, index) => {
+      {availability.map((unavailable, index) => {
+        const isAvailable = !unavailable;
         const isSelected =
           selected?.row === rowLabel && selected?.index === index;
 
@@ -31,7 +32,7 @@ const SeatRow = ({
 
         const isInactive = hasSelected && !isSelected;
         const isFiltered = selectedGrade !== null && selectedGrade !== grade;
-        const seatGrade = available && !isFiltered ? grade : undefined;
+        const seatGrade = isAvailable && !isFiltered ? grade : undefined;
 
         return (
           <div key={index} className={aisle ? styles.spacer : undefined}>
@@ -40,7 +41,7 @@ const SeatRow = ({
               isInactive={isInactive}
               isSelected={isSelected}
               label={isSelected ? `${rowLabel}${index + 1}` : undefined}
-              onClick={() => available && onSelect(rowLabel, index)}
+              onClick={() => isAvailable && onSelect(rowLabel, index)}
             />
           </div>
         );
