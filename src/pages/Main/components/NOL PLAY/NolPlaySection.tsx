@@ -63,7 +63,7 @@ const NolPlaySection = ({ category }: NolPlaySectionProps) => {
         >
           {performances.map((NOL) => (
             <div className={styles.cardContainer} key={NOL.id}>
-              <img src={NOL.imageUrl} />
+              <img src={NOL.imageUrl} className={styles.Img} />
               <div className={styles.bottomCard}>
                 <img src={NOL.imageUrl} className={styles.smallImg} />
                 <div className={styles.textWrapper}>
