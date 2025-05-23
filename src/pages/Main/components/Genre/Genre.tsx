@@ -30,8 +30,6 @@ const GenreSection = ({ category }: GenreSectionProps) => {
     setSelected(keyword);
   };
 
-  console.log(isFetching);
-
   return (
     <div>
       <div className={styles.genreSection}>
