@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useState } from 'react';
 import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
+import { useHomeData } from '../../api/hooks';
+import ImageSkeletonList from '../skeleton/ImageSkeletonList';
 import type { BasicPerformance, CategoryBase } from '../../api/types';
 import InfoCard from '@/pages/Main/components/InfoCard/InfoCard';
 import HomeAddButton from '@/pages/Main/components/HomeMoreButton/HomeMoreButton';
+
 interface GenreSectionProps {
   category: CategoryBase<BasicPerformance>;
 }
 
 const GenreSection = ({ category }: GenreSectionProps) => {
+  const { isFetching } = useHomeData();
   const performances = category.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
 
@@ -37,6 +41,7 @@ const GenreSection = ({ category }: GenreSectionProps) => {
             onSelect={handleSelect}
           />
           <div className={styles.scrollArea}>
+            {isFetching && <ImageSkeletonList count={5} />}
             {performances.map((genre, idx) => (
               <InfoCard
                 key={genre.id}
