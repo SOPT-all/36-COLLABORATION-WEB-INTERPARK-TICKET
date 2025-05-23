@@ -4,7 +4,6 @@
 
 ![표지](https://github.com/user-attachments/assets/808d3cc7-9304-4162-9bb0-f59051a0e5e3)
 
-
 <br/>
 
 # ⚒️ 팀원 소개 
@@ -13,26 +12,58 @@
 |<img src = "https://avatars.githubusercontent.com/u/101444425?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/101315059?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/165611407?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/90364636?v=4" width ="250">|
 |`좌석 선택`|`메인`</br>`날짜 선택`|`결제`|`메인`|
 
-
 <br/>
 <br/>
 
-# 🎬 시연 영상 
-<table>
+<!-- 🎬 시연 영상 -->
+<h2>🎬 시연 영상</h2>
+
+<!-- 메인 -->
+<table align="center">
+  <thead>
+    <tr>
+      <th colspan="3" style="text-align: center;"><b>메인</b></th>
+    </tr>
+  </thead>
   <tr>
-    <td><img src="https://github.com/user-attachments/assets/bc4c3277-e2d5-4999-839c-0e05250a7be4" width="230" /></td>
-    <td><img src="https://github.com/user-attachments/assets/23c84033-f15b-4b3c-ad6d-4f2279f73606" width="230" /> </td>
-    <td><img src="https://github.com/user-attachments/assets/0db23648-c607-41cb-8f8c-76f7e19a1630" width="230" /></td>
-    <td><img src="https://github.com/user-attachments/assets/f9efa72b-dc90-480a-9630-b41864e6b1be" width="230" /></td>
-  </tr>
-  <tr>
-    <td align="center"><b>메인</b></td>
-    <td align="center"><b>날짜 선택</b></td>
-      <td align="center"><b>좌석 선택</b></td>
-    <td align="center"><b>결제</b></td>
+    <td><img src="https://github.com/user-attachments/assets/51c13c0e-e779-4891-b841-4462b42a3a82" width="300" /></td>
+    <td><img src="https://github.com/user-attachments/assets/aabc954c-9a5b-4145-b192-fc6393e551b1" width="300" /></td>
+    <td><img src="https://github.com/user-attachments/assets/5bbd272d-9d98-4ef1-a51f-859a15c2d1d9" width="300" /></td>
   </tr>
 </table>
 
+<br/>
+
+<!-- 날짜 선택 & 좌석 선택 -->
+<table align="center">
+  <thead>
+    <tr>
+      <th style="text-align: center;"><b>날짜 선택</b></th>
+      <th style="text-align: center;"><b>좌석 선택</b></th>
+    </tr>
+  </thead>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/50665cfa-3042-44bf-b707-523a4443332f" width="350" /></td>
+    <td><img src="https://github.com/user-attachments/assets/6a6bdb4a-18ff-405b-9741-138ece5cd32f" width="350" /></td>
+  </tr>
+</table>
+
+<br/>
+
+<!-- 결제 -->
+<table align="center">
+  <thead>
+    <tr>
+      <th colspan="4" style="text-align: center;"><b>결제</b></th>
+    </tr>
+  </thead>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/016cbfd3-dc15-40b2-a22a-d14f178e57a0" width="250" /></td>
+    <td><img src="https://github.com/user-attachments/assets/1fe228d0-ccf2-4d52-9e27-12eb73024ba8" width="250" /></td>
+    <td><img src="https://github.com/user-attachments/assets/04eeab20-cd5a-479a-8a7e-ec82c6f58341" width="250" /></td>
+    <td><img src="https://github.com/user-attachments/assets/9e8fb734-4250-4fba-a555-1c300d4a7a35" width="250" /></td>
+  </tr>
+</table>
 
 <br/>
 
