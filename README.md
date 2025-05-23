@@ -1,122 +1,128 @@
 # 36-COLLABORATION-WEB-INTERPARK-TICKET
 
-AT SOPT 36기 합동세미나 인터파크 티켓 🌐 🎟️
+> ## AT SOPT 36기 합동세미나 인터파크 티켓 🌐 🎟️
 
-## 🛠️ 기술 스택
+![표지](https://github.com/user-attachments/assets/808d3cc7-9304-4162-9bb0-f59051a0e5e3)
 
-### Language, Framework, Library
 
-- **TypeScript**
-  정적 타입 체킹을 통해 안정성과 유지보수성을 높이고, 대규모 코드베이스 관리에 유리합니다.
+<br/>
 
-- **React**
-  컴포넌트 기반 UI 라이브러리로, 재사용성과 렌더링 효율성이 뛰어납니다.
+# ⚒️ 팀원 소개 
+|김예지</br>[@mnbvcxzyj](https://github.com/mnbvcxzyj)|이재림</br>[@jllee000](https://github.com/jllee000)|최서희</br>[@karnelll](https://github.com/karnelll)|박소이</br>[@soyyyyy](https://github.com/soyyyyy)|
+|:---:|:---:|:---:|:---:|
+|<img src = "https://avatars.githubusercontent.com/u/101444425?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/101315059?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/165611407?v=4" width ="250">|<img src = "https://avatars.githubusercontent.com/u/90364636?v=4" width ="250">|
+|`좌석 선택`|`메인`</br>`날짜 선택`|`결제`|`메인`|
 
-- **Vanilla-Extract**
-  TypeScript 기반의 CSS-in-TypeScript 솔루션으로, 정적 타입 안전성과 테마 관리에 용이합니다.
 
-- **Vite**
-  빠른 번들링과 개발 환경을 제공하는 프론트엔드 빌드 도구입니다.
+<br/>
+<br/>
 
-- **Zustand**
-  가벼우면서도 직관적인 전역 상태 관리 라이브러리입니다.
+# 🎬 시연 영상 
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/bc4c3277-e2d5-4999-839c-0e05250a7be4" width="230" /></td>
+    <td><img src="https://github.com/user-attachments/assets/23c84033-f15b-4b3c-ad6d-4f2279f73606" width="230" /> </td>
+    <td><img src="https://github.com/user-attachments/assets/0db23648-c607-41cb-8f8c-76f7e19a1630" width="230" /></td>
+    <td><img src="https://github.com/user-attachments/assets/f9efa72b-dc90-480a-9630-b41864e6b1be" width="230" /></td>
+  </tr>
+  <tr>
+    <td align="center"><b>메인</b></td>
+    <td align="center"><b>날짜 선택</b></td>
+      <td align="center"><b>좌석 선택</b></td>
+    <td align="center"><b>결제</b></td>
+  </tr>
+</table>
 
-- **React Query**
-  서버 상태 관리와 비동기 데이터 처리를 위한 라이브러리입니다.
 
-- **axios**
-  HTTP 클라이언트 라이브러리로, 네트워크 요청을 간편하게 처리할 수 있습니다.
+<br/>
 
-- **ESLint & Prettier**
-  코드 스타일 자동화 및 일관성 유지를 위한 도구입니다.
+# 🛠 기술 스택
 
-## 📦 패키지 매니저
+| Category | Stack |
+|----------|-------|
+| Library | ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) |
+| Language | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) |
+| Styling | ![Vanilla Extract](https://img.shields.io/badge/Vanilla--Extract-DDC7A0?style=for-the-badge&labelColor=20232A&color=ddc7a0) |
+| Data Fetching | ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=Axios&logoColor=white)  ![TanStack Query](https://img.shields.io/badge/TanStack_Query-FF4154?style=for-the-badge&logo=react-query&logoColor=white) |
+| State Management | ![Zustand](https://img.shields.io/badge/Zustand-000000?style=for-the-badge&logo=Zustand&logoColor=white) |
+| Package Manager | ![Yarn](https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=yarn&logoColor=white) |
+| Formatting & Linting | ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white) |
+| Version Control      | ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white) |
+| CI CD | ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) |
 
-- **yarn**
-  빠른 속도와 일관성 있는 의존성 관리를 제공하는 패키지 매니저입니다.
 
----
 
-## ⚙️ CI/CD
 
-- **Vercel**
-  GitHub 연동으로 자동 배포가 가능하며, 프론트엔드 프로젝트에 최적화된 배포 플랫폼입니다.
+<br/>
 
----
+# 🌱 컨벤션 
+[인터파크 티켓 컨벤션 문서](https://www.notion.so/jisooooooooooo/3-GOODOC-1e94a104520880baa99ef3b5e9fa610f?pvs=4)
 
-## 🤝 협업 도구
+<br/>
 
-- **Notion**: 문서화 및 일정/작업 관리
-- **Discord**: 가상 오피스 협업 공간
-
----
-
-# 📂 Git / PR / Branch / Commit 규칙
-
-## 🌳 브랜치 전략
-
-- **메인 브랜치(Main branch)**
-
-  - `main`: **배포 가능한 상태**를 관리합니다.
-  - `develop`: 통합 브랜치 역할을 하며, **기능 개발은 모두 이 브랜치 기반**으로 진행합니다.
-    모든 기능이 안정적으로 동작하고 배포 가능할 때 `main`에 merge합니다.
-
-- **피쳐 브랜치(Feature branch)**
-
-  - `develop`에서 **분기**합니다.
-  - 작업 완료 후 **`develop` 브랜치로 PR**을 보냅니다.
-
-### 🌴 Branch 생성 규칙
-
-- 작업 시작 시 **이슈를 생성**하고, 해당 이슈 기반으로 브랜치를 만듭니다.
-- **브랜치 생성은 반드시 `develop` 기준**으로 합니다.
-- **브랜치 네이밍**: `구현기능종류/기능명/#이슈번호`
-
-  - `feat/login/#43`
-  - `refactor/edit-modal/#75`
-
----
-
-## 📝 Commit Message 규칙
-
-모든 작업은 **`develop`에서 분기된 `feature` 브랜치**에서 진행합니다.
-
-- 커밋 메시지 형식:
-
-  ```
-  커밋유형: 작업 내용
-  ```
-
-- 예시:
-
-  ```
-  feat: 타임테이블 기능 추가
-  ```
-
-| 커밋유형 | 의미                                                         |
-| -------- | ------------------------------------------------------------ |
-| feat     | 새로운 기능 추가                                             |
-| refactor | 코드 리팩토링                                                |
-| fix      | 버그 수정                                                    |
-| chore    | 패키지 매니저, 설정 세팅                                     |
-| init     | 초기 세팅 및 종속성 추가 관련                                |
-| docs     | 문서 수정                                                    |
-| design   | css 및 UI 변경                                               |
-| style    | 코드 formatting, 세미콜론 누락 등 코드 로직에 영향 없는 변경 |
-| test     | 테스트 코드 추가/수정                                        |
-
----
-
-## 🔀 브랜치 병합 규칙
-
-- **메인 브랜치(`main`, `develop`)에 직접 커밋 금지**
-  → **반드시 PR → merge** 방식만 허용
-
-1. **작업 전** 항상 `git pull origin develop`으로 최신화 후 시작
-2. PR 작성 시 **PR Template**에 맞게 작성
-3. PR 작성 시 **이슈 번호를 태그**로 포함
-4. PR은 **1명 이상 팀원의 `approve` 필수**
-5. **squash merge 방식 사용**
-6. PR → 리뷰는 **하루 안에**!
-   리뷰 피드백 반영도 **하루 안에**!
-7. merge 후 **작업 브랜치 삭제**
+# 📁 폴더 구조 
+```
+📁 public
+│   📁 fonts
+│   └── nol.webp
+├── README.md
+📁 src
+│   ├── App.tsx
+│   ├── main.tsx
+│   📁 pages
+│   │   📁 Main
+│   │   │   📁 api
+│   │   │   │   ├── api.ts
+│   │   │   │   ├── hooks.ts
+│   │   │   │   └── types.ts
+│   │   │   📁 components
+│   │   │   ├── MainPage.css.ts
+│   │   │   └── MainPage.tsx
+│   │   📁 Payment
+│   │   │   📁 api
+│   │   │   │   ├── banks.api.ts
+│   │   │   │   ├── banks.hooks.ts
+│   │   │   │   ├── banks.types.ts
+│   │   │   │   ├── payment.api.ts
+│   │   │   │   ├── payment.hooks.ts
+│   │   │   │   ├── payment.types.ts
+│   │   │   │   └── ticketReceive.ts
+│   │   │   📁 components
+│   │   │   ├── Payment.css.ts
+│   │   │   ├── Step1.tsx
+│   │   │   ├── Step2.tsx
+│   │   │   ├── Step3.tsx
+│   │   │   📁 store
+│   │   │   📁 utils
+│   │   📁 SeatSelect
+│   │   │   📁 api
+│   │   │   │   ├── api.ts
+│   │   │   │   ├── hooks.ts
+│   │   │   │   └── types.ts
+│   │   │   📁 components
+│   │   │   ├── SeatSelectPage.css.ts
+│   │   │   └── SeatSelectPage.tsx
+│   │   📁 SelectDate
+│   │       📁 api
+│   │       │   ├── api.ts
+│   │       │   ├── hooks.ts
+│   │       │   └── types.ts
+│   │       📁 components
+│   │       ├── SelectDatePage.css.ts
+│   │       ├── SelectDatePage.tsx
+│   │       📁 utils
+📁 shared
+│   📁 assets
+│   📁 components
+│   📁 constants
+│   📁 router
+│   📁 styles
+│   📁 types
+├── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vercel.json
+├── vite.config.ts
+└── yarn.lock
+```
