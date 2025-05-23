@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import * as styles from './MdPick.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import type { CategoryBase, BasicPerformance } from '../../api/types';
-import InfoCard from '@/shared/components/main/Perform/InfoCard';
+import InfoCard from '@/pages/Main/components/InfoCard/InfoCard';
 
 interface MdPickProps {
   category: CategoryBase<BasicPerformance>;

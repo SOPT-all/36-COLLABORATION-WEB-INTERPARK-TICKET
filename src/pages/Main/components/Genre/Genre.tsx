@@ -2,8 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import type { BasicPerformance, CategoryBase } from '../../api/types';
-import InfoCard from '@/shared/components/main/Perform/InfoCard';
-import HomeAddButton from '@/shared/components/HomeMoreButton/HomeMoreButton';
+import InfoCard from '@/pages/Main/components/InfoCard/InfoCard';
+import HomeAddButton from '@/pages/Main/components/HomeMoreButton/HomeMoreButton';
 interface GenreSectionProps {
   category: CategoryBase<BasicPerformance>;
 }

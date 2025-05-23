@@ -12,7 +12,7 @@ import PriceQuantityCard from './components/PriceQuantityInfo/PriceQuantityCard/
 import ListInfo from './components/Dropdown/ListInfomation/ListInfo';
 import { validateForm } from './utils/validateForm';
 import { usePaymentStore } from './store/paymentStore';
-import LargeButton from '@/shared/components/LargeButton/LargeButton';
+import LargeButton from '@/pages/Payment/components/LargeButton/LargeButton';
 import PayHeader from '@/shared/components/Header/PayHeader/PayHeader';
 import {
   Rectangle94,
