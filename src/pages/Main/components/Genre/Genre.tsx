@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import * as styles from './Genre.css';
 import CategoryTab from '../CategoryTab/CategoryTab';
 import { useHomeData } from '../../api/hooks';
@@ -15,6 +15,7 @@ const GenreSection = ({ category }: GenreSectionProps) => {
   const { isFetching } = useHomeData();
   const performances = category.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
+  const scrollAreaRef = useRef<HTMLDivElement | null>(null); // 스크롤 영역을 참조할 ref
 
   const keywords = useMemo(() => {
     return category?.keywordList ?? [];
@@ -30,6 +31,26 @@ const GenreSection = ({ category }: GenreSectionProps) => {
     setSelected(keyword);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (scrollAreaRef.current) {
+        const scrollArea = scrollAreaRef.current;
+        const cardWidth = 14 * 10;
+        const scrollPosition = scrollArea.scrollLeft;
+        const scrollWidth = scrollArea.scrollWidth;
+        const clientWidth = scrollArea.clientWidth;
+
+        if (scrollPosition + clientWidth < scrollWidth) {
+          scrollArea.scrollLeft += cardWidth;
+        } else {
+          scrollArea.scrollLeft = 0;
+        }
+      }
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [performances.length]);
+
   return (
     <div>
       <div className={styles.genreSection}>
@@ -40,7 +61,7 @@ const GenreSection = ({ category }: GenreSectionProps) => {
             selected={selected}
             onSelect={handleSelect}
           />
-          <div className={styles.scrollArea}>
+          <div className={styles.scrollArea} ref={scrollAreaRef}>
             {isFetching && <ImageSkeletonList count={5} />}
             {performances.map((genre, idx) => (
               <InfoCard
