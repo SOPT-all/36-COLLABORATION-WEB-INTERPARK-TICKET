@@ -1,6 +1,7 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '@/shared/styles/tokens.css';
 import { fontStyle } from '@/shared/styles/fontStyle';
+
 export const genreSection = style({
   display: 'flex',
   flexDirection: 'column',
@@ -24,8 +25,13 @@ export const scrollArea = style({
   padding: '2rem 1.8rem 2rem 0',
   gap: '1.2rem',
   alignItems: 'flex-start',
+  scrollBehavior: 'smooth',
 
   '::-webkit-scrollbar': {
     display: 'none',
   },
+});
+
+export const card = style({
+  flexShrink: 0,
 });
