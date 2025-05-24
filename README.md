@@ -1,6 +1,8 @@
 # 36-COLLABORATION-WEB-INTERPARK-TICKET
 
 > ## AT SOPT 36기 합동세미나 인터파크 티켓 🌐 🎟️
+>
+> https://36-collaboration-web-interpark-ticket.vercel.app/
 
 ![표지](https://github.com/user-attachments/assets/808d3cc7-9304-4162-9bb0-f59051a0e5e3)
 
