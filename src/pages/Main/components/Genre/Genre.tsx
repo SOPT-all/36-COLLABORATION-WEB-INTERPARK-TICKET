@@ -15,7 +15,7 @@ const GenreSection = ({ category }: GenreSectionProps) => {
   const { isFetching } = useHomeData();
   const performances = category.getHomeResponseList ?? [];
   const [selected, setSelected] = useState<string>('');
-  const scrollAreaRef = useRef<HTMLDivElement | null>(null); // 스크롤 영역을 참조할 ref
+  const scrollAreaRef = useRef<HTMLDivElement | null>(null);
 
   const keywords = useMemo(() => {
     return category?.keywordList ?? [];
