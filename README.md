@@ -88,7 +88,7 @@
 
 # 🌱 컨벤션
 
-[인터파크 티켓 컨벤션 문서](https://www.notion.so/jisooooooooooo/3-GOODOC-1e94a104520880baa99ef3b5e9fa610f?pvs=4)
+[인터파크 티켓 컨벤션 문서](https://gifted-leo-2a6.notion.site/1fc8cc4068d580eaa407f52e0b8d4a6e?pvs=74)
 
 <br/>
 
